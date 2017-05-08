@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="35dp"
+    android:background="#267d5a"
+    android:orientation="horizontal" >
+
+<!--     <ImageView -->
+<!--         android:id="@+id/imageView1" -->
+<!--         android:layout_width="40dp" -->
+<!--         android:layout_height="match_parent" -->
+<!--         android:padding="5dp" -->
+<!--         android:src="@drawable/user" /> -->
+
+    <ImageView
+        android:id="@+id/Search"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:src="@drawable/search" />
+
+    <TextView
+        android:id="@+id/pro"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="کالاها"
+        android:textColor="#fff"
+        android:layout_margin="5dp"
+        android:textSize="14dp"
+        android:textStyle="bold" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/shp"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="فروشگاه ها"
+        android:textColor="#fff"
+        android:textSize="14dp"
+        android:layout_margin="5dp"
+        android:textStyle="bold" >
+    </TextView>
+
+    <ImageView
+        android:id="@+id/login"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:padding="5dp"
+        android:src="@drawable/user" />
+
+</LinearLayout>
