@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.respons"
+    android:versionCode="2"
+    android:versionName="1.1" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="فروشگاه من"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.respons.ShowAllProducts"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.respons.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity android:name="com.example.respons.LoginActivity" />
+        <activity android:name="com.example.respons.RegisterActivity" />
+        <activity android:name="com.example.respons.PasswordActivity" />
+        <activity
+            android:name="com.example.respons.StoreManagment"
+            android:layout_gravity="right" >
+        </activity>
+        <activity android:name="com.example.respons.ShowProducts" />
+        <activity android:name="com.example.respons.ProductReg" />
+        <activity android:name="com.example.respons.StoreReg" />
+        <activity android:name="com.example.respons.ProductMng" />
+        <activity android:name="com.example.respons.CategoryMng" />
+        <activity android:name="com.example.respons.SubCateMng" />
+        <activity android:name="com.example.respons.Cate_Product" />
+        <activity
+            android:name="com.example.respons.ShowCate"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity android:name="com.example.respons.PageIndicator" />
+        <activity android:name="com.example.respons.NewCate" />
+        <activity android:name="com.example.respons.Cart" />
+        <activity android:name="com.example.respons.GetAdress" />
+        <activity android:name="com.example.respons.BuyVerify" />
+        <activity android:name="com.example.respons.Orders" />
+        <activity android:name="com.example.respons.Buy_Detail" />
+        <activity android:name="com.example.respons.Comments" />
+        <activity android:name="com.example.respons.ShowSearch" />
+        <activity android:name="com.example.respons.Request" />
+        <activity android:name="com.example.respons.Requests" />
+        <activity android:name="com.example.respons.ProfileA" />
+        <activity android:name="com.example.respons.StoreInfo" />
+        <activity android:name="com.example.respons.Account" />
+    </application>
+
+</manifest>

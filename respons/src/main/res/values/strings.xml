@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Respons</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="hello">Hello</string>
+    <string name="WServer">http://wcf.kapma.ir</string>
+<!--     <string name="WServer">http://10.0.2.2</string>  -->
+    <string name="Login">ورود</string>
+	<string name="phone">شماره موبایل</string>
+	<string name="pass">رمز عبور</string>
+	<string name="Register">ثبت نام</string>
+	<string name="npass">تکرار رمز عبور</string>
+	
+    <string-array name="ssex">
+        <item>مرد</item>
+        <item>زن</item>
+    </string-array>
+
+    <string name="title_activity_menu_right">MenuRight</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+</resources>

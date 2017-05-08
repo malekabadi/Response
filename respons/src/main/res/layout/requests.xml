@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ddd"
+    tools:context=".MainActivityOLD" >
+ 
+
+	<LinearLayout 
+	    android:id="@+id/header"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:background="#fff"
+	    android:layout_below="@+id/title"
+	    android:orientation="horizontal" >
+	
+	    <TextView
+	        android:id="@+id/stat"
+	        android:layout_width="35dip"
+	        android:layout_height="25dp"
+	        android:background="@drawable/text"
+	        android:layout_weight="0"
+	        android:gravity="center"
+	        android:textSize="12sp"
+	        android:text="وض"/>
+
+	
+	    <TextView
+	        android:id="@+id/date"
+	        android:layout_width="80dip"
+	        android:layout_height="25dp"
+	        android:background="@drawable/text"
+	        android:layout_weight="0"
+	        android:gravity="right|center_vertical"
+	        android:text="بروزرسانی"
+	        android:textSize="12sp"/>
+
+	    <TextView
+	        android:id="@+id/Item"
+	        android:layout_width="60dip"
+	        android:layout_height="25dp"
+	        android:background="@drawable/text"
+	        android:layout_weight="1"
+	        android:gravity="right|center_vertical"
+	        android:text="موضوع"
+	        android:textSize="12sp"/>
+	    	    	
+	</LinearLayout> 
+
+    <ListView
+        android:id="@+id/View1"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/Footer"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true"
+        android:background="#eee"
+        android:numColumns="1" >
+
+    </ListView>
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+    
+</RelativeLayout>

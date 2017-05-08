@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ddd"
+    tools:context=".MainActivityOLD" >
+
+    <TextView
+        android:id="@+id/Header"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="1dp"
+        android:background="#f005"
+        android:gravity="center"
+        android:text="نظرات کاربران"
+        android:textColor="#fff"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_above="@+id/comment"
+        android:layout_alignParentLeft="true"
+        android:background="#ddd"
+        android:gravity="right|center_vertical"
+        android:text="نظر شما در مورد این کالا :"
+        android:textColor="#000"
+        android:textSize="11sp" />
+
+    <EditText
+        android:id="@+id/comment"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_above="@+id/btnReg"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/edit"
+        android:padding="4dip"
+        android:ems="10"
+        android:gravity="right|top"
+        android:textSize="12sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <ListView
+        android:id="@+id/lsView1"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_above="@+id/textView1"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Header"
+        android:background="#ddd"
+        android:numColumns="1" >
+
+    </ListView>
+    <RatingBar
+        android:id="@+id/rate"
+        style="@style/StarRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/textView1"
+        android:rating="2.0"
+        android:layout_marginTop="3dp" />
+
+    <Button
+        android:id="@+id/btnReg"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="#f005"
+        android:gravity="center"
+        android:text=" ثبت نظر"
+        android:textColor="#fff"
+        android:textSize="12sp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />    
+</RelativeLayout>

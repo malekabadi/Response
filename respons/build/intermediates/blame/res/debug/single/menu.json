@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "D:\\Android_work\\Response\\respons\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\menu\\activity_menu_right_drawer.xml",
+        "source": "D:\\Android_work\\Response\\respons\\src\\main\\res\\menu\\activity_menu_right_drawer.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\menu\\action.xml",
+        "source": "D:\\Android_work\\Response\\respons\\src\\main\\res\\menu\\action.xml"
+    }
+]

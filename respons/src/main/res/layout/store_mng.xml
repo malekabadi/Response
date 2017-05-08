@@ -1,0 +1,252 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="fill"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#eee"
+    tools:context=".MainActivityOLD" >
+<LinearLayout
+    android:id="@+id/btn1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="fill"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/edit"
+        android:layoutDirection="rtl"
+        android:layout_weight="1" >
+        
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/barcode" />
+        
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="مدیریت کالا" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/btn2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/edit"
+        android:layout_marginTop="5dp"
+        android:layoutDirection="rtl"
+        android:layout_weight="1" >
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/tree" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="گروه بندی" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/btn3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/edit"
+        android:layout_marginTop="5dp"
+        android:layoutDirection="rtl"
+        android:layout_weight="1" >
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/clipboard" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="لیست سفارشات" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/btn4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/edit"
+        android:layout_marginTop="5dp"
+        android:layoutDirection="rtl"
+        android:layout_weight="1" >
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/list1" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="لیست خریداران" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/btn5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/edit"
+        android:layout_marginTop="5dp"
+        android:layoutDirection="rtl"
+        android:layout_weight="1" >
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/filex" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="لیست فاکتور های ابطال شده" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/btn6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/edit"
+        android:layout_marginTop="5dp"
+        android:layoutDirection="rtl"
+        android:layout_weight="1" >
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/editt" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="ویرایش اطلاعات" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/btn7"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/edit"
+        android:layout_marginTop="5dp"
+        android:layoutDirection="rtl"
+        android:layout_weight="1" >
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/exit" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="خروج از فروشگاه" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/btn8"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/edit"
+        android:layout_marginTop="15dp"
+        android:layoutDirection="rtl"
+        android:layout_weight="1" >
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/letter" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="درخواست جدید" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/btn9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/edit"
+        android:layout_marginTop="5dp"
+        android:layoutDirection="rtl"
+        android:layout_weight="1" >
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/list2" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="لیست درخواست ها" />
+
+    </LinearLayout>
+    
+</LinearLayout>
+<!--     <ProgressBar -->
+<!--         android:id="@+id/progressBar1" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_centerHorizontal="true" -->
+<!--         android:layout_centerVertical="true" /> -->
+
+</RelativeLayout>

@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/search"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit"
+    android:layoutDirection="rtl"
+    android:minWidth="350dip"
+    android:orientation="vertical"
+    android:padding="0dip">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#267d5a"
+        android:gravity="center"
+        android:text="جستجو بر اساس"
+        android:textColor="#fff"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/Header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dip">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip">
+
+            <EditText
+                android:id="@+id/txtShop"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/txtDesc"
+                android:ems="10"
+                android:gravity="right"
+                android:hint="نام فروشگاه"
+                android:textSize="16dip" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip">
+
+            <EditText
+                android:id="@+id/txtProduct"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtName"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:gravity="right"
+                android:hint="نام کالا"
+                android:textSize="16dip" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip">
+
+            <EditText
+                android:id="@+id/txtDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtName"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:gravity="right"
+                android:hint="توضیحات و مشخصات"
+                android:textSize="16dip" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="fill_parent"
+            android:layout_height="35dip"
+            android:layout_below="@+id/imageView1"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/button"
+            android:text="جستجو کن" />
+
+    </LinearLayout>
+</LinearLayout>

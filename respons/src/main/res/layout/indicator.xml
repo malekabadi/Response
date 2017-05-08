@@ -1,0 +1,238 @@
+    <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="#ddd">
+        
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ddd" >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/gallery_pager"
+        android:layout_width="match_parent"
+        android:layout_height="250dip" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_below="@+id/gallery_pager"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/dot1"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="●"
+            android:textColor="#f00"
+            android:textSize="13sp"
+            android:layout_gravity="center_horizontal"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/dot2"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="●"
+            android:textColor="#aaa"
+            android:visibility="invisible"
+            android:layout_gravity="center_horizontal"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/dot3"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="●"
+            android:textColor="#aaa"
+            android:visibility="invisible"
+            android:layout_gravity="center_horizontal"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/dot4"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="●"
+            android:textColor="#aaa"
+            android:visibility="invisible"
+            android:layout_gravity="center_horizontal"
+            android:textSize="13sp" />
+        
+        <TextView
+            android:id="@+id/dot5"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="●"
+            android:textColor="#aaa"
+            android:visibility="invisible"
+            android:layout_gravity="center_horizontal"
+            android:textSize="13sp" />
+        
+        <TextView
+            android:id="@+id/dot6"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="●"
+            android:textColor="#aaa"
+            android:visibility="invisible"
+            android:layout_gravity="center_horizontal"
+            android:textSize="13sp" />
+        
+        <TextView
+            android:id="@+id/dot7"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="●"
+            android:textColor="#aaa"
+            android:visibility="invisible"
+            android:layout_gravity="center_horizontal"
+            android:textSize="13sp" />
+        
+        <!-- add as many dots here as you need. If the size of the imageList changes, just keep the same amount of dots VISIBLE and others GONE -->
+    </LinearLayout>  
+        
+	<TextView
+	    android:id="@+id/title"
+	    android:layout_width="match_parent"
+	    android:layout_height="30dip"
+	    android:layout_below="@+id/linearLayout1"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
+	    android:background="#fff"
+	    android:paddingTop="5dp"
+	    android:text="عنوان"
+	    android:gravity="right"
+	    android:textSize="13sp" />
+	
+	
+	<LinearLayout
+	    android:id="@+id/LinearLayout2"
+	    android:layout_width="match_parent"
+	    android:layout_height="29dp"
+	    android:layout_below="@+id/title"
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
+	    android:background="#fff"
+	    android:orientation="horizontal" >
+	
+	    <Button
+	        android:id="@+id/btnBuy"
+	        android:layout_width="wrap_content"
+	        android:layout_height="28dp"
+	        android:background="@drawable/button"
+	        android:text="افزودن به سبد"
+	        android:layout_marginTop="1dp"
+	        android:textColor="#fff" />
+	
+	    <TextView
+	        android:id="@+id/Price"
+	        android:layout_width="124dp"
+	        android:layout_height="28dp"
+	        android:layout_marginTop="1dp"
+	        android:background="#f00"
+	        android:ems="10"
+	        android:gravity="right|center_vertical"
+	        android:text="000"
+	        android:textColor="#fff" />
+
+	    <TextView
+	        android:layout_width="match_parent"
+	        android:layout_height="28dp"
+	        android:textColor="#fff"
+	        android:background="#f00"
+	        android:text="قیمت : "
+	        android:layout_marginTop="1dp"
+	        android:gravity="right|center_vertical"
+	        android:ems="10"/>
+	    	
+	</LinearLayout>    
+	
+	<TextView
+	    android:id="@+id/Descr"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/LinearLayout2"
+	    android:ems="10"
+	    android:inputType="textMultiLine" 
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:padding="5dip"
+	    android:gravity="right"
+        android:background="#fff">
+		    <requestFocus />
+	</TextView>    
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="3dp"
+        android:background="#fff"
+        android:textSize="12pt" >
+
+    </ListView>
+
+	<ImageView
+	    android:id="@+id/imageView1"
+	    android:layout_width="20dip"
+	    android:layout_height="20dip"
+	    android:layout_alignLeft="@+id/title"
+	    android:layout_below="@+id/gallery_pager"
+	    android:src="@drawable/bookmark2" />
+
+	<LinearLayout
+	    android:id="@+id/linearLayout3"
+	    android:layout_width="match_parent"
+	    android:layout_height="30dp"
+	    android:layout_alignLeft="@+id/Descr"
+	    android:layout_alignRight="@+id/Descr"
+	    android:layout_below="@+id/Descr"
+	    android:background="#fff"
+	    android:layout_marginTop="3dip"
+	    android:padding="4dip"
+	    android:orientation="horizontal">
+
+	    <RatingBar
+	        android:id="@+id/rate"
+	        style="@style/StarRatingBar"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="65dip"
+	        android:layout_weight="0"
+	        android:rating="2.0" />
+
+	    <Button
+	        android:id="@+id/btnComm"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="0.28"
+	        android:background="@null"
+	        android:drawablePadding="5dip"
+	        android:drawableRight="@drawable/chat2"
+	        android:text="نظرات کاربران"
+	        android:textSize="12sp" />
+	</LinearLayout>
+
+	<ProgressBar
+	    android:id="@+id/progressBar1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/gallery_pager"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginBottom="32dp" />
+
+</RelativeLayout>
+</ScrollView>
+</LinearLayout>

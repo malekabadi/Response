@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_history.png",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_history.png"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_about.png",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_about.png"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_arrow_back.png",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_arrow_back.png"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_lock.png",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_lock.png"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_shopping.png",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_shopping.png"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_shop.png",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_shop.png"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_power.png",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_power.png"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_person.png",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_person.png"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_view.png",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_view.png"
+    }
+]

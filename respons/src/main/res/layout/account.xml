@@ -1,0 +1,206 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:float="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="fill"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivityOLD" >
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="1dip"
+        android:layout_weight="1"
+        android:background="@drawable/edit"
+        android:padding="2dp"
+        float:fletPadding="2dp"
+        float:fletTextAppearance="@style/floatlabelededittext" >
+
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:ems="10"
+            android:gravity="right|center_vertical"
+            android:hint="نام  و نام خانوداگی"
+            android:textSize="16sp" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="5dip"
+        android:layout_marginTop="4dip"
+        android:layout_weight="1"
+        android:background="@drawable/edit"
+        android:padding="2dp"
+        float:fletPadding="2dp"
+        float:fletTextAppearance="@style/floatlabelededittext" >
+
+        <EditText
+            android:id="@+id/txtCode"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:ems="10"
+            android:gravity="right|center_vertical"
+            android:hint="کد ملی"
+            android:textSize="16sp" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="4dip"
+        android:layout_weight="1"
+        android:background="@drawable/edit"
+        android:padding="2dp"
+        float:fletPadding="2dp"
+        float:fletTextAppearance="@style/floatlabelededittext" >
+
+        <EditText
+            android:id="@+id/txtTel"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:ellipsize="start"
+            android:ems="10"
+            android:gravity="right|center_vertical"
+            android:hint="شماره همراه"
+            android:inputType="phone"
+            android:textSize="16sp" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4" >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_height="match_parent"
+                android:gravity="right|center_vertical"
+                android:text="جنسیت" />
+
+            <Spinner
+                android:id="@+id/txtSex"
+                android:layout_height="37dp"
+                android:layout_marginTop="4dip"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit"
+                android:ems="10"
+                android:gravity="right|center_vertical"
+                android:hint="شـهر"
+                android:textSize="12sp" />
+            </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_height="match_parent"
+                android:gravity="right|center_vertical"
+                android:text="استان" />
+
+            <Spinner
+                android:id="@+id/txtState"
+                android:layout_height="37dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/edit"
+                android:ems="10"
+                android:hint="شـهر"
+                android:textSize="12sp" />
+            </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_height="match_parent"
+                android:gravity="right|center_vertical"
+                android:text="شهر" />
+
+            <Spinner
+                android:id="@+id/txtCity"
+                android:layout_height="37dp"
+                android:layout_marginTop="4dip"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit"
+                android:ems="10"
+                android:hint="شـهر"
+                android:textSize="12sp" />
+            </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_height="match_parent"
+                android:gravity="right|center_vertical"
+                android:text="منطقه" />
+
+            <Spinner
+                android:id="@+id/txtZone"
+                android:layout_height="37dp"
+                android:layout_marginTop="4dip"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit"
+                android:ems="10"
+                android:gravity="right|center_vertical"
+                android:hint="منـطقه"
+                android:textSize="12sp" />
+            </TableRow>
+    </TableLayout>
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dip"
+        android:layout_weight="1"
+        android:background="@drawable/edit"
+        android:padding="2dp"
+        float:fletPadding="2dp"
+        float:fletTextAppearance="@style/floatlabelededittext" >
+
+        <EditText
+            android:id="@+id/txtAddr"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:ems="10"
+            android:gravity="right"
+            android:hint="آدرس"
+            android:inputType="textMultiLine"
+            android:textSize="12sp" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+    <Button
+        android:id="@+id/btnReg"
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:layout_marginTop="10dip"
+        android:background="@drawable/gbutton"
+        android:text="ثبت" />
+
+</LinearLayout>

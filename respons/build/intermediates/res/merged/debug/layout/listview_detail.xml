@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/android_custom_gridview_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/shadow"
+    android:padding="0dp" >
+
+	<TextView
+	    android:id="@+id/Name"
+	    android:layout_width="match_parent"
+	    android:layout_height="30dp"
+	    android:layout_alignParentRight="true"
+	    android:layout_alignParentTop="true"
+	    android:gravity="right"
+	    android:padding="4dp"
+	    android:text="نام کالا :"
+	    android:textSize="15sp" />
+			
+<LinearLayout
+    android:id="@+id/linear1"
+    android:layout_width="fill_parent"
+    android:layout_height="30dp"
+    android:layout_below="@+id/Name"
+    android:orientation="horizontal"
+    android:background="@drawable/edit"
+    android:paddingTop="0dp" >
+
+    <TextView
+        android:id="@+id/Price"
+        android:layout_width="153dp"
+        android:layout_height="30dp"
+        android:layout_weight="3.32"
+        android:background="#fff"
+        android:gravity="right"
+        android:paddingRight="2dp"
+        android:layout_marginTop="2dp"
+        android:text="000"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="#fff"
+        android:gravity="right"
+        android:text="فی"
+        android:layout_marginTop="2dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Count"
+        android:layout_width="32dp"
+        android:layout_height="30dp"
+        android:layout_weight="1.81"
+        android:background="#fff"
+        android:gravity="right"
+        android:paddingRight="2dp"
+        android:text="0"
+        android:layout_marginTop="2dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="#fff"
+        android:gravity="right"
+        android:text="تعداد"
+        android:layout_marginTop="2dp"
+        android:textSize="15sp" />
+
+</LinearLayout>
+
+	<TextView
+	    android:id="@+id/SumPrice"
+	    android:layout_width="match_parent"
+	    android:layout_height="30dp"
+	    android:layout_below="@+id/linear1"
+	    android:gravity="center"
+	    android:text="مبلغ"
+	    android:background="#800"
+	    android:textColor="#fff"
+	    android:textSize="15sp" />
+	
+	<View 
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/SumPrice"
+        android:background="@drawable/shadowb"
+    	android:layout_height="4dip">
+    </View>
+
+		
+</RelativeLayout>
+</RelativeLayout>

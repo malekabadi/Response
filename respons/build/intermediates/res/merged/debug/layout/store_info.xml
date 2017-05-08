@@ -1,0 +1,209 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:float="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="fill"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layoutDirection="rtl"
+    tools:context=".MainActivityOLD" >
+
+    <Button
+        android:id="@+id/btnObj"
+        android:layout_width="match_parent"
+        android:layout_height="30dip"
+        android:background="@drawable/button"
+        android:text="موضوع" />
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_marginTop="4dip"
+        android:padding="2dp"
+        android:layout_weight="1"
+        android:background="@drawable/edit"
+        float:fletTextAppearance="@style/floatlabelededittext"
+        float:fletPadding="2dp">
+    <TextView
+        android:id="@+id/txtShop"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+    	android:layout_weight="1"
+        android:ems="10"
+        android:textSize="16sp"
+        android:background="#fff"
+        android:gravity="right|center_vertical"
+        android:hint="نام فروشگاه" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+    
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+    	android:layout_weight="1"
+        android:layout_marginTop="4dip"
+        android:padding="2dp"
+        android:background="@drawable/edit"
+        float:fletTextAppearance="@style/floatlabelededittext"
+        float:fletPadding="2dp">
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+    	android:layout_weight="1"
+        android:ems="10"
+        android:textSize="16sp"
+        android:enabled="false"
+        android:background="#fff"
+        android:gravity="right|center_vertical"
+        android:hint="نام  و نام خانوداگی" />
+	</com.wrapp.floatlabelededittext.FloatLabeledEditText>
+	
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="4dip"
+        android:padding="2dp"
+    	android:layout_weight="1"
+        android:background="@drawable/edit"
+        float:fletTextAppearance="@style/floatlabelededittext"
+        float:fletPadding="2dp">
+    <EditText
+        android:id="@+id/txtDesc"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+    	android:layout_weight="1"
+        android:textSize="12sp"
+        android:ems="10"
+        android:enabled="false"
+        android:background="#fff"
+        android:inputType="textMultiLine"
+        android:gravity="right"
+        android:hint="توضیحات" />
+	</com.wrapp.floatlabelededittext.FloatLabeledEditText>
+	
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dip"
+        android:padding="2dp"
+    	android:layout_weight="1"
+        android:background="@drawable/edit"
+        float:fletTextAppearance="@style/floatlabelededittext"
+        float:fletPadding="2dp">
+      
+    <EditText
+        android:id="@+id/txtAddr"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textSize="12sp"
+        android:background="#fff"
+        android:enabled="false"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:gravity="right"
+        android:hint="آدرس" />
+     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+    
+    
+    
+ <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="110dip"
+    android:layout_weight="1"
+    android:orientation="horizontal">
+    
+    <ImageView
+        android:id="@+id/StoreImage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@drawable/edit"
+        android:layout_marginTop="4dip"
+        android:padding="2dip"
+        android:src="@drawable/noimages" />
+  <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:orientation="vertical">
+
+     <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dip"
+        android:padding="2dp"
+    	android:layout_weight="1"
+        android:background="@drawable/edit"
+        float:fletTextAppearance="@style/floatlabelededittext"
+        float:fletPadding="2dp">
+    <EditText
+        android:id="@+id/txtTel"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+    	android:layout_weight="1"
+        android:enabled="false"
+        android:ems="10"
+        android:textSize="14sp"
+        android:background="#fff"
+        android:gravity="right|center_vertical"
+        android:inputType="phone"
+        android:ellipsize="start"
+        android:hint="تلفن ثابت پاسخگویی" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+      
+	<com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dip"
+        android:padding="2dp"
+    	android:layout_weight="1"
+        android:background="@drawable/edit"
+        float:fletTextAppearance="@style/floatlabelededittext"
+        float:fletPadding="2dp">
+    <EditText
+        android:id="@+id/txtMobile"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+    	android:layout_weight="1"
+        android:enabled="false"
+        android:ems="10"
+        android:layout_marginTop="4dip"
+        android:textSize="14sp"
+        android:background="#fff"
+        android:gravity="right|center_vertical"
+        android:inputType="phone"
+        android:ellipsize="start"
+        android:hint="همراه پاسخگویی" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>     
+    <Spinner
+        android:id="@+id/txtCity"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:ems="10"
+        android:layout_marginTop="4dip"
+        android:textSize="12sp"
+        android:background="@drawable/edit"
+        android:gravity="right|center_vertical"
+        android:hint="شـهر" />
+      
+    <Spinner
+        android:id="@+id/txtZone"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:ems="10"
+        android:layout_marginTop="4dip"
+        android:textSize="12sp"
+        android:background="@drawable/edit"
+        android:gravity="right|center_vertical"
+        android:hint="منـطقه" />
+    </LinearLayout>
+</LinearLayout>
+    
+</LinearLayout>

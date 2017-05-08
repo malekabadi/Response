@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+<LinearLayout
+    android:id="@+id/LinearLayout02"
+    android:layout_width="fill_parent"
+    android:layout_height="30dp" >
+    
+    <Button 
+        android:id="@+id/Filter" 
+        android:layout_width="wrap_content" 
+        android:layout_height="match_parent" 
+        android:background="@drawable/edit"
+        android:drawableRight="@drawable/filter"
+        android:layout_weight="1" 
+        android:textSize="11dp"
+        android:text="فیلترکردن">
+    </Button>
+    <Button 
+        android:id="@+id/Sort" 
+        android:layout_width="wrap_content" 
+        android:layout_height="match_parent"
+        android:background="@drawable/edit"
+        android:drawableRight="@drawable/sort"
+        android:layout_weight="1" 
+        android:textSize="11dp"
+        android:text="مرتب سازی">
+    </Button>
+	<Button
+        android:id="@+id/btnCate"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/edit"
+        android:drawableRight="@drawable/list"
+        android:layout_weight="1" 
+        android:textSize="11dp"
+        android:text="دسته بندی ها" />
+    
+</LinearLayout>
+    
+    <GridView
+        android:id="@+id/gridView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearLayout02"
+        android:layout_centerHorizontal="true"
+        android:background="#eee"
+        android:numColumns="2" >
+
+    </GridView>
+    
+    <TextView
+        android:id="@+id/grid_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="TextView"
+        android:visibility="invisible" />
+    
+    <TextView
+        android:id="@+id/grid_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="TextView"
+        android:visibility="invisible" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+    
+</RelativeLayout>

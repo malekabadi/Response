@@ -1,0 +1,20 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#267d5a"
+    android:layoutDirection="rtl"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="right|center_vertical"
+        android:text="مدیریت فروشگاه"
+        android:textColor="#fff"
+        android:layout_margin="10dp"
+        android:textSize="18dp"
+        android:textStyle="bold" >
+    </TextView>
+
+</LinearLayout>

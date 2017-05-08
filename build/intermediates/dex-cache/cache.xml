@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\Android_work\Response\respons\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.4.0_b61d8689a7bb31d77bf15d63544a21986f117594.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\libs\sidemenu.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="325b8b67966b54526d767bee15bff946e861bf95">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\sidemenu_77564a0b264cfb136b3105312f29ccf57c5b2d89.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\android-sdk23\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\support-annotations-23.4.0_9d10ca433af3112c846101c4322fe7c3b4d1af00.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="2164ef19e8b85d333de1c1f3d6a925724a37ad38">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\instant-run-bootstrap_83c1b3159a3c9e936851494c0ddc5cd5c6e968e9.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.4.0_6ebe71788255c97e9c37f921b29c62232a6437fa.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\build\intermediates\exploded-aar\com.android.support\design\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\com.android.support-design-23.4.0_c930c3119157a423eb21bef46554c656ce74b86a.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\libs\devsmartlib.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8874ca4c8cc30152d52f3c81d404661bc715be16">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\devsmartlib_7468368861cab93eb074f7a17345cc8bc1e0e615.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\libs\picasso-2.5.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\picasso-2.5.2_eeee763d01a160c451f9534f6bd72aeed384c408.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.4.0_dc7434be5c6b1c1bb4eae160c67d2f64f45e90e5.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.4.0_29d47b6e28837aff70d29f55d8dd5f5095897b88.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="b9be094a920530b51f45045fff1e61b510f1dbf6">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\instant-run_588041c80940ba2f9e6032d5b9aea49c37044282.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\internal_impl-23.4.0_1f1d072f72f9de3a7a156e87ffb2e0129e87bc64.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.4.0_562cb809f5fdb8e8f88c84d866a4a8ba3b2653bf.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\build\intermediates\exploded-aar\Response\library\unspecified\jars\libs\nineoldandroids-2.4.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ad43b4c947ececc5830067d65811794082a2a49a">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\nineoldandroids-2.4.0_1510154ce60684550b97238d1b2d6633b8ee179f.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\libs\rangeseekbar.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="7ed41024a95007226b9aeffea025b1ef0a191715">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\rangeseekbar_119a8ad756afa03a10aac506acffe764b909f209.jar" />
+    </item>
+    <item
+        jar="D:\Android_work\Response\respons\libs\layoutlib-api-22.1.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="5b74a7f48f5d62468d03c1c59a251550266c3ea4">
+        <dex dex="D:\Android_work\Response\respons\build\intermediates\pre-dexed\debug\layoutlib-api-22.1.0_2591bfce80b023641146a05f5d2c6d77e6bdcc0a.jar" />
+    </item>
+
+</items>

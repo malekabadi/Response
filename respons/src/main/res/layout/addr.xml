@@ -1,0 +1,241 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:float="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ddd"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    tools:context=".MainActivityOLD" >
+
+	<ScrollView
+	    android:layout_width="match_parent"
+	    android:layout_height="344dp"
+	    android:layout_above="@+id/total"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentTop="true" >
+         
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight="0"
+         android:background="@drawable/edit"
+         android:orientation="vertical">
+         
+		 <RadioButton
+		     android:id="@+id/info1"
+		     android:layout_width="fill_parent"
+		     android:layout_height="30dp"
+		     android:background="#888"
+		     android:checked="true"
+		     android:gravity="center"
+		     android:padding="0dp"
+		     android:text=" آدرس اول"
+		     android:textSize="17sp" />
+
+
+	    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="4dip"
+	        android:layout_marginBottom="4dip"
+	        android:padding="2dp"
+	        android:layout_weight="1"
+	        android:background="@drawable/edit"
+	        float:fletTextAppearance="@style/floatlabelededittext"
+	        float:fletPadding="2dp"
+        	float:fletPaddingBottom="5dp">
+			 		 
+		 <EditText 
+		        android:id="@+id/name1"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:gravity="right|center_vertical"
+		        android:background="#FFF"
+		        android:hint="نام و نام خانوادگی" />
+		 </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+		
+	    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="4dip"
+	        android:layout_marginBottom="4dip"
+	        android:padding="2dp"
+	        android:layout_weight="1"
+	        android:background="@drawable/edit"
+	        float:fletTextAppearance="@style/floatlabelededittext"
+	        float:fletPadding="2dp">
+			 		 
+        <EditText 
+		        android:id="@+id/tel1"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:gravity="right|center_vertical"
+		        android:inputType="number"
+		        android:background="#FFF"
+		        android:hint="شماره تماس" />
+        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+		 
+	    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="4dip"
+	        android:layout_marginBottom="4dip"
+	        android:padding="2dp"
+	        android:layout_weight="1"
+	        android:background="@drawable/edit"
+	        float:fletTextAppearance="@style/floatlabelededittext"
+	        float:fletPadding="2dp">
+			 		 
+		 <EditText 
+		        android:id="@+id/code1"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:gravity="right|center_vertical"
+		        android:background="#FFF"
+		        android:inputType="number"
+		        android:hint="کد پستی" />
+		 </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+	    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+	        android:layout_width="match_parent"
+	        android:layout_height="120dip"
+	        android:layout_marginTop="4dip"
+	        android:padding="2dp"
+	        android:layout_weight="1"
+	        android:background="@drawable/edit"
+	        float:fletTextAppearance="@style/floatlabelededittext"
+	        float:fletPadding="2dp">
+			 		 
+		 <EditText
+		     android:id="@+id/addr1"
+		     android:layout_width="match_parent"
+		     android:layout_height="match_parent"
+		     android:background="#FFF"
+		     android:ems="10"
+		     android:gravity="right|center_vertical"
+		     android:hint="آدرس"
+		     android:inputType="textMultiLine" />
+		 </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+		 
+		  <RadioButton
+		        android:id="@+id/info2"
+		        android:layout_width="fill_parent"
+		        android:layout_height="30dp"
+		        android:background="#888"
+		        android:gravity="center"
+		        android:padding="0dp"
+		        android:layout_marginTop="10dip"
+		        android:text=" آدرس دوم"
+		        android:textSize="17sp" />
+
+	    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+	        android:layout_width="match_parent"
+	        android:layout_height="0dip"
+	        android:layout_marginTop="4dip"
+	        android:padding="2dp"
+	        android:layout_weight="1"
+	        android:background="@drawable/edit"
+	        float:fletTextAppearance="@style/floatlabelededittext"
+	        float:fletPadding="2dp">
+			 		 
+		 <EditText 
+		        android:id="@+id/name2"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:gravity="right|center_vertical"
+		        android:background="#FFF"
+		        android:hint="نام و نام خانوادگی" />
+		 </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+		
+	    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+	        android:layout_width="match_parent"
+	        android:layout_height="0dip"
+	        android:layout_marginTop="4dip"
+	        android:padding="2dp"
+	        android:layout_weight="1"
+	        android:background="@drawable/edit"
+	        float:fletTextAppearance="@style/floatlabelededittext"
+	        float:fletPadding="2dp">
+			 		 
+		 <EditText 
+		        android:id="@+id/tel2"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:gravity="right|center_vertical"
+		        android:background="#FFF"
+		        android:inputType="number"
+		        android:hint="شماره تماس" />
+		 </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+		 
+	    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+	        android:layout_width="match_parent"
+	        android:layout_height="0dip"
+	        android:layout_marginTop="4dip"
+	        android:padding="2dp"
+	        android:layout_weight="1"
+	        android:background="@drawable/edit"
+	        float:fletTextAppearance="@style/floatlabelededittext"
+	        float:fletPadding="2dp">
+			 		 
+		 <EditText 
+		        android:id="@+id/code2"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:gravity="right|center_vertical"
+		        android:background="#FFF"
+		        android:inputType="number"
+		        android:hint="کد پستی" />
+		 </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+		 
+	    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+	        android:layout_width="match_parent"
+	        android:layout_height="120dip"
+	        android:layout_marginTop="4dip"
+	        android:padding="2dp"
+	        android:layout_weight="1"
+	        android:background="@drawable/edit"
+	        float:fletTextAppearance="@style/floatlabelededittext"
+	        float:fletPadding="2dp">
+			 		 
+		 <EditText
+		     android:id="@+id/addr2"
+		     android:layout_width="match_parent"
+		     android:layout_height="match_parent"
+		     android:background="#FFF"
+		     android:gravity="right|center_vertical"
+		     android:inputType="textMultiLine" 
+		     android:hint="آدرس" />
+		</com.wrapp.floatlabelededittext.FloatLabeledEditText>
+		  		  
+     </LinearLayout>
+     
+  </ScrollView>
+  
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_above="@+id/btn"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/edit"
+        android:gravity="right|center_vertical"
+        android:text="هزینه ارسال  : "
+        android:layout_marginTop="10dip"
+        android:textSize="17sp" />
+	
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="0"
+        android:background="#f005"
+        android:text="تکمیل خرید و پرداخت"
+        android:textColor="#fff" />
+
+    
+</RelativeLayout>
+

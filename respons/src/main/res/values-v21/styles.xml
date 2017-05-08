@@ -1,0 +1,20 @@
+<resources>
+
+    <!--
+        Base application theme for API 11+. This theme completely replaces
+        AppBaseTheme from res/values/styles.xml on API 11+ devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Material.Light">
+        <!-- API 11 theme customizations can go here. -->
+        <item name="android:colorPrimary">#267d5a</item>
+        <item name="android:colorPrimaryDark">#065d3a</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="android:Theme.Material.Light.DarkActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="android:Theme.Material.Light" />
+		
+    
+    
+</resources>
+
