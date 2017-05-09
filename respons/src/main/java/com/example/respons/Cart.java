@@ -78,6 +78,7 @@ public class Cart extends AppCompatActivity {
     public class ImageAdapter extends BaseAdapter {
 
         private Context mContext;
+        int Number;
 
         public ImageAdapter(Context c) {
             mContext = c;
@@ -108,7 +109,7 @@ public class Cart extends AppCompatActivity {
                 TextView desc = (TextView) gridViewAndroid.findViewById(R.id.cart_text2);
                 Button count = (Button) gridViewAndroid.findViewById(R.id.Count);
                 TextView price = (TextView) gridViewAndroid.findViewById(R.id.price);
-                TextView total = (TextView) gridViewAndroid.findViewById(R.id.total);
+                final TextView total = (TextView) gridViewAndroid.findViewById(R.id.total);
                 ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.cart_image);
                 //name.setText(Name.get(position));
                 //price.setText(Price.get(position));
@@ -142,6 +143,44 @@ public class Cart extends AppCompatActivity {
                     public void onClick(View v) {
                         // TODO Auto-generated method stub
                         remove(position);
+                    }
+                });
+
+                /****************************************************************
+                 * Set Dec , Inc Button
+                 ***/
+                Typeface ye = Typeface.createFromAsset(getAssets(), "BYekan.ttf");
+                final TextView num = (TextView) gridViewAndroid.findViewById(R.id.num);
+                num.setTypeface(ye);
+                TextView inc = (TextView) gridViewAndroid.findViewById(R.id.inc);
+                inc.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View arg0) {
+                        // TODO Auto-generated method stub
+                        Number = Integer.parseInt(num.getText().toString());
+                        Number++;
+                        PageIndicator.Factor.get(position).Count = Number + "";
+                        num.setText(Number + "");
+                        PageIndicator.Factor.get(position).Count = Number + "";
+                        int tot = Number * Integer.parseInt(PageIndicator.Factor.get(position).Price);
+                        total.setText(" قیمت کل :   " + Helper.GetMoney(String.valueOf(tot)));
+                    }
+                });
+                TextView dec = (TextView) gridViewAndroid.findViewById(R.id.dec);
+                dec.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View arg0) {
+                        // TODO Auto-generated method stub
+                        if (Number > 1) {
+                            Number = Integer.parseInt(num.getText().toString());
+                            Number--;
+                            PageIndicator.Factor.get(position).Count = Number + "";
+                            num.setText(Number + "");
+                            PageIndicator.Factor.get(position).Count = Number + "";
+                            int tot = Number * Integer.parseInt(PageIndicator.Factor.get(position).Price);
+                            total.setText(" قیمت کل :   " + Helper.GetMoney(String.valueOf(tot)));
+                        }
                     }
                 });
 

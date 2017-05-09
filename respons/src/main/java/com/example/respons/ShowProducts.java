@@ -256,12 +256,24 @@ public class ShowProducts extends AppCompatActivity {
             ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.gridview_image);
             name.setText(Name.get(position));
             price.setText(Helper.GetMoney(Price.get(position)));
+            final ProgressBar pb = (ProgressBar) gridViewAndroid.findViewById(R.id.progressBar1);
+            pb.setVisibility(View.VISIBLE);
             Picasso.with(mContext) //
                     .load(getString(R.string.WServer) + "/images/" + Image.get(position)) //
                     .error(R.drawable.i2) //
                     .fit() //
                     .tag(mContext) //
-                    .into(imageViewAndroid);
+                    .into(imageViewAndroid,new com.squareup.picasso.Callback() {
+                        @Override
+                        public void onSuccess() {
+                            pb.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                            pb.setVisibility(View.GONE);
+                        }
+                    });
 
             return gridViewAndroid;
         }

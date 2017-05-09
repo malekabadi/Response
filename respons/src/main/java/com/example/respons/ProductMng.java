@@ -66,6 +66,12 @@ public class ProductMng extends AppCompatActivity {
     Boolean SelectOn = false;
 
     @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        StoreManagment.CategoryID.remove(0);
+        StoreManagment.Category.remove(0);
+    }    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.products_mng);
