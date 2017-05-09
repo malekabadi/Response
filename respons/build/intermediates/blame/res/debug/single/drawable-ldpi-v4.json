@@ -8,6 +8,10 @@
         "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_about.png"
     },
     {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_helpp.png",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_helpp.png"
+    },
+    {
         "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_arrow_back.png",
         "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_arrow_back.png"
     },
@@ -26,6 +30,14 @@
     {
         "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_power.png",
         "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_power.png"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_done.png",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_done.png"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_help.png",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_help.png"
     },
     {
         "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_person.png",

@@ -82,6 +82,8 @@ public class ProductMng extends AppCompatActivity {
         //    sid= extra.getString("SID");
         //else sid="0";
 
+        StoreManagment.CategoryID.add(0,"-1");
+        StoreManagment.Category.add(0,"همه");
         final CallSoap cs = new CallSoap();
         FloatingActionButton btnNew = (FloatingActionButton) findViewById(R.id.fab);
         btnNew.setOnClickListener(new OnClickListener() {

@@ -41,11 +41,11 @@
     <group android:id="@+id/grp2" android:checkableBehavior="single" >
         <item
             android:id="@+id/nav_rule"
-            android:icon="@drawable/ic_about"
+            android:icon="@drawable/ic_help"
             android:title=" قوانین و شرایط"  />
         <item
             android:id="@+id/nav_help"
-            android:icon="@drawable/ic_about"
+            android:icon="@drawable/ic_helpp"
             android:title="  راهنمای ایران شاپ"  />
         <item
             android:id="@+id/nav_about"

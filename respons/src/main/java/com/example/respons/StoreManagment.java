@@ -174,8 +174,8 @@ public void StoreList()
 	String[] Rows = res.split(":");
 	if (Rows.length > 1)
 	{
-		CategoryID.add("-1");
-		Category.add("همه");
+//		CategoryID.add("-1");
+//		Category.add("همه");
 		for (int i = 0; i < Rows.length; i++) 
 		{
 			String[] Field = Rows[i].split(",");

@@ -8,6 +8,10 @@
         "source": "D:\\Android_work\\Response\\respons\\src\\main\\res\\menu\\activity_menu_right_drawer.xml"
     },
     {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\menu\\register.xml",
+        "source": "D:\\Android_work\\Response\\respons\\src\\main\\res\\menu\\register.xml"
+    },
+    {
         "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\menu\\action.xml",
         "source": "D:\\Android_work\\Response\\respons\\src\\main\\res\\menu\\action.xml"
     }

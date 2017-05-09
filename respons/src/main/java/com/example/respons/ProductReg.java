@@ -22,6 +22,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -98,6 +99,8 @@ public class ProductReg extends AppCompatActivity {
 		View mCustomView = getSupportActionBar().getCustomView();
 		TextView title = (TextView) mCustomView.findViewById(R.id.title);
 		title.setText("کالای جدید");
+		ImageButton imb = (ImageButton) mCustomView.findViewById(R.id.imageButton);
+		imb.setVisibility(View.VISIBLE);
 		//-----------------------------------------
 		
 		hListView = (HorizontalListView) findViewById(R.id.hlistview);
@@ -456,7 +459,7 @@ public class ProductReg extends AppCompatActivity {
                 		Log.e("Error",e1.toString());
                 	}
                 }
-                Log.w("path of image from gallery......******************.........", picturePath+"");
+                //Log.w("path of image from gallery......******************.........", picturePath+"");
                 ImageView temp=new ImageView(this);iv.add(temp);
                 //iv.get(index).setImageBitmap(bitmap);
                 iv.get(index).setImageBitmap(thumbnail);
@@ -765,7 +768,7 @@ public class ProductReg extends AppCompatActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.action, menu);
+		getMenuInflater().inflate(R.menu.register, menu);
 		return true;
 	}
 
