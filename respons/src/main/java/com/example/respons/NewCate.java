@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -43,11 +44,13 @@ public class NewCate extends AppCompatActivity {
 		View mCustomView = getSupportActionBar().getCustomView();
 		TextView title = (TextView) mCustomView.findViewById(R.id.title);
 		title.setText("گروه جدید");
+		ImageButton imb = (ImageButton) mCustomView.findViewById(R.id.imageButton);
+		imb.setVisibility(View.VISIBLE);
 		//-----------------------------------------
 		
 		final CallSoap cs=new CallSoap();
 
-		final EditText editNew=(EditText) findViewById(R.id.editNew);
+		final EditText editNew=(EditText) findViewById(R.id.txtName);
 		
 		// For Edit mode
 		Bundle extra = getIntent().getExtras();
@@ -72,9 +75,8 @@ public class NewCate extends AppCompatActivity {
 		}
 		else cid="0";
 		if (pid == null) pid="0";
-		
-/*		Button btnNew=(Button) findViewById(R.id.btnNew);
-		btnNew.setOnClickListener(new OnClickListener() {
+
+		imb.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
@@ -88,7 +90,7 @@ public class NewCate extends AppCompatActivity {
 					{
 						strPty+=pty.get(i)+",";
 					}
-					
+
 					if (mode.equals("edit"))
 					{
 						String url="?ID="+cid;
@@ -108,11 +110,10 @@ public class NewCate extends AppCompatActivity {
 						new SaveData().execute("AddCategory"+url);
 					}
 				}
-				
+
 				//finish();
 			}
-		});*/
-		
+		});
 		final EditText editPty=(EditText) findViewById(R.id.editPty);
 		Button btnAdd=(Button) findViewById(R.id.btnAdd);
 		btnAdd.setOnClickListener(new OnClickListener() {

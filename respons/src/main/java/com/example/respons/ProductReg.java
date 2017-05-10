@@ -121,7 +121,7 @@ public class ProductReg extends AppCompatActivity {
 				selectImage();
 			}
 		});
-		btnCat=(Button)findViewById(R.id.btnObj);
+		btnCat=(Button)findViewById(R.id.btnObj);btnCat.setVisibility(View.GONE);
 		btnCat.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -192,8 +192,8 @@ public class ProductReg extends AppCompatActivity {
 		 Helper.getListViewSize(listPty);
 		
 		//------------------------------- btnReg Click
-		Button reg= (Button)findViewById(R.id.btnReg);
-		reg.setOnClickListener(new OnClickListener() {
+		//Button reg= (Button)findViewById(R.id.btnReg);
+		imb.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {

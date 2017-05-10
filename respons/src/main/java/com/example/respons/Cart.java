@@ -107,7 +107,7 @@ public class Cart extends AppCompatActivity {
                 gridViewAndroid = inflater.inflate(R.layout.gridview_cart, null);
                 TextView name = (TextView) gridViewAndroid.findViewById(R.id.cart_text1);
                 TextView desc = (TextView) gridViewAndroid.findViewById(R.id.cart_text2);
-                Button count = (Button) gridViewAndroid.findViewById(R.id.Count);
+                Button count = (Button) gridViewAndroid.findViewById(R.id.num);
                 TextView price = (TextView) gridViewAndroid.findViewById(R.id.price);
                 final TextView total = (TextView) gridViewAndroid.findViewById(R.id.total);
                 ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.cart_image);
@@ -149,7 +149,7 @@ public class Cart extends AppCompatActivity {
                 /****************************************************************
                  * Set Dec , Inc Button
                  ***/
-                Typeface ye = Typeface.createFromAsset(getAssets(), "BYekan.ttf");
+                Typeface ye = Typeface.createFromAsset(getAssets(), "iransans.ttf");
                 final TextView num = (TextView) gridViewAndroid.findViewById(R.id.num);
                 num.setTypeface(ye);
                 TextView inc = (TextView) gridViewAndroid.findViewById(R.id.inc);
