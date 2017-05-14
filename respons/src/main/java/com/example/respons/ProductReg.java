@@ -1,9 +1,14 @@
 package com.example.respons;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -36,6 +41,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +71,8 @@ import android.net.Uri;
 
 public class ProductReg extends AppCompatActivity {
 
-    public ArrayList<String> CategoryID=new ArrayList<String>();
+	private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 0;
+	public ArrayList<String> CategoryID=new ArrayList<String>();
     public ArrayList<String> SubCategoryID=new ArrayList<String>();
     public String[] Category;
     public ArrayList<String> SubCategory=new ArrayList<String>();
@@ -85,7 +92,7 @@ public class ProductReg extends AppCompatActivity {
 	CallSoap cs=new CallSoap();
 	public ArrayList<ImageView> ivs=new ArrayList<ImageView>();
 	int index=0,neW=0,Old=0;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -385,7 +392,7 @@ public class ProductReg extends AppCompatActivity {
                 {
                     Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intent, 2);
-                }
+				}
                 else if (options[item].equals("انصراف")) {
                     dialog.dismiss();
                 }
@@ -437,39 +444,34 @@ public class ProductReg extends AppCompatActivity {
                     e.printStackTrace();
                 }
             } else if (requestCode == 2) {
-                Uri selectedImage = data.getData();
+                ImageView temp=new ImageView(this);iv.add(temp);
+				Bitmap selectedImage=null;
+				try {
+					final Uri imageUri = data.getData();
+
                 String[] filePath = { MediaStore.Images.Media.DATA };
-                Cursor c = getContentResolver().query(selectedImage,filePath, null, null, null);
+                Cursor c = getContentResolver().query(imageUri,filePath, null, null, null);
                 c.moveToFirst();
                 int columnIndex = c.getColumnIndex(filePath[0]);
-                String picturePath = c.getString(columnIndex);
-                //String Filename=picturePath.substring(picturePath.lastIndexOf((int)'/')+1);
-                Files.add(picturePath);
-                c.close();
-                BitmapFactory.Options op;
-                Bitmap thumbnail = null;
-                try {
-                	thumbnail = (BitmapFactory.decodeFile(picturePath));
-                } catch (OutOfMemoryError e) {
-                	try {
-	                	op = new BitmapFactory.Options();
-	                	op.inSampleSize = 2;
-	                	thumbnail = BitmapFactory.decodeFile(picturePath,  op);
-                	} catch (Exception e1){
-                		Log.e("Error",e1.toString());
-                	}
-                }
-                //Log.w("path of image from gallery......******************.........", picturePath+"");
-                ImageView temp=new ImageView(this);iv.add(temp);
+					String picturePath = c.getString(columnIndex);
+				Files.add(picturePath);
+
+					final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+					selectedImage = BitmapFactory.decodeStream(imageStream);
+					temp.setImageBitmap(selectedImage);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
                 //iv.get(index).setImageBitmap(bitmap);
-                iv.get(index).setImageBitmap(thumbnail);
+                iv.get(index).setImageBitmap(selectedImage);
                 p.notifyDataSetChanged();
 				hListView.invalidate();
                 index++;
             }
         }
-    }	
-//-------------------------------------------------------------------------------------    
+    }
+
+//-------------------------------------------------------------------------------------
     private class HAdapter extends BaseAdapter {
 
         LayoutInflater inflater;
@@ -782,6 +784,8 @@ public class ProductReg extends AppCompatActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
+
 
 //------------ End Activity	
 }
