@@ -149,8 +149,10 @@ public class Comments extends AppCompatActivity {
             gridViewAndroid = inflater.inflate(R.layout.listview_comment, null);
             TextView name = (TextView) gridViewAndroid.findViewById(R.id.user);
             TextView count = (TextView) gridViewAndroid.findViewById(R.id.comment);
-            name.setText(Name.get(position));
-            count.setText(Comment.get(position));
+            if (position<Comment.size()) {
+                name.setText(Name.get(position));
+                count.setText(Comment.get(position));
+            }
 
             return gridViewAndroid;
         }

@@ -61,7 +61,7 @@ public class NewCate extends AppCompatActivity {
 	    	if (cid != null)
 	    	{
 	    		mode="edit";
-				//editNew.setText(extra.getString("TITLE"));
+				editNew.setText(extra.getString("TITLE"));
 				String py= null;
 				try {
 					py = cs.ResiveListSync("CateProperty?ID="+cid);
