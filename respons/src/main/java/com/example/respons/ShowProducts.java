@@ -572,6 +572,12 @@ public class ShowProducts extends AppCompatActivity {
         dialog.setContentView(R.layout.filter);
         dialog.show();
 
+        final ListView listPty = (ListView) dialog.findViewById(R.id.listView);
+        final TAdapter tap = new TAdapter(this);
+        listPty.setAdapter(tap);
+        Helper.getListViewSize(listPty);
+
+
         new AsyncTask<String, Integer, Boolean>() {
             final String res = "";
 
@@ -601,6 +607,8 @@ public class ShowProducts extends AppCompatActivity {
             }
 
             protected void onPostExecute(Boolean result) {
+                tap.notifyDataSetChanged();
+                Helper.getListViewSize(listPty);
             }
         }.execute();
 
@@ -614,11 +622,6 @@ public class ShowProducts extends AppCompatActivity {
 //		pty.add(Pro[i]);
 //		val.add("");
 // 	}
-        final ListView listPty = (ListView) dialog.findViewById(R.id.listView);
-        TAdapter tap = new TAdapter(this);
-        listPty.setAdapter(tap);
-        Helper.getListViewSize(listPty);
-
         Button Filter = (Button) dialog.findViewById(R.id.Filter);
         Filter.setOnClickListener(new OnClickListener() {
             @Override

@@ -3,7 +3,9 @@ package com.example.respons;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -65,19 +67,19 @@ public class SubCateMng extends AppCompatActivity {
         final TextView tv = (TextView) findViewById(R.id.title);
         tv.setText(title);
         final ListView lv = (ListView) findViewById(R.id.list_topic);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        adapter = new ArrayAdapter<String>(this,
                 R.layout.listview_item_row, SubCategory);
         lv.setAdapter(adapter);
 
-//	btnNew=(Button) findViewById(R.id.btnNew);
-//	btnNew.setOnClickListener(new OnClickListener() {
-//		@Override
-//		public void onClick(View v) {
-//	        Intent i = new Intent(SubCateMng.this, NewCate.class);
-//			i.putExtra("PID", cid);
-//	        startActivity(i);
-//		}
-//	});
+        FloatingActionButton btnNew=(FloatingActionButton) findViewById(R.id.fab);
+        btnNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+	        Intent i = new Intent(SubCateMng.this, NewCate.class);
+			i.putExtra("PID", cid);
+	        startActivity(i);
+            }
+        });
 
         lv.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -98,7 +100,7 @@ public class SubCateMng extends AppCompatActivity {
         builder.setItems(options, new DialogInterface.OnClickListener() {
 
             @Override
-            public void onClick(DialogInterface dialog, int item) {
+            public void onClick(final DialogInterface dialog, int item) {
                 if (options[item].equals("ویرایش")) {
                     String id = SubCategoryID.get(pos);
                     Intent inte = new Intent(SubCateMng.this, NewCate.class);
@@ -107,14 +109,38 @@ public class SubCateMng extends AppCompatActivity {
                     inte.putExtra("PID", cid);
                     startActivity(inte);
                 } else if (options[item].equals("حـذف")) {
-                    CallSoap cs = new CallSoap();
-                    String res = cs.ResiveList("DelCategory?ID=" + ind);
-                    if (!res.equals("False")) {
-                        SubCategory.remove(pos);
-                        SubCategoryID.remove(pos);
-                    } else
-                        Toast.makeText(SubCateMng.this, "این دسته شامل کالا است و قابل حذف نمی باشد",
-                                Toast.LENGTH_LONG).show();
+
+                    new AsyncTask<String, Integer, Boolean>() {
+                        final String res = "";
+
+                        @Override
+                        protected Boolean doInBackground(String... params) {
+                            if (params == null) {
+                                return false;
+                            }
+                            try {
+                                CallSoap cs = new CallSoap();
+                                String res = cs.ResiveList("DelCategory?ID=" + ind);
+                                if (!res.equals("False")) {
+                                    SubCategory.remove(pos);
+                                    SubCategoryID.remove(pos);
+                                } else
+                                    Toast.makeText(SubCateMng.this, "این دسته شامل کالا است و قابل حذف نمی باشد",
+                                            Toast.LENGTH_LONG).show();
+                            } catch (Exception e) {
+
+                                dialog.dismiss();
+                                return false;
+                            }
+
+                            return true;
+                        }
+
+                        protected void onPostExecute(Boolean result) {
+                            adapter.notifyDataSetChanged();
+                        }
+                    }.execute();
+
                 } else if (options[item].equals("انصراف")) {
                     dialog.dismiss();
                 }

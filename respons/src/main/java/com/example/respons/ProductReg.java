@@ -128,7 +128,7 @@ public class ProductReg extends AppCompatActivity {
 				selectImage();
 			}
 		});
-		btnCat=(Button)findViewById(R.id.btnObj);btnCat.setVisibility(View.GONE);
+		btnCat=(Button)findViewById(R.id.btnObj);
 		btnCat.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -199,7 +199,7 @@ public class ProductReg extends AppCompatActivity {
 		 Helper.getListViewSize(listPty);
 		
 		//------------------------------- btnReg Click
-		//Button reg= (Button)findViewById(R.id.btnReg);
+		Button reg= (Button)findViewById(R.id.btnReg);reg.setVisibility(View.GONE);
 		imb.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -356,6 +356,8 @@ public class ProductReg extends AppCompatActivity {
 	        protected void onPostExecute(Void result) {
 
 	            super.onPostExecute(result);
+				tap.notifyDataSetChanged();
+				Helper.getListViewSize(listPty);
 				if (! id.equals("-1"))
 				{
 		            EditText name=(EditText) findViewById(R.id.txtName);name.setText(Field[0]);
@@ -701,6 +703,7 @@ public class ProductReg extends AppCompatActivity {
 			String res2=cs.ResiveList("CateProperty?id="+cid);
 			String[] Pro=res2.split(",");
 			//Log.e("String : ", Pro.length+"");
+			pty.clear();val.clear();
 			for(int i=0;i<Pro.length;i++)
 			{
 				pty.add(Pro[i]);
