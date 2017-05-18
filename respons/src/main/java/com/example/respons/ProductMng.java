@@ -57,7 +57,7 @@ public class ProductMng extends AppCompatActivity {
 
     public String[] Category;
     //public String[] SubCategory;
-    public String sid, cid = "";
+    public String sid, cid = "-1";
     Button btnCat;
     int pos = -1;
     Point p;
@@ -470,6 +470,7 @@ popup.dismiss();
                                     long id) {
                 btnCat.setText(SubCategory.get(position));
                 String CategorySelect = SubCategoryID.get(position);
+                if (position>0)
                 cid = CategorySelect;
                 Products(CategorySelect);
                 popup.dismiss();

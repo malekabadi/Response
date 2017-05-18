@@ -88,7 +88,7 @@ public class ProductReg extends AppCompatActivity {
     String[] Images;ImageView tempIm;
     HorizontalListView hListView;ListView listPty;
     HAdapter p;TAdapter tap;
-	String id="",cid;
+	String id="",cid="-1";
 	CallSoap cs=new CallSoap();
 	public ArrayList<ImageView> ivs=new ArrayList<ImageView>();
 	int index=0,neW=0,Old=0;
@@ -212,7 +212,7 @@ public class ProductReg extends AppCompatActivity {
 				EditText price=(EditText) findViewById(R.id.txtPrice);
 				if (price.getText().toString().equals(""))
 				{	price.setError("لطفا مبلغ کالا را وارد نمایید");Ok=false; }
-				if (cid.equals(""))
+				if (cid.equals("-1"))
 				{	btnCat.setError("لطفا گروه کالایی را تعیین نمایید");Ok=false; }
 				EditText desc=(EditText) findViewById(R.id.txtDesc);
 				EditText count=(EditText) findViewById(R.id.txtCount);
@@ -294,7 +294,7 @@ public class ProductReg extends AppCompatActivity {
 		});
 	}
 	//-----------------------------------------------------------------------------
-		class MyTask extends AsyncTask<Void, Void, Void> {
+	class MyTask extends AsyncTask<Void, Void, Void> {
 
 	        ProgressDialog Asycdialog = new ProgressDialog(ProductReg.this);
 	        String[] Field;
@@ -472,7 +472,6 @@ public class ProductReg extends AppCompatActivity {
             }
         }
     }
-
 //-------------------------------------------------------------------------------------
     private class HAdapter extends BaseAdapter {
 
@@ -552,7 +551,7 @@ public class ProductReg extends AppCompatActivity {
 	    }
 
     }
-
+//--------------------------------------------------------------------------------
     class HViewHolder {
         ImageView img;
     }  
@@ -682,7 +681,6 @@ public class ProductReg extends AppCompatActivity {
   		}
   	});
   	}    
-  	
 	//-----------------------------------------------------------------------------
 	class MyTask2 extends AsyncTask<Void, Void, Void> {
 
@@ -776,7 +774,6 @@ public class ProductReg extends AppCompatActivity {
 		getMenuInflater().inflate(R.menu.register, menu);
 		return true;
 	}
-
 	//-----------------------------
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -787,8 +784,6 @@ public class ProductReg extends AppCompatActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
-
 
 //------------ End Activity	
 }
