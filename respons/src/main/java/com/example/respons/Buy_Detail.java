@@ -102,10 +102,14 @@ public class Buy_Detail extends AppCompatActivity {
 		final TextView PayType=(TextView) findViewById(R.id.PayType);
 		String temp[]=addr.split(";");
 		//addr=addr.replaceAll(";", "\n");
-		addr="نام : "+temp[0]+"\n"+
-				"شماره تماس : "+temp[1]+"\n"+
-				"کد پستی : "+temp[2]+"\n"+
-				"آدرس : "+ temp[3];
+		if (temp.length > 0)
+			addr="نام : "+temp[0]+"\n";
+		if (temp.length > 1)
+			addr=addr+"شماره تماس : "+temp[1]+"\n";
+		if (temp.length > 2)
+			addr=addr+"کد پستی : "+temp[2]+"\n";
+		if (temp.length > 3)
+			addr=addr+"آدرس : "+ temp[3];
 		final TextView Addr=(TextView) findViewById(R.id.addr);Addr.setText(addr);
 
 		new LongOperation().execute("");
@@ -164,7 +168,7 @@ public class Buy_Detail extends AppCompatActivity {
 	        CallSoap cs=new CallSoap();
 	        String result=cs.ResiveList("GetOrders?FactorID="+FactorID);
 	        String[] Rows = result.split(":");
-			for (int i = 0; i < Rows.length; i++) 
+			for (int i = 0; i < Rows.length; i++)
 			{
 				String[] Field = Rows[i].split(",");
 				Name.add(Field[0]);

@@ -214,7 +214,36 @@ public class ShowProducts extends AppCompatActivity {
             return null;
         }
     }
+    //--------------------------------------------------------------------------------
+    private class ProductList extends AsyncTask<String, Integer, Boolean> {
+        String res;
 
+        @Override
+        protected void onPostExecute(Boolean result) {
+            ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
+            pb.setVisibility(View.INVISIBLE);
+            imageAdapter.notifyDataSetChanged();
+            super.onPostExecute(result);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
+            pb.setVisibility(View.VISIBLE);
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if (params[0].equals("shop"))
+                StoreList(ShopID, params[2]);
+            if (params[0].equals("category"))
+                Products(cid,params[2]);
+            if (params[0].equals("filter"))
+                ProductsFilter(cid,params[2],params[3]);
+            return null;
+        }
+    }
     //--------------------------------------------------------------------------------
     public class ImageAdapter extends BaseAdapter {
         private Context mContext;
@@ -310,7 +339,7 @@ public class ShowProducts extends AppCompatActivity {
     public boolean Products(String CategoryID, String Sort) {
         try {
             CallSoap cs = new CallSoap();
-            String result = cs.ResiveListSync("ProductsList?cid=" + CategoryID + "&Sort=" + Sort);
+            String result = cs.ResiveList("ProductsList?cid=" + CategoryID + "&Sort=" + Sort);
             ID.clear();
             Name.clear();
             Price.clear();
@@ -329,7 +358,7 @@ public class ShowProducts extends AppCompatActivity {
                 Toast.makeText(ShowProducts.this, "هیچ کالایی در این گروه موجود نمی باشد",
                         Toast.LENGTH_LONG).show();
 
-            imageAdapter.notifyDataSetChanged();
+            //imageAdapter.notifyDataSetChanged();
             return true;
         } catch (Exception e) {
             return false;
@@ -468,7 +497,8 @@ public class ShowProducts extends AppCompatActivity {
                 btnCat.setText(SubCategory[position]);
                 String CategorySelect = SubCategoryID.get(position);
                 cid = CategorySelect;
-                Products(CategorySelect, "");
+                //Products(CategorySelect, "");
+                new ProductList().execute("category",CategorySelect,"");
                 popup.dismiss();
             }
         });
@@ -518,10 +548,10 @@ public class ShowProducts extends AppCompatActivity {
                         sort = "";
                         break;
                     case 1: // Min Price
-                        sort = "MinPrice";
+                        sort = "MaxPrice";
                         break;
                     case 2: // Max Price
-                        sort = "MaxPrice";
+                        sort = "MinPrice";
                         break;
                     case 3: // Max Discount
                         sort = "";
@@ -534,10 +564,11 @@ public class ShowProducts extends AppCompatActivity {
                         break;
                 }
                 if (cid.length() > 0)
-                    Products(cid, sort);
+                    new ProductList().execute("category",cid,sort);
+                    //Products(cid, sort);
                 else
-                    StoreList(ShopID, sort);
-                imageAdapter.notifyDataSetChanged();
+                    //StoreList(ShopID, sort);
+                    new ProductList().execute("shop",ShopID,sort);
                 popup.dismiss();
             }
         });
@@ -634,7 +665,8 @@ public class ShowProducts extends AppCompatActivity {
                         str += val.get(i) + ";";
                     }
                 }
-                ProductsFilter("10022", fields, str);
+                //ProductsFilter(cid, fields, str);
+                new ProductList().execute("filter",cid,fields,str);
                 //popup.dismiss();
             }
         });
