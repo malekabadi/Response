@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -46,7 +47,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowAllProducts extends MenuRight {
+public class ShowAllProducts extends Fragment {
 
     public List<String> pty = new ArrayList<String>();
     public List<String> val = new ArrayList<String>();
@@ -71,139 +72,63 @@ public class ShowAllProducts extends MenuRight {
     GridView gridview;
     ImageAdapter imageAdapter;
     String sort = "",min="",max="";
+    View rootView;
 
-    @Override
-    public void onBackPressed() {
-//		MainActivity.finish();
-//		ShowCate.finish();
-        finishAffinity();
-        super.onBackPressed();
+    public ShowAllProducts() {
+        // Required empty public constructor
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.all_products);
-        Bundle extra = getIntent().getExtras();
-        if (extra != null)
-            if (extra.getString("EXIT") != null) {
-                finishAffinity();
-                finish();
-            }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        rootView = inflater.inflate(R.layout.content_menu_right, container, false);
+
+//        Bundle extra = getIntent().getExtras();
+//        if (extra != null)
+//            if (extra.getString("EXIT") != null) {
+//                finishAffinity();
+//                finish();
+//            }
 
         appVar.main.UserID = "1";
         appVar.main.UserName = "09156620865";
         appVar.main.HasShop = true;
         appVar.main.ShopID = "2";
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-//	getSupportActionBar().setDisplayShowHomeEnabled(true);
-//	getSupportActionBar().setIcon(R.drawable.ic_launcher);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        //View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_menu_right);
-        //panel = headerLayout.findViewById(R.id.viewId);
-        View headerLayout = navigationView.getHeaderView(0);
-        if (! appVar.main.UserName.equals("")) {
-            TextView name = (TextView) headerLayout.findViewById(R.id.Name);
-            name.setText(appVar.main.UserName);
-        }
-        Button p1 = (Button) findViewById(R.id.p1);
-        p1.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(ShowAllProducts.this, ShowCate.class);
-//			i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(i);
-            }
-        });
-
-        Button p3 = (Button) findViewById(R.id.p3);
-        p3.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(ShowAllProducts.this, MainActivity.class);
-//			i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(i);
-            }
-        });
-
 //-------------------------------------------- TopicList and ZoneList
         if (Topics.size() < 1) {
             TopicIDs.add("0");
             Topics.add("همه");
         }
 
-        GridView gridview1 = (GridView) findViewById(R.id.gridView1);
-        imageAdapter = new ImageAdapter(this);
+        GridView gridview1 = (GridView) rootView.findViewById(R.id.gridView1);
+        imageAdapter = new ImageAdapter(getActivity());
         gridview1.setAdapter(imageAdapter);
 
-        GridView gridview2 = (GridView) findViewById(R.id.gridView2);
+        GridView gridview2 = (GridView) rootView.findViewById(R.id.gridView2);
         gridview2.setAdapter(imageAdapter);
 
-        GridView gridview3 = (GridView) findViewById(R.id.gridView3);
+        GridView gridview3 = (GridView) rootView.findViewById(R.id.gridView3);
         gridview3.setAdapter(imageAdapter);
 
         gridview1.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 String SelectID = ID.get(position);
-                Intent inte = new Intent(ShowAllProducts.this, PageIndicator.class);
+                Intent inte = new Intent(getActivity(), PageIndicator.class);
                 inte.putExtra("SID", SelectID);
                 //inte.putExtra("PID", SelectID);
                 startActivity(inte);
             }
         });
 
-
-/*************************************************** Set Custom ActionBar *****/
-//ActionBar mActionBar = getActionBar();
-//mActionBar.setDisplayShowHomeEnabled(false);
-//mActionBar.setDisplayShowTitleEnabled(false);
-//
-//LayoutInflater mInflater = LayoutInflater.from(this);
-//View mCustomView = mInflater.inflate(R.layout.actionbar2, null);
-//ImageView imageButton = (ImageView) mCustomView.findViewById(R.id.image_menu);
-//imageButton.setOnClickListener(new OnClickListener() {
-//
-//	@Override
-//	public void onClick(View view) {
-//	}
-//});
-
-//TextView shp = (TextView) mCustomView.findViewById(R.id.shp);
-//shp.setOnClickListener(new OnClickListener() {
-//
-//	@Override
-//	public void onClick(View view) {
-//		Intent i = new Intent(ShowAllProducts.this, MainActivity.class);
-//		i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-//    	startActivity(i);
-//	}
-//});
-//
-//TextView tv = (TextView) mCustomView.findViewById(R.id.pro);
-//tv.setBackgroundResource(R.color.grl);
-//
-//mActionBar.setCustomView(mCustomView);
-//mActionBar.setDisplayShowCustomEnabled(true);
-
 /*****************************************************  Tabs Host *******/
-        final TabHost tabs = (TabHost) findViewById(R.id.tabhost);
+        final TabHost tabs = (TabHost) rootView.findViewById(R.id.tabhost);
         tabs.setup();
 
         TabHost.TabSpec tab1 = tabs.newTabSpec("tag 1");
@@ -258,46 +183,47 @@ public class ShowAllProducts extends MenuRight {
         });
 
 //---------------------- Start
-        btnCat = (Button) findViewById(R.id.Subject);
+        btnCat = (Button) rootView.findViewById(R.id.Subject);
         btnCat.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPopup(ShowAllProducts.this);
+                showPopup(getActivity());
             }
         });
 
 
         final CallSoap cs = new CallSoap();
 
-        Button Sort = (Button) findViewById(R.id.btnsort);
+        Button Sort = (Button) rootView.findViewById(R.id.btnsort);
         Sort.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Sort(ShowAllProducts.this);
+                Sort(getActivity());
             }
         });
         new LongOperation().execute("");
 
 //---------------------- Start
-        btnCat = (Button) findViewById(R.id.Subject);
+        btnCat = (Button) rootView.findViewById(R.id.Subject);
         btnCat.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPopup(ShowAllProducts.this);
+                showPopup(getActivity());
             }
         });
 
-        Button filter = (Button) findViewById(R.id.btnfilter);
+        Button filter = (Button) rootView.findViewById(R.id.btnfilter);
         filter.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Filter(ShowAllProducts.this);
+                Filter(getActivity());
             }
         });
         new LongOperation().execute("");
 
+        return rootView;
     }
 
     //--------------------------------------------------------------------------------
@@ -306,7 +232,7 @@ public class ShowAllProducts extends MenuRight {
 
         @Override
         protected void onPostExecute(Boolean result) {
-            ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
+            ProgressBar pb = (ProgressBar) rootView.findViewById(R.id.progressBar1);
             pb.setVisibility(View.INVISIBLE);
             imageAdapter.notifyDataSetChanged();
             super.onPostExecute(result);
@@ -314,7 +240,7 @@ public class ShowAllProducts extends MenuRight {
 
         @Override
         protected void onPreExecute() {
-            ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
+            ProgressBar pb = (ProgressBar) rootView.findViewById(R.id.progressBar1);
             pb.setVisibility(View.VISIBLE);
             super.onPreExecute();
         }
@@ -464,7 +390,7 @@ public class ShowAllProducts extends MenuRight {
                     //Desc.add(Field[4]);
                 }
             } else
-                Toast.makeText(ShowAllProducts.this, "هیچ کالایی در این گروه موجود نمی باشد",
+                Toast.makeText(getActivity(), "هیچ کالایی در این گروه موجود نمی باشد",
                         Toast.LENGTH_LONG).show();
 
             imageAdapter.notifyDataSetChanged();
@@ -476,7 +402,7 @@ public class ShowAllProducts extends MenuRight {
 
     //----------------------------------------------------------------------
     private void Sort(final Activity context) {
-        Display display = getWindowManager().getDefaultDisplay();
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
         int popupWidth = display.getWidth();//-100;
         int popupHeight = display.getHeight();//-200;
 
@@ -621,7 +547,7 @@ public class ShowAllProducts extends MenuRight {
     //---------------------------------------------------  Topics List
     private void showPopup(final Activity context) {
 
-        Display display = getWindowManager().getDefaultDisplay();
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
         int popupWidth = display.getWidth();//-(int)(display.getWidth()*0.2);
         int popupHeight = display.getHeight();//-(int)(display.getWidth()*0.6);
 
@@ -631,7 +557,7 @@ public class ShowAllProducts extends MenuRight {
         View layout = layoutInflater.inflate(R.layout.popup, viewGroup);
 
         final ListView lv = (ListView) layout.findViewById(R.id.list_topic);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 R.layout.listview_item_row, Topics);
         lv.setAdapter(adapter);
 
@@ -656,7 +582,7 @@ public class ShowAllProducts extends MenuRight {
                                     long id) {
 
                 String item = TopicIDs.get(position);
-                Toast.makeText(ShowAllProducts.this, item,
+                Toast.makeText(getActivity(), item,
                         Toast.LENGTH_LONG).show();
                 if (position == 0) {
                     new LongOperation().execute("");
@@ -672,7 +598,7 @@ public class ShowAllProducts extends MenuRight {
                     }
                     if (_SubTopics.size() > 0) {
 //					lv.setVisibility(0);
-                        subList(ShowAllProducts.this);
+                        subList(getActivity());
                     }
                     popup.dismiss();
                 }
@@ -683,7 +609,7 @@ public class ShowAllProducts extends MenuRight {
 
     //----------------------------------------------------- SubTopics List
     private void subList(final Activity context) {
-        Display display = getWindowManager().getDefaultDisplay();
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
         int popupWidth = display.getWidth();//-100;
         int popupHeight = display.getHeight();//-200;
 
@@ -693,7 +619,7 @@ public class ShowAllProducts extends MenuRight {
         View layout = layoutInflater.inflate(R.layout.popup, viewGroup);
 
         final ListView lv = (ListView) layout.findViewById(R.id.list_topic);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 R.layout.listview_item_row, _SubTopics);
         lv.setAdapter(adapter);
 
@@ -772,7 +698,7 @@ public class ShowAllProducts extends MenuRight {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
 
-                Intent i = new Intent(ShowAllProducts.this, ShowSearch.class);
+                Intent i = new Intent(getActivity(), ShowSearch.class);
                 String p = Shop.getText().toString();
                 i.putExtra("Shop", p);
                 p = Product.getText().toString();
@@ -790,7 +716,7 @@ public class ShowAllProducts extends MenuRight {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_search:
-                Search(this);
+                Search(getActivity());
                 break;
         }
         return super.onOptionsItemSelected(item);

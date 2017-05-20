@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:layoutDirection="rtl"
     tools:context="com.example.respons.MenuRight">
 
     <android.support.design.widget.AppBarLayout
@@ -20,50 +21,13 @@
             android:titleTextColor="@color/white"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-        <LinearLayout
-            android:id="@+id/lay1"
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#267d5a"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/p1"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:text="دسته بندی ها"
-                android:textColor="#fff"
-                android:drawableTop="@drawable/cate"
-                android:paddingTop="5dp"
-                android:textSize="14dp" />
-
-            <Button
-                android:id="@+id/p2"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:textColor="#fff"
-                android:text="کالاها"
-                android:drawableTop="@drawable/prod"
-                android:paddingTop="5dp"
-                android:textSize="14dp" />
-
-            <Button
-                android:id="@+id/p3"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:text="فروشگاه ها"
-                android:textColor="#fff"
-                android:drawableTop="@drawable/shop24"
-                android:paddingTop="5dp"
-                android:textSize="14dp" />
-
-        </LinearLayout>
+            app:tabIndicatorColor="@android:color/white"
+            app:tabMode="fixed"
+            app:tabGravity="fill"/>
 
 
     </android.support.design.widget.AppBarLayout>

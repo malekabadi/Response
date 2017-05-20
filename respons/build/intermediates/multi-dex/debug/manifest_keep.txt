@@ -1,4 +1,4 @@
--keep class com.example.respons.ShowAllProducts { <init>(); }
+-keep class com.example.respons.NewActivity { <init>(); }
 -keep class com.example.respons.MainActivity { <init>(); }
 -keep class com.example.respons.LoginActivity { <init>(); }
 -keep class com.example.respons.RegisterActivity { <init>(); }
@@ -23,9 +23,8 @@
 -keep class com.example.respons.ShowSearch { <init>(); }
 -keep class com.example.respons.Request { <init>(); }
 -keep class com.example.respons.Requests { <init>(); }
--keep class com.example.respons.ProfileA { <init>(); }
--keep class com.example.respons.StoreInfo { <init>(); }
 -keep class com.example.respons.Account { <init>(); }
+-keep class com.example.respons.Main2Activity { <init>(); }
 -keep public class * extends android.app.backup.BackupAgent {
     <init>();
 }

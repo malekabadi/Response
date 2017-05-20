@@ -1,5 +1,4 @@
 
-com/example/respons/StoreInfo.class
 android/support/v4/app/BackStackRecord.class
 com/squareup/picasso/Picasso$Builder.class
 android/support/v4/widget/SlidingPaneLayout.class
@@ -8,6 +7,7 @@ com/example/respons/MainActivity$8.class
 android/support/design/widget/Snackbar$2.class
 com/example/respons/CategoryMng$LongOperation.class
 android/support/v7/recyclerview/R.class
+com/example/respons/ShowProducts$ProductList.class
 android/support/v4/media/session/MediaSessionCompat$MediaSessionImpl.class
 android/support/v7/widget/TintTypedArray.class
 android/support/v4/view/accessibility/AccessibilityEventCompat.class
@@ -29,6 +29,7 @@ com/example/respons/ProductMng$LongOperation.class
 android/support/v4/view/ScrollingView.class
 com/example/respons/StoreManagment$8.class
 android/support/v7/app/ActionBar$Tab.class
+com/example/respons/NewActivity$ViewPagerAdapter.class
 android/support/design/R$styleable.class
 com/example/respons/Comments$1.class
 com/example/respons/StoreManagment$4.class
@@ -57,7 +58,6 @@ android/support/v7/widget/RecyclerView$State.class
 android/support/v4/widget/ViewDragHelper$Callback.class
 android/support/design/widget/ViewOffsetBehavior.class
 com/example/respons/ShowCate$ImageAdapter.class
-com/example/respons/ProfileA$1.class
 android/support/v4/app/FragmentManagerImpl$FragmentTag.class
 com/android/layoutlib/api/ILayoutResult.class
 android/support/annotation/StringDef.class
@@ -77,12 +77,11 @@ android/support/v4/app/NoSaveStateFrameLayout.class
 android/support/v4/media/session/MediaSessionCompat$MediaSessionImplApi21.class
 android/support/annotation/StringRes.class
 com/example/respons/Orders$LongOperation.class
+com/example/respons/OneFragment.class
 android/support/v4/widget/MaterialProgressDrawable$1.class
-com/example/respons/R$color.class
 android/support/annotation/IdRes.class
 com/android/ide/common/rendering/api/DeclareStyleableResourceValue.class
 android/support/v7/widget/LinearLayoutCompat$OrientationMode.class
-com/example/respons/ShowAllProducts$12.class
 android/support/v7/widget/AdapterHelper.class
 android/support/design/widget/SnackbarManager.class
 android/support/v4/content/ContextCompat.class
@@ -94,7 +93,6 @@ com/example/respons/Helper.class
 android/support/design/widget/AppBarLayout$ScrollingViewBehavior.class
 android/support/v7/widget/RecyclerView$1.class
 android/support/v4/media/MediaBrowserCompat$ItemCallback.class
-com/example/respons/ShowAllProducts$13.class
 android/support/v7/widget/ViewUtils.class
 com/example/respons/ShowSearch$LongOperation.class
 com/example/respons/PageIndicator.class
@@ -103,7 +101,6 @@ android/support/v4/media/MediaBrowserCompat.class
 android/support/v7/widget/RecyclerView$6.class
 android/support/design/widget/TabLayout$TabLayoutOnPageChangeListener.class
 android/support/v7/widget/RecyclerView$SmoothScroller.class
-com/example/respons/ShowAllProducts$4.class
 android/support/v7/graphics/drawable/DrawerArrowDrawable$ArrowDirection.class
 android/support/v4/media/session/MediaSessionCompat$OnActiveChangeListener.class
 android/support/v7/app/ActionBar$OnNavigationListener.class
@@ -128,14 +125,12 @@ android/support/v4/app/ActivityCompatHoneycomb.class
 com/example/respons/ShowProducts.class
 android/support/v4/view/ViewCompatICSMr1.class
 android/support/v7/widget/ChildHelper$Callback.class
-com/example/respons/StoreInfo$1.class
 com/example/respons/RegisterActivity.class
 com/example/respons/LoginActivity$3.class
 android/support/v4/widget/MaterialProgressDrawable.class
 android/support/annotation/DrawableRes.class
 android/support/v4/media/MediaBrowserCompat$MediaBrowserServiceCallbackImpl.class
 android/support/v7/recyclerview/R$styleable.class
-com/example/respons/ProfileA$2.class
 android/support/v4/app/LoaderManager.class
 com/example/respons/StoreReg$4.class
 com/example/respons/Buy_Detail$1.class
@@ -144,6 +139,7 @@ android/support/v4/view/animation/FastOutSlowInInterpolator.class
 android/support/v4/widget/ScrollerCompat.class
 com/example/respons/ProductReg$MyTask.class
 android/support/design/widget/TabLayout.class
+com/example/respons/Main2Activity$PlaceholderFragment.class
 android/support/v4/app/BackStackState.class
 com/example/respons/Requests$TextAdapter.class
 android/support/v7/widget/RecyclerView$RecycledViewPool.class
@@ -156,6 +152,7 @@ com/example/respons/Orders$TextAdapter.class
 com/android/layoutlib/api/ILayoutBridge.class
 android/support/v4/app/ActivityCompatApi23.class
 android/support/v4/util/ArrayMap$1.class
+com/example/respons/SubCateMng$3.class
 android/support/v7/widget/RecyclerView$ItemAnimator$ItemAnimatorFinishedListener.class
 android/support/v7/widget/RecyclerView$OnChildAttachStateChangeListener.class
 android/support/annotation/IntegerRes.class
@@ -205,6 +202,7 @@ android/support/v4/view/ViewCompat$MarshmallowViewCompatImpl.class
 android/support/v7/widget/RecyclerView$ChildDrawingOrderCallback.class
 com/example/respons/LoginActivity.class
 android/support/design/widget/SwipeDismissBehavior.class
+com/example/respons/Category.class
 android/support/v4/media/session/MediaSessionCompat$QueueItem.class
 android/support/design/widget/TabLayout$ViewPagerOnTabSelectedListener.class
 com/example/respons/CategoryMng$DelData.class
@@ -233,14 +231,12 @@ com/example/respons/PasswordActivity.class
 android/support/design/widget/MathUtils.class
 android/support/v4/media/session/MediaControllerCompat.class
 android/support/v4/view/ViewCompatBase.class
-com/example/respons/StoreInfo$LongOperation.class
 android/support/v4/view/ViewCompat$JbMr1ViewCompatImpl.class
 android/support/v7/widget/VectorEnabledTintResources.class
 android/support/annotation/RequiresPermission.class
 com/example/respons/CategoryMng$1.class
 com/example/respons/ShowCate$1.class
 android/support/v4/media/session/MediaSessionCompat$ResultReceiverWrapper.class
-com/example/respons/ShowAllProducts$11.class
 android/support/annotation/BoolRes.class
 com/example/respons/PageIndicator$2.class
 android/support/v4/view/ViewCompatEclairMr1.class
@@ -281,20 +277,20 @@ com/example/respons/ProductReg.class
 android/support/v4/media/session/MediaSessionCompat.class
 android/support/v4/view/PagerAdapter.class
 com/example/respons/R$array.class
+com/example/respons/NewCate$2.class
 com/example/respons/RegisterActivity$2.class
 android/support/v7/widget/RecyclerView$RecyclerViewDataObserver.class
 android/support/v4/widget/DrawerLayout.class
-com/example/respons/ProfileA.class
 com/example/respons/PageIndicator$TAdapter.class
 com/example/respons/ShowProducts$ImageAdapter.class
 android/support/design/widget/VisibilityAwareImageButton.class
-com/example/respons/ShowAllProducts$5.class
 android/support/v4/view/ViewCompat.class
 com/example/respons/Cate_Product$ImageAdapter.class
 android/support/v4/view/ViewCompatMarshmallow.class
 android/support/v4/media/MediaBrowserCompat$CallbackHandler.class
 com/android/layoutlib/api/IXmlPullParser.class
 android/support/v4/view/WindowInsetsCompat.class
+com/example/respons/R$drawable.class
 com/example/respons/StoreManagment$9.class
 android/support/v4/media/VolumeProviderCompatApi21.class
 android/support/v4/util/ArrayMap.class
@@ -326,7 +322,6 @@ com/example/respons/Buy_Detail.class
 android/support/v7/widget/ChildHelper.class
 android/support/v4/view/MenuCompat.class
 android/support/design/widget/TabLayout$SlidingTabStrip.class
-com/example/respons/ShowAllProducts$LongOperation.class
 android/support/v7/app/ActionBar$DisplayOptions.class
 android/support/v4/util/LogWriter.class
 android/support/v4/media/MediaBrowserCompat$MediaBrowserImpl.class
@@ -345,6 +340,7 @@ android/support/v7/app/ActionBar$TabListener.class
 android/support/design/widget/CoordinatorLayout$HierarchyChangeListener.class
 com/example/respons/BuyVerify$1.class
 android/support/design/widget/SwipeDismissBehavior$OnDismissListener.class
+com/example/respons/Main2Activity.class
 com/android/ide/common/rendering/api/Bridge.class
 android/support/design/widget/ViewUtils.class
 android/support/v4/media/MediaBrowserCompat$1.class
@@ -367,6 +363,7 @@ android/support/v4/media/MediaBrowserCompat$MediaBrowserImplApi23.class
 android/support/v4/util/ContainerHelpers.class
 com/example/respons/ProductReg$3.class
 android/support/annotation/ColorRes.class
+com/example/respons/NewActivity.class
 com/example/respons/MainActivity$6.class
 com/example/respons/MainActivity$2.class
 android/support/design/widget/Snackbar$Callback.class
@@ -378,7 +375,6 @@ com/example/respons/SubCateMng$1.class
 com/example/respons/ShowCate$2.class
 android/support/design/widget/AppBarLayout$Behavior$1.class
 android/support/v7/widget/ActionMenuView$LayoutParams.class
-com/example/respons/ShowAllProducts$10.class
 com/example/respons/NewCate$TAdapter.class
 android/support/annotation/InterpolatorRes.class
 android/support/design/widget/CoordinatorLayout$LayoutParams.class
@@ -402,7 +398,6 @@ android/support/v7/view/ActionMode.class
 android/support/v4/media/MediaBrowserCompat$MediaItem$1.class
 android/support/v7/appcompat/R$styleable.class
 android/support/v7/app/AppCompatDelegateImplV23.class
-com/example/respons/ShowAllProducts$6.class
 android/support/v4/media/MediaBrowserCompat$MediaItem.class
 android/support/design/widget/HeaderBehavior.class
 android/support/design/widget/ViewGroupUtils.class
@@ -427,7 +422,6 @@ android/support/v4/view/NestedScrollingParent.class
 com/example/respons/StoreReg$1.class
 android/support/v4/media/session/PlaybackStateCompat$Builder.class
 android/support/v4/view/GravityCompat.class
-com/example/respons/ShowAllProducts$1.class
 android/support/v4/media/session/PlaybackStateCompatApi22.class
 android/support/v4/media/session/MediaSessionCompat$MediaSessionImplBase.class
 com/example/respons/ProductMng$3.class
@@ -438,7 +432,6 @@ android/support/v4/view/ViewCompatICS.class
 android/support/design/widget/CoordinatorLayout$ApplyInsetsListener.class
 android/support/v4/app/FragmentTabHost.class
 android/support/design/widget/BottomSheetBehavior$SavedState.class
-com/example/respons/ShowAllProducts$9.class
 com/example/respons/Account.class
 android/support/design/widget/HeaderScrollingViewBehavior.class
 com/android/layoutlib/api/IProjectCallback.class
@@ -521,16 +514,13 @@ android/support/annotation/AnimatorRes.class
 android/support/v7/widget/RecyclerView$AdapterDataObserver.class
 android/support/v4/view/AccessibilityDelegateCompat.class
 android/support/v4/media/VolumeProviderCompat$ControlType.class
-com/example/respons/ProfileA$4.class
 android/support/design/widget/SnackbarManager$Callback.class
 com/example/respons/StoreReg$6.class
 android/support/design/widget/TabLayout$Mode.class
-com/example/respons/ShowAllProducts$TAdapter.class
 android/support/design/widget/CoordinatorLayout$1.class
 com/android/ide/common/rendering/api/DensityBasedResourceValue.class
 android/support/annotation/FractionRes.class
 android/support/v4/view/accessibility/AccessibilityNodeProviderCompat.class
-com/example/respons/ShowAllProducts$3.class
 android/support/design/widget/BottomSheetBehavior$State.class
 android/support/design/widget/CoordinatorLayout.class
 android/support/v7/widget/RecyclerView$LayoutManager.class
@@ -542,7 +532,6 @@ com/android/layoutlib/api/IDensityBasedResourceValue.class
 com/squareup/picasso/Picasso.class
 android/support/v4/view/ViewCompat$ScrollIndicators.class
 android/support/design/R.class
-com/example/respons/ShowAllProducts$7.class
 android/support/v4/media/session/MediaSessionCompat$Callback.class
 android/support/v7/app/AppCompatDelegateImplV11.class
 android/support/v7/view/menu/MenuItemImpl.class
@@ -565,7 +554,6 @@ android/support/annotation/Keep.class
 android/support/v7/widget/RecyclerView$5.class
 android/support/annotation/Size.class
 com/example/respons/BuyVerify$ImageAdapter.class
-com/example/respons/ShowAllProducts$2.class
 android/support/v7/widget/SimpleItemAnimator.class
 com/example/respons/Account$1.class
 com/android/ide/common/rendering/api/RenderResources.class
@@ -581,7 +569,6 @@ android/support/design/widget/NavigationView.class
 android/support/v4/media/MediaBrowserCompat$ServiceBinderWrapper.class
 android/support/design/widget/BottomSheetBehavior$SettleRunnable.class
 com/example/respons/ShowAllProducts.class
-com/example/respons/ShowAllProducts$8.class
 com/android/ide/common/rendering/api/StyleResourceValue.class
 com/example/respons/Comments$ImageAdapter.class
 com/example/respons/CategoryMng$4.class
@@ -603,7 +590,6 @@ android/support/v4/widget/ViewDragHelper.class
 android/support/v4/app/BaseFragmentActivityEclair.class
 com/example/respons/MainActivity$LongOperation.class
 android/support/design/widget/NavigationView$OnNavigationItemSelectedListener.class
-com/example/respons/ProfileA$3.class
 android/support/v7/app/ActionBar.class
 android/support/v7/widget/RecyclerView$ViewFlinger.class
 com/example/respons/StoreReg$5.class
@@ -611,6 +597,7 @@ android/support/annotation/TransitionRes.class
 android/support/annotation/PluralsRes.class
 com/example/respons/Requests$1.class
 android/support/v4/media/RatingCompat$Style.class
+com/example/respons/Main2Activity$SectionsPagerAdapter.class
 android/support/v4/app/FragmentManager.class
 com/example/respons/ProductReg$1.class
 android/support/v4/media/MediaBrowserCompat$MediaBrowserImplApi21.class
@@ -623,5 +610,4 @@ android/support/design/widget/Snackbar$8.class
 com/example/respons/Request$3.class
 android/support/v4/app/FragmentPagerAdapter.class
 android/support/v4/app/FragmentActivity$1.class
-com/example/respons/ShowAllProducts$ImageAdapter.class
 android/support/design/widget/AnimationUtils.class

@@ -16,7 +16,8 @@
 
     <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
+ <!-- <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    <!-- <android:uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -24,7 +25,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.respons.ShowAllProducts"
+            android:name="com.example.respons.NewActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,15 +35,13 @@
         </activity>
         <activity
             android:name="com.example.respons.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.example.respons.LoginActivity" />
         <activity android:name="com.example.respons.RegisterActivity" />
         <activity android:name="com.example.respons.PasswordActivity" />
         <activity
             android:name="com.example.respons.StoreManagment"
-            android:layout_gravity="right" >
-        </activity>
+            android:layout_gravity="right" />
         <activity android:name="com.example.respons.ShowProducts" />
         <activity android:name="com.example.respons.ProductReg" />
         <activity android:name="com.example.respons.StoreReg" />
@@ -52,8 +51,7 @@
         <activity android:name="com.example.respons.Cate_Product" />
         <activity
             android:name="com.example.respons.ShowCate"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.example.respons.PageIndicator" />
         <activity android:name="com.example.respons.NewCate" />
         <activity android:name="com.example.respons.Cart" />
@@ -65,9 +63,11 @@
         <activity android:name="com.example.respons.ShowSearch" />
         <activity android:name="com.example.respons.Request" />
         <activity android:name="com.example.respons.Requests" />
-        <activity android:name="com.example.respons.ProfileA" />
-        <activity android:name="com.example.respons.StoreInfo" />
         <activity android:name="com.example.respons.Account" />
+        <activity
+            android:name="com.example.respons.Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

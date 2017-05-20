@@ -2,66 +2,71 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.respons"
     android:versionCode="2"
-    android:versionName="1.1" >
+    android:versionName="1.1">
 
     <uses-sdk
         android:minSdkVersion="17"
         android:targetSdkVersion="23" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-	
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!--<android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <!--<android:uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+
     <application
         android:allowBackup="true"
-        android:supportsRtl="true"
         android:icon="@drawable/ic_launcher"
         android:label="فروشگاه من"
-        android:theme="@style/AppTheme" >
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
         <activity
-            android:name=".ShowAllProducts"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:name=".NewActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name="LoginActivity"></activity>
-        <activity android:name="RegisterActivity"></activity>
-        <activity android:name="PasswordActivity"></activity>
-        <activity android:name="StoreManagment"
-            android:layout_gravity="right" >
-        </activity>
-        <activity android:name="ShowProducts"></activity>
-        <activity android:name="ProductReg"></activity>
-        <activity android:name="StoreReg"></activity>
-        <activity android:name="ProductMng"></activity>
-        <activity android:name="CategoryMng"></activity>
-        <activity android:name="SubCateMng"></activity>
-        <activity android:name="Cate_Product"></activity>
-        <activity android:name=".ShowCate"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name="PageIndicator"></activity>
-        <activity android:name="NewCate"></activity>
-        <activity android:name="Cart"></activity>
-        <activity android:name="GetAdress"></activity>
-        <activity android:name="BuyVerify"></activity>
-        <activity android:name="Orders"></activity>
-        <activity android:name="Buy_Detail"></activity>
-        <activity android:name="Comments"></activity>
-        <activity android:name="ShowSearch"></activity>
-        <activity android:name="Request"></activity>
-        <activity android:name="Requests"></activity>
-        <activity android:name="ProfileA"></activity>
-        <activity android:name="StoreInfo"></activity>
-        <activity android:name="Account"></activity>
-        </application>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".PasswordActivity" />
+        <activity
+            android:name=".StoreManagment"
+            android:layout_gravity="right"></activity>
+        <activity android:name=".ShowProducts" />
+        <activity android:name=".ProductReg" />
+        <activity android:name=".StoreReg" />
+        <activity android:name=".ProductMng" />
+        <activity android:name=".CategoryMng" />
+        <activity android:name=".SubCateMng" />
+        <activity android:name=".Cate_Product" />
+        <activity
+            android:name=".ShowCate"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".PageIndicator" />
+        <activity android:name=".NewCate" />
+        <activity android:name=".Cart" />
+        <activity android:name=".GetAdress" />
+        <activity android:name=".BuyVerify" />
+        <activity android:name=".Orders" />
+        <activity android:name=".Buy_Detail" />
+        <activity android:name=".Comments" />
+        <activity android:name=".ShowSearch" />
+        <activity android:name=".Request" />
+        <activity android:name=".Requests" />
+        <activity android:name=".Account" />
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
 
 </manifest>

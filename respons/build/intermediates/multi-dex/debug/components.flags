@@ -1,5 +1,5 @@
--injars 'D:\Android_work\Response\respons\build\intermediates\transforms\jarMerging\debug\jars\1\1f\combined.jar'
--outjars 'D:\Android_work\Response\respons\build\intermediates\multi-dex\debug\componentClasses.jar'
+-injars 'D:\Android_work\Project\Response\respons\build\intermediates\transforms\jarMerging\debug\jars\1\1f\combined.jar'
+-outjars 'D:\Android_work\Project\Response\respons\build\intermediates\multi-dex\debug\componentClasses.jar'
 
 -libraryjars 'D:\Android_work\android-sdk23\build-tools\23.0.3\lib\shrinkedAndroid.jar'
 
@@ -10,10 +10,10 @@
 -dontpreverify
 -dontnote **,com.android.tools.fd.**,android.support.multidex.MultiDexExtractor
 -dontwarn **
--printconfiguration 'D:\Android_work\Response\respons\build\intermediates\multi-dex\debug\components.flags'
+-printconfiguration 'D:\Android_work\Project\Response\respons\build\intermediates\multi-dex\debug\components.flags'
 
 
--keep class com.example.respons.ShowAllProducts {
+-keep class com.example.respons.NewActivity {
     <init>();
 }
 
@@ -113,15 +113,11 @@
     <init>();
 }
 
--keep class com.example.respons.ProfileA {
-    <init>();
-}
-
--keep class com.example.respons.StoreInfo {
-    <init>();
-}
-
 -keep class com.example.respons.Account {
+    <init>();
+}
+
+-keep class com.example.respons.Main2Activity {
     <init>();
 }
 

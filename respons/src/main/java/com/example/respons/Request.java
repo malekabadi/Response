@@ -125,7 +125,6 @@ public class Request extends AppCompatActivity {
 			String res;
 			CallSoap cs = new CallSoap();
 			res = cs.ResiveList(params[0]);
-			Toast.makeText(Request.this, res, Toast.LENGTH_LONG).show();
 			res = res.replaceAll("\"", "");
 			res = res.replaceAll("\n", "");
 			res = "Request" + res + ".jpg";
@@ -141,12 +140,6 @@ public class Request extends AppCompatActivity {
 
 			} catch (FileNotFoundException e) {
 				// Error: File not found
-			}
-
-			try {
-				Thread.sleep(3000);
-			} catch (Exception e) {
-				e.printStackTrace();
 			}
 			return res;
 		}
@@ -182,7 +175,7 @@ public class Request extends AppCompatActivity {
         builder.show();
      }
 
-//-------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
          super.onActivityResult(requestCode, resultCode, data);
@@ -237,6 +230,7 @@ public class Request extends AppCompatActivity {
              }
          }
      }
+
     //------------------------------------------------------ Action Bar Menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

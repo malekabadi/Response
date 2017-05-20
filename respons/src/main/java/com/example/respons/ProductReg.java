@@ -293,7 +293,7 @@ public class ProductReg extends AppCompatActivity {
 			}
 		});
 	}
-	//-----------------------------------------------------------------------------
+	//--------------------------------------------------------------------------
 	class MyTask extends AsyncTask<Void, Void, Void> {
 
 	        ProgressDialog Asycdialog = new ProgressDialog(ProductReg.this);
@@ -402,7 +402,7 @@ public class ProductReg extends AppCompatActivity {
         });
         builder.show();
      }	
-//----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
@@ -472,7 +472,7 @@ public class ProductReg extends AppCompatActivity {
             }
         }
     }
-//-------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
     private class HAdapter extends BaseAdapter {
 
         LayoutInflater inflater;
@@ -551,11 +551,11 @@ public class ProductReg extends AppCompatActivity {
 	    }
 
     }
-//--------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
     class HViewHolder {
         ImageView img;
     }  
-//--------------------------------------------------------------------------
+//------------------------------------------------------------------------------
   	public class TAdapter extends BaseAdapter{
   		
   		LayoutInflater inflater;
@@ -588,7 +588,7 @@ public class ProductReg extends AppCompatActivity {
   	        return convertView;
   	    }
   	    }	
-//------------------------------------------------------------
+//------------------------------------------------------------------------------
   	private void showPopup(final Activity context) {
 
   		Display display = getWindowManager().getDefaultDisplay();
@@ -640,7 +640,7 @@ public class ProductReg extends AppCompatActivity {
   	});
 
   	}
-  	//------------------------------------------------------------
+  	//--------------------------------------------------------------------------
   	private void subList(final Activity context) {
   		Display display = getWindowManager().getDefaultDisplay();
   		int popupWidth = display.getWidth();//-100;
@@ -681,7 +681,7 @@ public class ProductReg extends AppCompatActivity {
   		}
   	});
   	}    
-	//-----------------------------------------------------------------------------
+	//--------------------------------------------------------------------------
 	class MyTask2 extends AsyncTask<Void, Void, Void> {
 
         ProgressDialog Asycdialog = new ProgressDialog(ProductReg.this);
@@ -719,6 +719,7 @@ public class ProductReg extends AppCompatActivity {
             Asycdialog.dismiss();
         }
     }
+	//------------------------------------------------------
 	public class SaveData extends AsyncTask<String, Integer, String> {
 		
 		ProgressDialog Asycdialog = new ProgressDialog(ProductReg.this);

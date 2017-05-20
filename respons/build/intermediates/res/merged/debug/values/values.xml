@@ -228,6 +228,7 @@
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
     <dimen name="activity_horizontal_margin">5dp</dimen>
     <dimen name="activity_vertical_margin">5dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="design_appbar_elevation">4dp</dimen>
     <dimen name="design_bottom_sheet_modal_elevation">16dp</dimen>
     <dimen name="design_bottom_sheet_modal_peek_height">256dp</dimen>
@@ -327,7 +328,9 @@
     <string name="npass">تکرار رمز عبور</string>
     <string name="pass">رمز عبور</string>
     <string name="phone">شماره موبایل</string>
+    <string name="section_format">Hello World from section: %1$d</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_menu_right">MenuRight</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
@@ -1305,7 +1308,6 @@
         <item name="android:scaleType">center</item>
     </style>
     <style name="Base.Widget.Design.TabLayout" parent="android:Widget">
-        <item name="tabMaxWidth">@dimen/design_tab_max_width</item>
         <item name="tabIndicatorColor">?attr/colorAccent</item>
         <item name="tabIndicatorHeight">2dp</item>
         <item name="tabPaddingStart">12dp</item>
@@ -1459,10 +1461,10 @@
         <item name="android:paddingRight">@dimen/abc_action_bar_overflow_padding_end_material</item>
     </style>
     <style name="StarRatingBar" parent="@android:style/Widget.RatingBar">
-		<item name="android:progressDrawable">@drawable/rate</item>
-		<item name="android:minHeight">22dip</item>
-		<item name="android:maxHeight">22dip</item>
-	</style>
+        <item name="android:progressDrawable">@drawable/rate</item>
+        <item name="android:minHeight">22dip</item>
+        <item name="android:maxHeight">22dip</item>
+    </style>
     <style name="TextAppearance.AppCompat" parent="Base.TextAppearance.AppCompat"/>
     <style name="TextAppearance.AppCompat.Body1" parent="Base.TextAppearance.AppCompat.Body1"/>
     <style name="TextAppearance.AppCompat.Body2" parent="Base.TextAppearance.AppCompat.Body2"/>
@@ -1763,7 +1765,7 @@
     </style>
     <style name="Widget.FloatingHintEditText" parent="@android:style/Widget.EditText">
         <item name="android:paddingTop">0dp</item>
-        
+
     </style>
     <style name="floatlabelededittext">
         <item name="android:textColor">#338</item>

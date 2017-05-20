@@ -53,7 +53,7 @@ public class Requests extends AppCompatActivity {
         view.setAdapter(tAdapter);
     }
 
-    //-------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------
     private class LongOperation extends AsyncTask<String, Integer, Boolean> {
         @Override
         protected void onPostExecute(Boolean result) {
@@ -158,7 +158,7 @@ public class Requests extends AppCompatActivity {
         return true;
     }
 
-    //-----------------------------
+    //------------------------------------------------------
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

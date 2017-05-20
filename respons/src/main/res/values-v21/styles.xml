@@ -13,8 +13,7 @@
     <style name="AppTheme.AppBarOverlay" parent="android:Theme.Material.Light.DarkActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="android:Theme.Material.Light" />
-		
-    
-    
+
+
 </resources>
 
