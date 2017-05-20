@@ -1,5 +1,8 @@
 package com.example.respons;
 
+        import android.app.Activity;
+        import android.app.Dialog;
+        import android.content.Intent;
         import android.os.Bundle;
         import android.support.design.widget.NavigationView;
         import android.support.design.widget.TabLayout;
@@ -9,9 +12,16 @@ package com.example.respons;
         import android.support.v4.view.ViewPager;
         import android.support.v4.widget.DrawerLayout;
         import android.support.v7.app.ActionBarDrawerToggle;
+        import android.support.v7.app.AppCompatActivity;
         import android.support.v7.widget.Toolbar;
+        import android.view.Gravity;
         import android.view.LayoutInflater;
+        import android.view.Menu;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.view.Window;
         import android.widget.Button;
+        import android.widget.EditText;
         import android.widget.TextView;
 
         import java.util.ArrayList;
@@ -38,25 +48,34 @@ public class NewActivity extends MenuRight {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-//		toolbar = (Toolbar) findViewById(R.id.toolbar);
-//		setSupportActionBar(toolbar);
-//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//	getSupportActionBar().setDisplayShowHomeEnabled(true);
-//	getSupportActionBar().setIcon(R.drawable.ic_launcher);
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.setDrawerListener(toggle);
+//        toggle.syncState();
+//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) ;
+            drawer.setDrawerListener(toggle);
+            toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (drawer.isDrawerOpen(Gravity.RIGHT)) {
+                    drawer.closeDrawer(Gravity.RIGHT);
+                } else {
+                    drawer.openDrawer(Gravity.RIGHT);
+                }
+            }
+        });
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -64,6 +83,7 @@ public class NewActivity extends MenuRight {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
+        viewPager.setCurrentItem(2);
     }
 
     private void setupTabIcons() {
@@ -71,7 +91,7 @@ public class NewActivity extends MenuRight {
         TextView tabOne = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabOne.setText("کالاها");
         tabOne.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.prod, 0, 0);
-        tabLayout.getTabAt(0).setCustomView(tabOne);
+        tabLayout.getTabAt(2).setCustomView(tabOne);
 
         TextView tabTwo = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabTwo.setText("فروشگاه ها");
@@ -81,14 +101,14 @@ public class NewActivity extends MenuRight {
         TextView tabThree = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabThree.setText("دسته بندی ها");
         tabThree.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.cate, 0, 0);
-        tabLayout.getTabAt(2).setCustomView(tabThree);
+        tabLayout.getTabAt(0).setCustomView(tabThree);
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new ShowAllProducts(), "one");
+        adapter.addFrag(new Category(), "one");
         adapter.addFrag(new OneFragment(), "two");
-        adapter.addFrag(new Category(), "three");
+        adapter.addFrag(new ShowAllProducts(), "three");
         viewPager.setAdapter(adapter);
     }
 
@@ -120,4 +140,49 @@ public class NewActivity extends MenuRight {
             return mFragmentTitleList.get(position);
         }
     }
+
+    //------------------------------------------------------------
+    private void Search(final Activity context) {
+
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+
+        dialog.setContentView(R.layout.search);
+        dialog.show();
+
+
+        final EditText Shop = (EditText) dialog.findViewById(R.id.txtShop);
+        final EditText Product = (EditText) dialog.findViewById(R.id.txtProduct);
+        final EditText Detail = (EditText) dialog.findViewById(R.id.txtDetail);
+        Button Search = (Button) dialog.findViewById(R.id.btnSearch);
+        Search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                Intent i = new Intent(context, ShowSearch.class);
+                String p = Shop.getText().toString();
+                i.putExtra("Shop", p);
+                p = Product.getText().toString();
+                p = Product.getEditableText().toString();
+                i.putExtra("Product", Product.getEditableText().toString());
+                i.putExtra("Detail", Detail.getText());
+                startActivity(i);
+                dialog.dismiss();
+            }
+        });
+    }
+
+    //------------------------------------------------------
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                Search(this);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

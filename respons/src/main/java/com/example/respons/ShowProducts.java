@@ -214,6 +214,7 @@ public class ShowProducts extends AppCompatActivity {
             return null;
         }
     }
+
     //--------------------------------------------------------------------------------
     private class ProductList extends AsyncTask<String, Integer, Boolean> {
         String res;
@@ -244,6 +245,7 @@ public class ShowProducts extends AppCompatActivity {
             return null;
         }
     }
+
     //--------------------------------------------------------------------------------
     public class ImageAdapter extends BaseAdapter {
         private Context mContext;
