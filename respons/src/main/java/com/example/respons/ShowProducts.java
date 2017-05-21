@@ -241,7 +241,7 @@ public class ShowProducts extends AppCompatActivity {
             if (params[0].equals("category"))
                 Products(cid,params[2]);
             if (params[0].equals("filter"))
-                ProductsFilter(cid,params[2],params[3]);
+                ProductsFilter(cid, params[2], params[3], params[4],params[5]);
             return null;
         }
     }
@@ -368,10 +368,17 @@ public class ShowProducts extends AppCompatActivity {
     }
 
     //----------------------------------------------------------------------
-    public boolean ProductsFilter(String CategoryID, String Fields, String str) {
+    public boolean ProductsFilter(String CategoryID, String Fields, String str, String min, String max) {
         try {
             CallSoap cs = new CallSoap();
-            String result = cs.ResiveList("ProductSrearch?cid=" + CategoryID + "&field=" + Fields + "&str=" + str);
+            String result="";
+            if (cid.equals(""))
+                result = cs.ResiveList("ProductFilter?cid=all" + "&shopID=" + ShopID + "&field=" + Fields + "&str=" + str
+                        + "&min=" + min+ "&max=" + max);
+            else
+                result = cs.ResiveList("ProductFilter?cid=" + CategoryID + "&topicID" + ShopID + "&field=" + Fields + "&str=" + str
+                        + "&min=" + min+ "&max=" + max);
+
             ID.clear();
             Name.clear();
             Price.clear();
@@ -390,7 +397,6 @@ public class ShowProducts extends AppCompatActivity {
                 Toast.makeText(ShowProducts.this, "هیچ کالایی در این گروه موجود نمی باشد",
                         Toast.LENGTH_LONG).show();
 
-            imageAdapter.notifyDataSetChanged();
             return true;
         } catch (Exception e) {
             return false;
@@ -655,6 +661,8 @@ public class ShowProducts extends AppCompatActivity {
 //		pty.add(Pro[i]);
 //		val.add("");
 // 	}
+        final EditText min = (EditText) dialog.findViewById(R.id.txtMin);
+        final EditText max = (EditText) dialog.findViewById(R.id.txtMax);
         Button Filter = (Button) dialog.findViewById(R.id.Filter);
         Filter.setOnClickListener(new OnClickListener() {
             @Override
@@ -667,9 +675,9 @@ public class ShowProducts extends AppCompatActivity {
                         str += val.get(i) + ";";
                     }
                 }
-                //ProductsFilter(cid, fields, str);
-                new ProductList().execute("filter",cid,fields,str);
-                //popup.dismiss();
+                //ProductsFilter(cid, fields, str, min.getText().toString(),max.getText().toString());
+                new ProductList().execute("filter",cid, fields, str, min.getText().toString(),max.getText().toString());
+                dialog.dismiss();
             }
         });
 

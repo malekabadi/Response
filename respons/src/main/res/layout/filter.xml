@@ -47,7 +47,7 @@
 		android:layout_marginTop="5dip">
 
 		<EditText
-			android:id="@+id/txtShop"
+			android:id="@+id/txtMin"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:layout_alignLeft="@+id/txtDesc"
@@ -63,7 +63,7 @@
 		android:layout_marginTop="5dip">
 
 		<EditText
-			android:id="@+id/txtProduct"
+			android:id="@+id/txtMax"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:layout_below="@+id/txtName"
