@@ -89,17 +89,6 @@ public class ShowAllProducts extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.content_menu_right, container, false);
 
-//        Bundle extra = getIntent().getExtras();
-//        if (extra != null)
-//            if (extra.getString("EXIT") != null) {
-//                finishAffinity();
-//                finish();
-//            }
-
-        appVar.main.UserID = "1";
-        appVar.main.UserName = "09156620865";
-        appVar.main.HasShop = true;
-        appVar.main.ShopID = "2";
 //-------------------------------------------- TopicList and ZoneList
         if (Topics.size() < 1) {
             TopicIDs.add("0");

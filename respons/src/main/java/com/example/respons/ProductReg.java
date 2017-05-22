@@ -98,6 +98,7 @@ public class ProductReg extends AppCompatActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.product_reg);
+		Helper.verifyStoragePermissions(this);
 		 //pty.add("Size");
 		 //val.add("No value");
 		/*************************************************** Set Custom ActionBar *****/
@@ -451,12 +452,12 @@ public class ProductReg extends AppCompatActivity {
 				try {
 					final Uri imageUri = data.getData();
 
-                String[] filePath = { MediaStore.Images.Media.DATA };
-                Cursor c = getContentResolver().query(imageUri,filePath, null, null, null);
-                c.moveToFirst();
-                int columnIndex = c.getColumnIndex(filePath[0]);
+					String[] filePath = {MediaStore.Images.Media.DATA};
+					Cursor c = getContentResolver().query(imageUri, filePath, null, null, null);
+					c.moveToFirst();
+					int columnIndex = c.getColumnIndex(filePath[0]);
 					String picturePath = c.getString(columnIndex);
-				Files.add(picturePath);
+					Files.add(picturePath);
 
 					final InputStream imageStream = getContentResolver().openInputStream(imageUri);
 					selectedImage = BitmapFactory.decodeStream(imageStream);
@@ -464,7 +465,7 @@ public class ProductReg extends AppCompatActivity {
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
-                //iv.get(index).setImageBitmap(bitmap);
+				//iv.get(index).setImageBitmap(bitmap);
                 iv.get(index).setImageBitmap(selectedImage);
                 p.notifyDataSetChanged();
 				hListView.invalidate();
@@ -576,14 +577,32 @@ public class ProductReg extends AppCompatActivity {
   	        return position;
   	    }
       
-  	    public View getView(int position, View convertView, ViewGroup parent) {
+  	    public View getView(final int position, View convertView, ViewGroup parent) {
 
   	        	convertView = inflater.inflate(R.layout.listview_wedit, null);
   	            TextView item = (TextView) convertView.findViewById(R.id.Item);
   	            EditText value = (EditText) convertView.findViewById(R.id.Value);
   	            value.setText(val.get(position));
   	            item.setText(pty.get(position));
-  	            
+
+			value.addTextChangedListener(new TextWatcher() {
+
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before,
+										  int count) {
+				}
+
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count,
+											  int after) {
+
+				}
+
+				@Override
+				public void afterTextChanged(Editable s) {
+					val.set(position,s.toString());
+				}
+			});
 
   	        return convertView;
   	    }
@@ -741,7 +760,11 @@ public class ProductReg extends AppCompatActivity {
 	    
 	    @Override
 	    protected String doInBackground(String... params) {
-	    	String res;
+
+
+
+
+			String res;
 	    	CallSoap cs=new CallSoap();
 	    	res=cs.ResiveList(params[0]);
 			if (res.indexOf(",")>0)
@@ -751,19 +774,19 @@ public class ProductReg extends AppCompatActivity {
 				{
 					try {
 						FileInputStream fstrm = new FileInputStream(Files.get(i));
-						FileUpload hfu = new FileUpload(getString(R.string.WServer)+"/fileup.aspx", images[i],"description");
+						//FileInputStream fstrm = openFileInput(Files.get(i));
+						Log.w("level3", Files.get(i));
+						Log.w("level3", fstrm.toString());
+						FileUpload hfu = new FileUpload(getString(R.string.WServer) + "/fileup.aspx", images[i], "description");
+						Log.w("level3", hfu.toString());
 						hfu.Send_Now(fstrm);
-               	  	} catch (FileNotFoundException e) {
-               	    // Error: File not found
-               	  	}
+					} catch (IOException e) {
+						e.printStackTrace();
+						Log.w("level1", e.getMessage());
+					}
 				}
 			}
 	    	
-	        try {
-	            Thread.sleep(3000);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
 	    	return res;
 	    }
 	

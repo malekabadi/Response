@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -217,6 +218,7 @@ public class Request extends AppCompatActivity {
                      e.printStackTrace();
                  }
              } else if (requestCode == 2) {
+                 Helper.verifyStoragePermissions(this);
                  Uri selectedImage = data.getData();
                  String[] filePath = { MediaStore.Images.Media.DATA };
                  Cursor c = getContentResolver().query(selectedImage,filePath, null, null, null);
@@ -224,9 +226,14 @@ public class Request extends AppCompatActivity {
                  int columnIndex = c.getColumnIndex(filePath[0]);
                  String picturePath = c.getString(columnIndex);
                  c.close();
-                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-                 //Log.w("path of image from gallery......******************.........", picturePath+"");
-                 iv.setImageBitmap(thumbnail);
+                 try {
+                     final InputStream imageStream = getContentResolver().openInputStream(selectedImage);
+                     iv.setImageBitmap(BitmapFactory.decodeStream(imageStream));
+                 } catch (FileNotFoundException e) {
+                     e.printStackTrace();
+                 }
+//                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
+//                 iv.setImageBitmap(thumbnail);
              }
          }
      }

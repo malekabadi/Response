@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -358,9 +359,16 @@ public class StoreReg extends AppCompatActivity {
                  int columnIndex = c.getColumnIndex(filePath[0]);
                  picturePath = c.getString(columnIndex);
                  c.close();
-                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-                 Log.w("path of image from gallery......******************.........", picturePath+"");
-                 iv.setImageBitmap(thumbnail);
+				 try {
+					 final InputStream imageStream = getContentResolver().openInputStream(selectedImage);
+					 iv.setImageBitmap(BitmapFactory.decodeStream(imageStream));
+				 } catch (FileNotFoundException e) {
+					 e.printStackTrace();
+				 }
+
+//                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
+//                 Log.w("path of image:", picturePath+"");
+//                 iv.setImageBitmap(thumbnail);
              }
          }
      }	

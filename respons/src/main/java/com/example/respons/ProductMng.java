@@ -264,6 +264,7 @@ public class ProductMng extends AppCompatActivity {
                     Intent inte = new Intent(ProductMng.this, ProductReg.class);
                     inte.putExtra("ID", sid);
                     inte.putExtra("CID", cid);
+                    inte.putExtra("CNAME", btnCat.getText());
                     startActivity(inte);
                 } else if (options[item].equals("حـذف")) {
                     CallSoap cs = new CallSoap();

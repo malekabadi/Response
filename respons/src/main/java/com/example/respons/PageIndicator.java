@@ -274,7 +274,7 @@ public class PageIndicator extends AppCompatActivity {
                 String[] Pro = res2.split(":");
                 for (int i = 0; i < Pro.length; i++) {
                     String[] Fields = Pro[i].split(",");
-                    if (Fields.length > 0) val.add(Fields[1]);
+                    if (Fields.length > 0) val.add(Fields[0]);
                     else val.add("");
                     if (Fields.length > 1) pty.add(Fields[1]);
                     else pty.add("");
@@ -396,8 +396,8 @@ public class PageIndicator extends AppCompatActivity {
             convertView = inflater.inflate(R.layout.listview_2item, null);
             TextView item = (TextView) convertView.findViewById(R.id.Item);
             TextView value = (TextView) convertView.findViewById(R.id.Value);
-            value.setText(val.get(position));
-            item.setText(pty.get(position));
+            value.setText(pty.get(position));
+            item.setText(val.get(position));
             //value.setText("ظ…ظ‚ط¯ط§ط±");
 
 

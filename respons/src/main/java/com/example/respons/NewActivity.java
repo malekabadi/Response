@@ -49,22 +49,19 @@ public class NewActivity extends MenuRight {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+        appVar.main.UserID = "1";
+        appVar.main.UserName = "09156620865";
+        appVar.main.HasShop = true;
+        appVar.main.ShopID = "2";
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.setDrawerListener(toggle);
-//        toggle.syncState();
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
-
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) ;
-            drawer.setDrawerListener(toggle);
-            toggle.syncState();
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 
@@ -80,6 +77,10 @@ public class NewActivity extends MenuRight {
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header= navigationView.inflateHeaderView(R.layout.nav_header_menu_right);
+        TextView name = (TextView)header.findViewById(R.id.Name);
+        name.setText(appVar.main.UserName);
+        //View header=navigationView.getHeaderView(0);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
