@@ -17,6 +17,7 @@
         android:id="@+id/list_topic"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:choiceMode="singleChoice"
         android:minHeight="300dip"
         android:layout_margin="0dp"
         android:layout_weight="2.36"

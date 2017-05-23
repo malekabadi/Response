@@ -40,15 +40,15 @@ public class MenuRight extends AppCompatActivity
 //        navigationView.setNavigationItemSelectedListener(this);
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.END)) {
-            drawer.closeDrawer(GravityCompat.END);
-        } else {
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        if (drawer.isDrawerOpen(GravityCompat.END)) {
+//            drawer.closeDrawer(GravityCompat.END);
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

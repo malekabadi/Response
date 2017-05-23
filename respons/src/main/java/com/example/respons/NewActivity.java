@@ -43,14 +43,15 @@ public class NewActivity extends MenuRight {
             R.drawable.prod,
             R.drawable.shop24
     };
-
+    public static TextView name;
+    public static NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
         appVar.main.UserID = "1";
-        appVar.main.UserName = "09156620865";
+        //appVar.main.UserName = "09156620865";
         appVar.main.HasShop = true;
         appVar.main.ShopID = "2";
 
@@ -75,12 +76,22 @@ public class NewActivity extends MenuRight {
             }
         });
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        View header= navigationView.inflateHeaderView(R.layout.nav_header_menu_right);
-        TextView name = (TextView)header.findViewById(R.id.Name);
-        name.setText(appVar.main.UserName);
-        //View header=navigationView.getHeaderView(0);
+        //View header= navigationView.inflateHeaderView(R.layout.nav_header_menu_right);
+        View header=navigationView.getHeaderView(0);
+        name = (TextView)header.findViewById(R.id.Name);
+        if (! appVar.main.UserName.equals("0")) {
+            name.setText(appVar.main.UserName);
+            navigationView.getMenu().findItem(R.id.nav_shop).setEnabled(true);
+        }
+        else
+        name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(NewActivity.this,LoginActivity.class));
+            }
+        });
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -89,6 +100,16 @@ public class NewActivity extends MenuRight {
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
         viewPager.setCurrentItem(2);
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(Gravity.RIGHT)) {
+            drawer.closeDrawer(Gravity.RIGHT);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     private void setupTabIcons() {

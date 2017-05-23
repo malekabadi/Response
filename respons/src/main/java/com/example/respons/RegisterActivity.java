@@ -124,7 +124,11 @@ public class RegisterActivity extends AppCompatActivity {
 							Toast.LENGTH_SHORT).show();
 					appVar.main.UserName=phone.getText().toString();
 					appVar.main.UserID=result.substring(2);
-					appVar.main.HasShop=true;
+
+					NewActivity.name.setText(appVar.main.UserName);
+					NewActivity.navigationView.getMenu().findItem(R.id.nav_shop).setTitle("ایجاد فروشگاه");
+					NewActivity.navigationView.getMenu().findItem(R.id.nav_shop).setEnabled(true);
+
 					Editor editor = sp.edit();
 					editor.putString("phonekey", phone.getText().toString());
 					//editor.apply();

@@ -27,6 +27,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.drawable.ColorDrawable;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,7 +42,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends MenuRight {
 
 	Button logbtn;
 	EditText phone;
@@ -74,8 +75,7 @@ public class LoginActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(LoginActivity.this,
-						RegisterActivity.class));				
+				startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
 			}
 		});
 //		final ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater()
@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
 			try {
 				if (phone.getText().toString().length() != 0
 						& pass.getText().toString().length() != 0) {
-					if (phone.getText().toString().length() != 10
+					if (phone.getText().toString().length() != 11
 							|| number.matches(regexStr) == false) {
 						Toast.makeText(this, "شماره تلفن را بدرستی وارد کنید",
 								Toast.LENGTH_SHORT).show();
@@ -219,17 +219,29 @@ public class LoginActivity extends AppCompatActivity {
 
 			@Override
 			public void run() {
-				if (result.substring(0, 2).equals("ok")) {
+				String[] res=result.split(":");
+				if (res[0].substring(0, 2).equals("ok")) {
 					Toast.makeText(getApplicationContext(), "خوش آمدید",
 							Toast.LENGTH_SHORT).show();
 					Editor editor = sp.edit();
 					editor.putString("phonekey", phone.getText().toString());
 					appVar.main.UserName=phone.getText().toString();
-					appVar.main.UserID=result.substring(2);
+					appVar.main.UserID=res[0].substring(2);
+					if (res.length > 1)
+						if (res[1].substring(0, 4).equals("shop")) {
+							appVar.main.HasShop = true;
+							appVar.main.ShopID = res[1].substring(4);
+						} else
+							NewActivity.navigationView.getMenu().findItem(R.id.nav_shop).setTitle("ایجاد فروشگاه");
+					else
+						NewActivity.navigationView.getMenu().findItem(R.id.nav_shop).setTitle("ایجاد فروشگاه");
 					//editor.apply();
-					//startActivity(new Intent(LoginActivity.this,MainActivity.class));
-					logbtn.setEnabled(true);
+					//startActivity(new Intent(LoginActivity.this,NewActivity.class));
 
+					NewActivity.navigationView.getMenu().findItem(R.id.nav_shop).setEnabled(true);
+					NewActivity.name.setText(appVar.main.UserName);
+
+					logbtn.setEnabled(true);
 					progressDialog.dismiss();
 					handler.sendEmptyMessage(0);
 					finish();
