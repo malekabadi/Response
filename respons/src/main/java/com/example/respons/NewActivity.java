@@ -51,7 +51,7 @@ public class NewActivity extends MenuRight {
         setContentView(R.layout.activity_main_menu);
 
         appVar.main.UserID = "1";
-        //appVar.main.UserName = "09156620865";
+        appVar.main.UserName = "09156620865";
         appVar.main.HasShop = true;
         appVar.main.ShopID = "2";
 

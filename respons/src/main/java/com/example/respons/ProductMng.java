@@ -327,10 +327,10 @@ public class ProductMng extends AppCompatActivity {
         if (Rows.length > 0) {
             for (int i = 0; i < Rows.length; i++) {
                 String[] Field = Rows[i].split(",");
-                ID.add(Field[0]);
-                Name.add(Field[1]);
-                Price.add(Field[2]);
-                Image.add(Field[3]);
+                if (Field.length>0) ID.add(Field[0]);
+                if (Field.length>1) Name.add(Field[1]);
+                if (Field.length>2) Price.add(Field[2]);
+                if (Field.length>3) Image.add(Field[3]);
                 if (Field.length > 4)
                     Desc.add(Field[4]);
                 else

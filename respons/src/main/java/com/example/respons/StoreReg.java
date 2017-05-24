@@ -10,6 +10,8 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import android.net.Uri;
@@ -18,6 +20,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ThemedSpinnerAdapter;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
@@ -138,11 +141,11 @@ public class StoreReg extends AppCompatActivity {
 				{
 					shop.setError("لطفا نام فروشگاه را وارد نمایید");reg=false;
 				} 
-				EditText name=(EditText) findViewById(R.id.txtName);
-				if (name.getText().toString().equals(""))
-				{
-					name.setError("لطفا نام صاحب فروشگاه را وارد نمایید");reg=false;
-				} 
+//				EditText name=(EditText) findViewById(R.id.txtName);
+//				if (name.getText().toString().equals(""))
+//				{
+//					name.setError("لطفا نام صاحب فروشگاه را وارد نمایید");reg=false;
+//				}
 				EditText desc=(EditText) findViewById(R.id.txtDesc);
 				if (desc.getText().toString().equals(""))
 				{
@@ -167,7 +170,7 @@ public class StoreReg extends AppCompatActivity {
 				{
 					CallSoap cs=new CallSoap();
 					String url="title="+shop.getText();
-					url+="&name="+name.getText();
+					url+="&name="+"";//name.getText();
 					url+="&topicID="+TopicID;
 					url+="&onwer="+appVar.main.UserID;
 					url+="&desc="+desc.getText();
@@ -250,13 +253,15 @@ public class StoreReg extends AppCompatActivity {
 			addr.setText(Field[6]);
 //			txtCity.setSelection(Cities.indexOf(Field[7]));
 			txtZone.setSelection(Zonez.indexOf(Field[8]));
-			Context Ct=getApplicationContext();
-            Picasso.with(Ct) //
-            .load(getString(R.string.WServer)+"/images/"+Field[9]) //
-            .error(R.drawable.i2) //
-            .fit() //
-            .tag(Ct) //
-            .into(Image);
+			Context Ct = getApplicationContext();
+			Picasso.with(Ct) //
+					.load(getString(R.string.WServer) + "/images/" + Field[9]) //
+					.networkPolicy(NetworkPolicy.NO_CACHE)
+					.memoryPolicy(MemoryPolicy.NO_CACHE)
+					.error(R.drawable.i2) //
+					.fit() //
+					.tag(Ct) //
+					.into(Image);
 		}
 		super.onPostExecute(result);
 		Asycdialog.dismiss();
@@ -426,10 +431,10 @@ public class StoreReg extends AppCompatActivity {
     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     View layout = layoutInflater.inflate(R.layout.popup, viewGroup);
     Topics.clear();TopicIDs.clear();
-    for (int i=1; i< MainActivityOLD.Topics.size() ; i++)
+    for (int i=1; i< OneFragment.Topics.size() ; i++)
     {
-    	Topics.add(MainActivityOLD.Topics.get(i));
-    	TopicIDs.add(MainActivityOLD.TopicIDs.get(i));
+    	Topics.add(OneFragment.Topics.get(i));
+    	TopicIDs.add(OneFragment.TopicIDs.get(i));
     }
     final ListView lv= (ListView) layout.findViewById(R.id.list_topic);
     final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -459,9 +464,9 @@ public class StoreReg extends AppCompatActivity {
     		String item = TopicIDs.get(position);
     		Toast.makeText(StoreReg.this, item,
     				   Toast.LENGTH_LONG).show();
-    		btnObj.setText(MainActivityOLD.SubTopics.get(position));
-    		TopicID=MainActivityOLD.SubTopicIDs.get(position);
-			lv.setVisibility(0);
+    		btnObj.setText(OneFragment.SubTopics.get(position));
+    		TopicID=OneFragment.SubTopicIDs.get(position);
+			lv.setVisibility(View.GONE);
 			subList(StoreReg.this);
     		popup.dismiss();
     	}
@@ -481,7 +486,7 @@ public class StoreReg extends AppCompatActivity {
 
     final ListView lv= (ListView) layout.findViewById(R.id.list_topic);
     final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-    R.layout.listview_item_row, MainActivityOLD.SubTopics);
+    R.layout.listview_item_row, OneFragment.SubTopics);
     lv.setAdapter(adapter);
 
     final PopupWindow popup = new PopupWindow(context);
@@ -505,8 +510,8 @@ public class StoreReg extends AppCompatActivity {
     	@Override
     	public void onItemClick(AdapterView<?> parent, View view, int position,
                 long id) {
-    		btnObj.setText(MainActivityOLD.SubTopics.get(position));
-    		TopicID=MainActivityOLD.SubTopicIDs.get(position);
+    		btnObj.setText(OneFragment.SubTopics.get(position));
+    		TopicID=OneFragment.SubTopicIDs.get(position);
     		popup.dismiss();
     	}
     });
@@ -521,30 +526,6 @@ public class StoreReg extends AppCompatActivity {
 	    	super.onPostExecute(result);
 	    	Asycdialog.dismiss();
 	    	String res=result;
-			appVar.main.HasShop=true;
-			appVar.main.ShopID=res;
-			if (!res.equals("false"))
-			{
-				Toast.makeText(StoreReg.this, res,
-						   Toast.LENGTH_LONG).show();
-                res=res.replaceAll("\"", "");
-                res=res.replaceAll("\n", "");
-				res="Shop"+res+".jpg";
-				if (picturePath != null)
-                try {
-               	    // Set your file path here
-               	    //FileInputStream fstrm = new FileInputStream(Environment.getExternalStorageDirectory().toString()+"/New Folder/i7.png");
-               	    FileInputStream fstrm = new FileInputStream(picturePath);
-
-               	    // Set your server page url (and the file title/description)
-               	    FileUpload hfu = new FileUpload(getString(R.string.WServer)+"/fileup.aspx", res,"my file description");
-
-               	    hfu.Send_Now(fstrm);
-
-               	  } catch (FileNotFoundException e) {
-               	    // Error: File not found
-               	  }
-			}
 			finish();
  	    }
 
@@ -559,12 +540,35 @@ public class StoreReg extends AppCompatActivity {
 	    protected String doInBackground(String... params) {
 	    	String res;
 	    	CallSoap cs=new CallSoap();
-	    	res=cs.ResiveList(params[0]);    	
-	        try {
-	            Thread.sleep(3000);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
+	    	res=cs.ResiveList(params[0]);
+
+			appVar.main.HasShop=true;
+			appVar.main.ShopID=res;
+			if (!res.equals("false"))
+			{
+//				Toast.makeText(StoreReg.this, res,
+//						Toast.LENGTH_LONG).show();
+				res=res.replaceAll("\"", "");
+				res=res.replaceAll("\n", "");
+				res="Shop"+res+".jpg";
+				if (picturePath != null)
+					try {
+						Helper.verifyStoragePermissions(StoreReg.this);
+						// Set your file path here
+						//FileInputStream fstrm = new FileInputStream(Environment.getExternalStorageDirectory().toString()+"/New Folder/i7.png");
+						FileInputStream fstrm = new FileInputStream(picturePath);
+
+						// Set your server page url (and the file title/description)
+						FileUpload hfu = new FileUpload(getString(R.string.WServer)+"/fileup.aspx", res,"my file description");
+
+						hfu.Send_Now(fstrm);
+
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+						Log.w("level1", e.getMessage());
+					}
+			}
+
 	    	return res;
 	    }
 	
