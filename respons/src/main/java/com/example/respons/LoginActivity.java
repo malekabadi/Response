@@ -8,12 +8,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-//import com.exampleandroidloginscreen.MainActivity;
-//import com.exampleandroidloginscreen.WelcomeActivity;
-
-
-
-
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -99,7 +93,7 @@ public class LoginActivity extends MenuRight {
 		if (!user.equals("")) // لاگین نگهداشتن کاربر
 		{
 			startActivity(new Intent(LoginActivity.this,
-					MainActivityOLD.class));
+					NewActivity.class));
 			finish();
 		}
 	}

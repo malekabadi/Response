@@ -20,7 +20,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ThemedSpinnerAdapter;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
@@ -32,18 +31,15 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -53,9 +49,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
-import android.support.design.widget.TextInputLayout;
 
 
 public class StoreReg extends AppCompatActivity {
@@ -431,10 +425,10 @@ public class StoreReg extends AppCompatActivity {
     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     View layout = layoutInflater.inflate(R.layout.popup, viewGroup);
     Topics.clear();TopicIDs.clear();
-    for (int i=1; i< OneFragment.Topics.size() ; i++)
+    for (int i = 1; i< Shops.Topics.size() ; i++)
     {
-    	Topics.add(OneFragment.Topics.get(i));
-    	TopicIDs.add(OneFragment.TopicIDs.get(i));
+    	Topics.add(Shops.Topics.get(i));
+    	TopicIDs.add(Shops.TopicIDs.get(i));
     }
     final ListView lv= (ListView) layout.findViewById(R.id.list_topic);
     final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -464,8 +458,8 @@ public class StoreReg extends AppCompatActivity {
     		String item = TopicIDs.get(position);
     		Toast.makeText(StoreReg.this, item,
     				   Toast.LENGTH_LONG).show();
-    		btnObj.setText(OneFragment.SubTopics.get(position));
-    		TopicID=OneFragment.SubTopicIDs.get(position);
+    		btnObj.setText(Shops.SubTopics.get(position));
+    		TopicID= Shops.SubTopicIDs.get(position);
 			lv.setVisibility(View.GONE);
 			subList(StoreReg.this);
     		popup.dismiss();
@@ -486,7 +480,7 @@ public class StoreReg extends AppCompatActivity {
 
     final ListView lv= (ListView) layout.findViewById(R.id.list_topic);
     final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-    R.layout.listview_item_row, OneFragment.SubTopics);
+    R.layout.listview_item_row, Shops.SubTopics);
     lv.setAdapter(adapter);
 
     final PopupWindow popup = new PopupWindow(context);
@@ -510,8 +504,8 @@ public class StoreReg extends AppCompatActivity {
     	@Override
     	public void onItemClick(AdapterView<?> parent, View view, int position,
                 long id) {
-    		btnObj.setText(OneFragment.SubTopics.get(position));
-    		TopicID=OneFragment.SubTopicIDs.get(position);
+    		btnObj.setText(Shops.SubTopics.get(position));
+    		TopicID= Shops.SubTopicIDs.get(position);
     		popup.dismiss();
     	}
     });

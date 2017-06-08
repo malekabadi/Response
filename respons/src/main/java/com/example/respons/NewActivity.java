@@ -9,15 +9,12 @@ package com.example.respons;
         import android.support.v4.app.Fragment;
         import android.support.v4.app.FragmentManager;
         import android.support.v4.app.FragmentPagerAdapter;
-        import android.support.v4.view.GravityCompat;
         import android.support.v4.view.ViewPager;
         import android.support.v4.widget.DrawerLayout;
         import android.support.v7.app.ActionBarDrawerToggle;
-        import android.support.v7.app.AppCompatActivity;
         import android.support.v7.widget.Toolbar;
         import android.view.Gravity;
         import android.view.LayoutInflater;
-        import android.view.Menu;
         import android.view.MenuItem;
         import android.view.View;
         import android.view.Window;
@@ -29,7 +26,7 @@ package com.example.respons;
         import java.util.List;
 
 //import info.androidhive.materialtabs.R;
-//import info.androidhive.materialtabs.fragments.OneFragment;
+//import info.androidhive.materialtabs.fragments.Shops;
 //import info.androidhive.materialtabs.fragments.ThreeFragment;
 //import info.androidhive.materialtabs.fragments.TwoFragment;
 
@@ -57,6 +54,12 @@ public class NewActivity extends MenuRight {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+//        try {
+//            List<TopicList> brands=new CallSoap().GetTopics("");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -133,7 +136,7 @@ public class NewActivity extends MenuRight {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new Category(), "one");
-        adapter.addFrag(new OneFragment(), "two");
+        adapter.addFrag(new Shops(), "two");
         adapter.addFrag(new ShowAllProducts(), "three");
         viewPager.setAdapter(adapter);
     }

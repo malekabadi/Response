@@ -371,6 +371,7 @@ public class ProductReg extends AppCompatActivity {
 					EditText min=(EditText) findViewById(R.id.txtMin);min.setText(Field[7]);
 					EditText forward=(EditText) findViewById(R.id.txtForward);forward.setText(Field[8]);
 					EditText weight=(EditText) findViewById(R.id.txtWeight);weight.setText(Field[9]);
+					btnCat.setText(Field[10]);
 				}
 	            Asycdialog.dismiss();
 	        }

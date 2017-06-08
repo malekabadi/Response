@@ -7,11 +7,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Display;
@@ -87,7 +83,7 @@ public class ShowAllProducts extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.content_menu_right, container, false);
+        rootView = inflater.inflate(R.layout.all_products, container, false);
 
 //-------------------------------------------- TopicList and ZoneList
         if (Topics.size() < 1) {
@@ -218,19 +214,19 @@ public class ShowAllProducts extends Fragment {
     //--------------------------------------------------------------------------------
     private class LongOperation extends AsyncTask<String, Integer, Boolean> {
         String res;
+        ProgressBar pb1;
 
         @Override
         protected void onPostExecute(Boolean result) {
-            ProgressBar pb = (ProgressBar) rootView.findViewById(R.id.progressBar1);
-            pb.setVisibility(View.INVISIBLE);
+            pb1.setVisibility(View.INVISIBLE);
             imageAdapter.notifyDataSetChanged();
             super.onPostExecute(result);
         }
 
         @Override
         protected void onPreExecute() {
-            ProgressBar pb = (ProgressBar) rootView.findViewById(R.id.progressBar1);
-            pb.setVisibility(View.VISIBLE);
+            pb1 = (ProgressBar) rootView.findViewById(R.id.progressBar1);
+            pb1.setVisibility(View.VISIBLE);
             super.onPreExecute();
         }
 

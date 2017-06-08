@@ -85,18 +85,20 @@ public class Category extends Fragment {
 
     //-------------------------------------------------------------------------
     private class LongOperation extends AsyncTask<String, Integer, Boolean> {
+
+        ProgressBar pb;
         @Override
         protected void onPostExecute(Boolean result) {
-            ProgressBar pb = (ProgressBar) rootView.findViewById(R.id.progressBar1);
-            pb.setVisibility(View.INVISIBLE);
+            ProgressBar pb3 = (ProgressBar) rootView.findViewById(R.id.progressBar1);
+            pb3.setVisibility(View.INVISIBLE);
             imAdapter.notifyDataSetChanged();
             super.onPostExecute(result);
         }
 
         @Override
         protected void onPreExecute() {
-            ProgressBar pb = (ProgressBar) rootView.findViewById(R.id.progressBar1);
-            pb.setVisibility(View.VISIBLE);
+            ProgressBar pb3 = (ProgressBar) rootView.findViewById(R.id.progressBar1);
+            pb3.setVisibility(View.VISIBLE);
             super.onPreExecute();
         }
 
