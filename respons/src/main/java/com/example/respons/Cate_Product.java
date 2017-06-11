@@ -46,7 +46,8 @@ public class Cate_Product extends AppCompatActivity {
     ImageAdapter imAdapter;
     GridView gridview;
     ListView listview;
-    ArrayAdapter<String> adapter;
+    CateAdapter adapter;
+    int Select=-1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class Cate_Product extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.actionbar2);
         View mCustomView = getSupportActionBar().getCustomView();
         TextView title = (TextView) mCustomView.findViewById(R.id.title);
-        title.setText("سبد خرید");
+        title.setText("لیست محصولات");
         //-----------------------------------------
 
         Bundle extra = getIntent().getExtras();
@@ -83,8 +84,9 @@ public class Cate_Product extends AppCompatActivity {
         //new LongOperation().execute("");
 
         listview = (ListView) findViewById(R.id.listView1);
-        adapter = new ArrayAdapter<String>(this,
-                R.layout.listview_item_row, _SubTopics);
+//        adapter = new ArrayAdapter<String>(this,
+//                R.layout.listview_item_row, _SubTopics);
+        adapter =new CateAdapter(this);
         listview.setAdapter(adapter);
         Helper.getListViewSize(listview);
 
@@ -92,6 +94,8 @@ public class Cate_Product extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 new LongOperation().execute(_SubTopicIDs.get(position));
+                Select = position;
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -184,6 +188,47 @@ public class Cate_Product extends AppCompatActivity {
     }
 
     //--------------------------------------------------------------------------------
+    public class CateAdapter extends BaseAdapter {
+        private Context mContext;
+
+        public CateAdapter(Context c) {
+            mContext = c;
+        }
+
+        public int getCount() {
+            return _SubTopics.size();
+        }
+
+        public Object getItem(int position) {
+            return null;
+        }
+
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View gridViewAndroid;
+            LayoutInflater inflater = (LayoutInflater) mContext
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            if (convertView == null) {
+            } else {
+                gridViewAndroid = (View) convertView;
+            }
+
+            gridViewAndroid = new View(mContext);
+            gridViewAndroid = inflater.inflate(R.layout.listview_item_row, null);
+            TextView title = (TextView) gridViewAndroid.findViewById(R.id.Text1);
+            title.setText(_SubTopics.get(position));
+            if (position == Select)
+                title.setBackgroundColor(0xffddddff);
+
+            return gridViewAndroid;
+        }
+
+    }
+
+    //--------------------------------------------------------------------------------
     public class ImageAdapter extends BaseAdapter {
         private Context mContext;
 
@@ -224,12 +269,24 @@ public class Cate_Product extends AppCompatActivity {
             ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.gridview_image);
             name.setText(Name.get(position));
             price.setText(Helper.GetMoney(Price.get(position)));
+            final ProgressBar pb = (ProgressBar) gridViewAndroid.findViewById(R.id.progressBar1);
+            pb.setVisibility(View.VISIBLE);
             Picasso.with(mContext) //
                     .load(getString(R.string.WServer) + "/images/" + Image.get(position)) //
                     .error(R.drawable.i2) //
                     .fit() //
                     .tag(mContext) //
-                    .into(imageViewAndroid);
+                    .into(imageViewAndroid,new com.squareup.picasso.Callback() {
+                        @Override
+                        public void onSuccess() {
+                            pb.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                            pb.setVisibility(View.GONE);
+                        }
+                    });
 
             return gridViewAndroid;
         }

@@ -13,6 +13,7 @@ import android.text.TextWatcher;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -445,7 +446,8 @@ public class ShowAllProducts extends Fragment {
                 if (cid.length() > 0)
                     Products();
                 else
-                    StoreList(sort);
+                    new LongOperation().execute(sort);
+                    //StoreList(sort);
                 imageAdapter.notifyDataSetChanged();
                 popup.dismiss();
             }

@@ -12,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,7 +39,7 @@ public class Category extends Fragment {
     public static ArrayList<String> SubParentID = new ArrayList<String>();
     ArrayList<String> _SubTopics = new ArrayList<String>();
     ArrayList<String> _SubTopicIDs = new ArrayList<String>();
-    public ArrayList<String> Image = new ArrayList<String>();
+    public static ArrayList<String> Image = new ArrayList<String>();
 
     Point p;
     String TopicID = "", ZoneID = "", FindStr = "";
@@ -163,17 +164,24 @@ public class Category extends Fragment {
             TextView text1 = (TextView) gridViewAndroid.findViewById(R.id.title);
             ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.image);
             text1.setText(Topics.get(position));
-            int img = mContext.getResources().getIdentifier(Image.get(position),
-                    "drawable", mContext.getPackageName());
-            Drawable res = getResources().getDrawable(img);
-            Picasso.with(mContext) //
-                    .load(img) //
-                    //.placeholder(R.drawable.i1) //
-                    .error(R.drawable.i2) //
-                    .fit() //
-                    .tag(mContext) //
-                    .into(imageViewAndroid);
-            imageViewAndroid.setImageResource(img);
+            int img=0;
+            try {
+                  img = mContext.getResources().getIdentifier(Image.get(position),
+                        "drawable", mContext.getPackageName());
+            } catch (Exception e){
+                Log.w("Erorr",position + " : " + Image.size());
+            }
+            if (img != 0 ) {
+                Drawable res = getResources().getDrawable(img);
+                Picasso.with(mContext) //
+                        .load(img) //
+                        //.placeholder(R.drawable.i1) //
+                        .error(R.drawable.i2) //
+                        .fit() //
+                        .tag(mContext) //
+                        .into(imageViewAndroid);
+                imageViewAndroid.setImageResource(img);
+            }
             return gridViewAndroid;
         }
 

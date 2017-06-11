@@ -2,7 +2,11 @@ package com.example.respons;
 
         import android.app.Activity;
         import android.app.Dialog;
+        import android.app.DownloadManager;
         import android.content.Intent;
+        import android.content.IntentFilter;
+        import android.content.pm.PackageManager;
+        import android.net.Uri;
         import android.os.Bundle;
         import android.support.design.widget.NavigationView;
         import android.support.design.widget.TabLayout;
@@ -15,6 +19,7 @@ package com.example.respons;
         import android.support.v7.widget.Toolbar;
         import android.view.Gravity;
         import android.view.LayoutInflater;
+        import android.view.Menu;
         import android.view.MenuItem;
         import android.view.View;
         import android.view.Window;
@@ -35,6 +40,7 @@ public class NewActivity extends MenuRight {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    int AppVersion=0,CurrnetVersion=0;
     private int[] tabIcons = {
             R.drawable.cate,
             R.drawable.prod,
@@ -51,6 +57,24 @@ public class NewActivity extends MenuRight {
         appVar.main.UserName = "09156620865";
         appVar.main.HasShop = true;
         appVar.main.ShopID = "2";
+
+        //------------------------------- Version Control and Update
+        try {
+            AppVersion=getPackageManager().getPackageInfo(getPackageName(),0).versionCode;
+            //new CallSoap().ResiveListSync("GetCurrentVersion");
+
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (AppVersion < CurrnetVersion )
+        {
+            Intent updateIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://some-public-url/deploy/MyApplication.apk"));
+            startActivity(updateIntent);
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -204,6 +228,15 @@ public class NewActivity extends MenuRight {
     }
 
     //------------------------------------------------------
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main,menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

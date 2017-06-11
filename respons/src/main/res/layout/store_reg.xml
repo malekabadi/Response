@@ -9,14 +9,14 @@
     android:paddingBottom="5dp"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
-    android:paddingTop="5dp"
-    tools:context=".MainActivityOLD" >
+    android:paddingTop="5dp">
 
     <Button
         android:id="@+id/btnObj"
         android:layout_width="match_parent"
         android:layout_height="35dip"
         android:background="@drawable/button"
+        android:drawableLeft="@drawable/ic_arrow_drop"
         android:text="دسته بندی" />
 
     <com.wrapp.floatlabelededittext.FloatLabeledEditText

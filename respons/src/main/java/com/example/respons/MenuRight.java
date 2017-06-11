@@ -1,7 +1,9 @@
 package com.example.respons;
 
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -36,6 +38,14 @@ public class MenuRight extends AppCompatActivity
         } else if (id == R.id.nav_password) {
             Intent i = new Intent(MenuRight.this, PasswordActivity.class);
             startActivity(i);
+        } else if (id == R.id.nav_rule) {
+//            startNewActivity((MenuRight.this), "BBK");
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, "http://www.techrepublic.com");
+            intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check out this site!");
+            startActivity(Intent.createChooser(intent, "Share"));
+
         } else if (id == R.id.nav_password) {
             appVar.main.UserID = "";
             appVar.main.UserName = "";
@@ -50,7 +60,16 @@ public class MenuRight extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.END);
         return true;
     }
-
+    public void startNewActivity(Context context, String packageName) {
+        Intent intent = context.getPackageManager().getLaunchIntentForPackage(packageName);
+        if (intent == null) {
+            // Bring user to the market or let them choose an app?
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("market://details?id=" + packageName));
+        }
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
