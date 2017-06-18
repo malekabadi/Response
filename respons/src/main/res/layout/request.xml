@@ -72,10 +72,12 @@
     <Button
         android:id="@+id/btnReg"
         android:layout_width="fill_parent"
-        android:layout_height="30dip"
+        android:layout_height="40dip"
         android:layout_below="@+id/imageView1"
         android:background="@drawable/gbutton"
+        android:textColor="#fff"
         android:layout_marginTop="4dip"
+        android:textSize="18sp"
         android:text="ثبت" />
     
 </LinearLayout>

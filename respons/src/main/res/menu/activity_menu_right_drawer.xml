@@ -5,10 +5,12 @@
         <item
             android:id="@+id/nav_cart"
             android:title="سبد خرید"
+            android:enabled="false"
             android:icon="@drawable/ic_shopping"/>
         <item
             android:id="@+id/nav_info"
             android:title="مشخصات فردی"
+            android:enabled="false"
             android:icon="@drawable/ic_person"/>
          <item
             android:id="@+id/nav_histoty"
@@ -22,12 +24,14 @@
             android:title="بازدیدهای اخیر" />
         <item
             android:id="@+id/nav_password"
+            android:enabled="false"
             android:icon="@drawable/ic_lock"
             android:title="تغییر رمز ورود" />
 
         <item
             android:id="@+id/nav_quit"
             android:icon="@drawable/ic_power"
+            android:enabled="false"
             android:title="خروج از حساب کاربری " />
 
     </group>

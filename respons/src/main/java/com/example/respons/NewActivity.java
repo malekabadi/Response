@@ -16,6 +16,7 @@ package com.example.respons;
         import android.support.v4.view.ViewPager;
         import android.support.v4.widget.DrawerLayout;
         import android.support.v7.app.ActionBarDrawerToggle;
+        import android.support.v7.app.AppCompatActivity;
         import android.support.v7.widget.Toolbar;
         import android.view.Gravity;
         import android.view.LayoutInflater;
@@ -48,6 +49,8 @@ public class NewActivity extends MenuRight {
     };
     public static TextView name;
     public static NavigationView navigationView;
+    static AppCompatActivity MainAvtivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +60,10 @@ public class NewActivity extends MenuRight {
         appVar.main.UserName = "09156620865";
         appVar.main.HasShop = true;
         appVar.main.ShopID = "2";
+        Intent intent = new Intent("com.example.respons");
 
+        MainAvtivity=this;
+        if (NoNet._NoNet != null) NoNet._NoNet.finish();
         //------------------------------- Version Control and Update
         try {
             AppVersion=getPackageManager().getPackageInfo(getPackageName(),0).versionCode;

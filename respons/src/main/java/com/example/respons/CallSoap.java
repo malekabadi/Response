@@ -18,18 +18,22 @@ import org.json.JSONObject;
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.util.Xml;
 
 public class CallSoap
 {
 	String Resv="";
+	Context context;
+
 //---------------------------------------------
 public static boolean isConnectionAvailable(Context context) {
-	 
+
     ConnectivityManager connectivityManager = (ConnectivityManager) context
             .getSystemService(Context.CONNECTIVITY_SERVICE);
     if (connectivityManager != null) {
@@ -69,7 +73,7 @@ public  String convertStreamToString(InputStream is)
 }
 //--------------------------------------------------------
 public String ResiveListSync(String addr) throws Exception{
-    
+
 	String bnds=
     new AsyncTask<String, Void, String>(){
         @Override
@@ -87,30 +91,58 @@ public String ResiveListSync(String addr) throws Exception{
     return bnds;
 }
 //--------------------------------------------------------
-public  String ResiveList (String addr)
-{
-    try
-	{
-		System.out.println("guru");
-		DefaultHttpClient httpClient=new DefaultHttpClient();
-		addr=addr.replaceAll(" " ,"%20");
+public  String ResiveList (String addr) {
+//	if (isConnectionAvailable(context))
+		try {
+			System.out.println("guru");
+			DefaultHttpClient httpClient = new DefaultHttpClient();
+			addr = addr.replaceAll(" ", "%20");
 //		HttpGet httpGet=new HttpGet("http://10.0.2.2/RestServiceImpl.svc/"+addr);
-		HttpGet httpGet=new HttpGet("http://wcf.kapma.ir/RestServiceImpl.svc/"+addr);
-		//Get the response
-		HttpResponse httpResponse = httpClient.execute(httpGet);
-        HttpEntity httpEntity = httpResponse.getEntity();
-    	InputStream stream=httpEntity.getContent();
-    	//Convert the stream to readable format
-        String result= convertStreamToString(stream);
-        result=result.replaceAll("\"", "");
-        result=result.replaceAll("\n", "");
-    	return result;
-	}
-	catch(Exception e)
-	{
-		return null;
-	}
+			HttpGet httpGet = new HttpGet("http://wcf.kapma.ir/RestServiceImpl.svc/" + addr);
+			//Get the response
+			HttpResponse httpResponse = httpClient.execute(httpGet);
+			HttpEntity httpEntity = httpResponse.getEntity();
+			InputStream stream = httpEntity.getContent();
+			//Convert the stream to readable format
+			String result = convertStreamToString(stream);
+			result = result.replaceAll("\"", "");
+			result = result.replaceAll("\n", "");
+			return result;
+		} catch (Exception e) {
+			return "";
+		}
+//	else {
+//		Resv=addr;
+//		ShowAlertDialog();
+//		return "";
+//	}
 }
+
+	public void ShowAlertDialog() {
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+		alertDialog.setTitle("خطا در اتصال به اینترنت");
+		alertDialog.setMessage("در ارتباط با سرور خطایی رخ داده است");
+		alertDialog.setIcon(R.drawable.ic_launcher);
+		// Setting Positive "Yes" Button
+		alertDialog.setPositiveButton("تلاش مجدد",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.cancel();
+						ResiveList(Resv);
+					}
+				});
+		// Setting Negative "NO" Button
+		alertDialog.setNegativeButton("انصراف",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						// Write your code here to invoke NO event
+						dialog.cancel();
+					}
+				});
+		// Showing Alert Message
+		alertDialog.show();
+	}
+
 
 	public List<TopicList> GetTopics(String SID) throws Exception {
 		JSONObject jsonResponse;
