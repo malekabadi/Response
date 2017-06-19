@@ -30,7 +30,7 @@ public class NewCate extends AppCompatActivity {
     
     public List<String> pty=new ArrayList<String>();
     TAdapter adapter;
-    String id,cid,pid,mode="Add",text;
+    String id,cid,pid,mode="add",text;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +44,6 @@ public class NewCate extends AppCompatActivity {
 		View mCustomView = getSupportActionBar().getCustomView();
 		TextView title = (TextView) mCustomView.findViewById(R.id.title);
 		title.setText("گروه جدید");
-		ImageButton imb = (ImageButton) mCustomView.findViewById(R.id.imageButton);
-		imb.setVisibility(View.VISIBLE);
 		//-----------------------------------------
 		
 		final CallSoap cs=new CallSoap();
@@ -58,24 +56,36 @@ public class NewCate extends AppCompatActivity {
 		{
 		    cid= extra.getString("CID");
 	    	pid=extra.getString("PID");
-	    	if (cid != null)
-	    	{
-	    		mode="edit";
+			mode=extra.getString("mode");
+			if (mode.equals("edit")) {
 				editNew.setText(extra.getString("TITLE"));
-				String py= null;
+				String py = null;
 				try {
-					py = cs.ResiveListSync("CateProperty?ID="+cid);
+					py = cs.ResiveListSync("CateProperty?ID=" + cid);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				String[] listp=py.split(",");
-	            for(int i=0;i<listp.length;i++)
-	            	pty.add(listp[i]);
-	    	}
+				String[] listp = py.split(",");
+				for (int i = 0; i < listp.length; i++)
+					pty.add(listp[i]);
+			} else
+			{
+				String py = null;
+				try {
+					py = cs.ResiveListSync("CateProperty?ID=" + pid);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				String[] listp = py.split(",");
+				for (int i = 0; i < listp.length; i++)
+					pty.add(listp[i]);
+			}
 		}
 		else cid="0";
 		if (pid == null) pid="0";
 
+		ImageButton imb = (ImageButton) mCustomView.findViewById(R.id.imageButton);
+		imb.setVisibility(View.VISIBLE);
 		imb.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -131,6 +141,7 @@ public class NewCate extends AppCompatActivity {
 //				R.layout.listview_wdel, Name);
 		lv.setAdapter(adapter);
 	}
+
 //-----------------------------------------------------------------
 	public class TAdapter extends BaseAdapter{
 		
@@ -171,7 +182,8 @@ public class NewCate extends AppCompatActivity {
 
 	        return convertView;
 	    }
-    }	
+    }
+
 //---------------------------------------------------------------------	
 	public class SaveData extends AsyncTask<String, Integer, String> {
 		
@@ -181,7 +193,7 @@ public class NewCate extends AppCompatActivity {
 	    	
 	    	super.onPostExecute(result);
 	    	Asycdialog.dismiss();
-	    	if (mode.equals("Add"))
+	    	if (mode.equals("add"))
 	    	if (pid.equals("0"))
 			{
 				StoreManagment.Category.add(text);

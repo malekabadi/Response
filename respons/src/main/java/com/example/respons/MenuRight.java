@@ -65,7 +65,7 @@ public class MenuRight extends AppCompatActivity
             menuNav.findItem(R.id.nav_info).setEnabled(false);
             menuNav.findItem(R.id.nav_quit).setEnabled(false);
             menuNav.findItem(R.id.nav_shop).setEnabled(false);
-            NewActivity.name.setText(appVar.main.UserName);
+            NewActivity.name.setText("ورود");
         } else if (id == R.id.nav_cart) {
             Intent i = new Intent(MenuRight.this, Cart.class);
             startActivity(i);

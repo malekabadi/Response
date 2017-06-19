@@ -226,7 +226,7 @@ public class ShowAllProducts extends Fragment {
 
         @Override
         protected void onPreExecute() {
-            pb1 = (ProgressBar) rootView.findViewById(R.id.progressBar1);
+            pb1 = (ProgressBar) getActivity().findViewById(R.id.pBar);
             pb1.setVisibility(View.VISIBLE);
             super.onPreExecute();
         }

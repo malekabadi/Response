@@ -519,7 +519,9 @@ public class StoreReg extends AppCompatActivity {
 	    	
 	    	super.onPostExecute(result);
 	    	Asycdialog.dismiss();
-	    	String res=result;
+			NewActivity.navigationView.getMenu().findItem(R.id.nav_shop).setTitle("فروشگاه من");
+			NewActivity.navigationView.getMenu().findItem(R.id.nav_shop).setEnabled(true);
+			String res=result;
 			finish();
  	    }
 
@@ -542,6 +544,7 @@ public class StoreReg extends AppCompatActivity {
 			{
 //				Toast.makeText(StoreReg.this, res,
 //						Toast.LENGTH_LONG).show();
+				appVar.main.HasShop=true;
 				res=res.replaceAll("\"", "");
 				res=res.replaceAll("\n", "");
 				res="Shop"+res+".jpg";

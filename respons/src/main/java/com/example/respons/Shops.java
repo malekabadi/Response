@@ -63,6 +63,7 @@ public class Shops extends Fragment{
         // Required empty public constructor
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,16 +120,15 @@ public class Shops extends Fragment{
         ProgressBar pb;
         @Override
         protected void onPostExecute(Boolean result) {
-            ProgressBar pb2 = (ProgressBar) rootView.findViewById(R.id.progressBar1);
-            pb2.setVisibility(View.INVISIBLE);
+            pb.setVisibility(View.INVISIBLE);
             imAdapter.notifyDataSetChanged();
             super.onPostExecute(result);
         }
 
         @Override
         protected void onPreExecute() {
-            ProgressBar pb2 = (ProgressBar) rootView.findViewById(R.id.progressBar1);
-            pb2.setVisibility(View.VISIBLE);
+            pb = (ProgressBar) getActivity().findViewById(R.id.pBar);
+            pb.setVisibility(View.VISIBLE);
             super.onPreExecute();
         }
 

@@ -85,6 +85,7 @@ public class NewActivity extends MenuRight {
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("ایران شاپ");
         setSupportActionBar(toolbar);
 
 //        try {

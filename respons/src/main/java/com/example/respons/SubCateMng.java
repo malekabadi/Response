@@ -76,7 +76,8 @@ public class SubCateMng extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 	        Intent i = new Intent(SubCateMng.this, NewCate.class);
-			i.putExtra("CID", cid);
+            i.putExtra("mode", "add");
+			i.putExtra("PID", cid);
 	        startActivity(i);
             }
         });
@@ -107,6 +108,7 @@ public class SubCateMng extends AppCompatActivity {
                     inte.putExtra("TITLE", SubCategory.get(pos));
                     inte.putExtra("CID", id);
                     inte.putExtra("PID", cid);
+                    inte.putExtra("mode", "edit");
                     startActivity(inte);
                 } else if (options[item].equals("حـذف")) {
 

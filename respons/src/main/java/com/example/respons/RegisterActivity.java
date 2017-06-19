@@ -125,7 +125,6 @@ public class RegisterActivity extends AppCompatActivity {
 					appVar.main.UserName=phone.getText().toString();
 					appVar.main.UserID=result.substring(2);
 
-					NewActivity.name.setText(appVar.main.UserName);
 					NewActivity.navigationView.getMenu().findItem(R.id.nav_shop).setTitle("ایجاد فروشگاه");
 					NewActivity.navigationView.getMenu().findItem(R.id.nav_shop).setEnabled(true);
 					Menu menuNav=NewActivity.navigationView.getMenu();

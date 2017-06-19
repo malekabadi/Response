@@ -15,7 +15,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.apache.commons.lang3.StringEscapeUtils;
+//import org.apache.commons.lang3.StringEscapeUtils;
 
 import android.content.Context;
 import android.content.DialogInterface;

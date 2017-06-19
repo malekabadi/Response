@@ -89,6 +89,7 @@ super.onCreate(savedInstanceState);
 		@Override
 		public void onClick(View v) {
 			Intent i = new Intent(CategoryMng.this, NewCate.class);
+			i.putExtra("mode", "add");
 			startActivity(i);
 		}
 	});
@@ -152,7 +153,8 @@ private void SelectCommand(final int pos) {
     			String cid=StoreManagment.CategoryID.get(pos);
     			Intent inte=new Intent(CategoryMng.this, NewCate.class);
     			inte.putExtra("TITLE", StoreManagment.Category.get(pos));
-    			inte.putExtra("CID", cid);
+				inte.putExtra("CID", cid);
+				inte.putExtra("mode", "edit");
     			startActivity(inte);
             }
             else if (options[item].equals("حـذف"))
