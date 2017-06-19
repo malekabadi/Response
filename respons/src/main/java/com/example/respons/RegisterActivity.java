@@ -75,10 +75,10 @@ public class RegisterActivity extends AppCompatActivity {
 		newpassword = (EditText) findViewById(R.id.npass);
 		String regexStr = "(0|\\+98)?([ ]|-|[()]){0,2}9[1|2|3|4]([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}";
 		String number = phone.getText().toString();
-		if (phone.getText().toString().length() != 10
+		if (phone.getText().toString().length() != 11
 				|| number.matches(regexStr) == false) {
 			Toast.makeText(this,
-					"Please enter " + "\n" + " valid phone number",
+					"شماره موبایل به شکل صحیح وارد نمایید",
 					Toast.LENGTH_SHORT).show();
 		} else {
 			if (password.getText().toString()
@@ -92,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
 				}).start();
 			} else {
 
-				DisplayResult("password and confirmpassword do not match to each other");
+				DisplayResult("رمز عبور و تکرار آن باهم یکسان نیستند");
 			}
 		}
 	}
@@ -128,14 +128,22 @@ public class RegisterActivity extends AppCompatActivity {
 					NewActivity.name.setText(appVar.main.UserName);
 					NewActivity.navigationView.getMenu().findItem(R.id.nav_shop).setTitle("ایجاد فروشگاه");
 					NewActivity.navigationView.getMenu().findItem(R.id.nav_shop).setEnabled(true);
+					Menu menuNav=NewActivity.navigationView.getMenu();
+					menuNav.findItem(R.id.nav_password).setEnabled(true);
+					menuNav.findItem(R.id.nav_cart).setEnabled(true);
+					menuNav.findItem(R.id.nav_info).setEnabled(true);
+					menuNav.findItem(R.id.nav_quit).setEnabled(true);
+					menuNav.findItem(R.id.nav_shop).setEnabled(true);
+					NewActivity.name.setText(appVar.main.UserName);
 
 					Editor editor = sp.edit();
 					editor.putString("phonekey", phone.getText().toString());
 					//editor.apply();
 					finish();
+					LoginActivity.lgin.finish();
 				} else {
 					Toast.makeText(getApplicationContext(),
-							"یوز یا پسورد درست وارد نشده است" + result,
+							"خطادر ثبت نام ، ممکن شماره موبایل تکراری باشد" + result,
 							Toast.LENGTH_SHORT).show();
 				}
 

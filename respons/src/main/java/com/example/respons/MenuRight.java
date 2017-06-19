@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,8 +31,15 @@ public class MenuRight extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_shop) {
-        	Intent i = new Intent(MenuRight.this, StoreManagment.class);
-            startActivity(i);
+            if (appVar.main.HasShop) {
+                Intent i = new Intent(MenuRight.this, StoreManagment.class);
+                startActivity(i);
+            } else {
+                Intent i = new Intent(MenuRight.this, StoreReg.class);
+                i.putExtra("Edit", "False");
+                startActivity(i);
+            }
+
         } else if (id == R.id.nav_info) {
             Intent i = new Intent(MenuRight.this, Account.class);
             startActivity(i);
@@ -46,18 +54,25 @@ public class MenuRight extends AppCompatActivity
             intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check out this site!");
             startActivity(Intent.createChooser(intent, "Share"));
 
-        } else if (id == R.id.nav_password) {
+        } else if (id == R.id.nav_quit) {
             appVar.main.UserID = "";
             appVar.main.UserName = "";
             appVar.main.HasShop = false;
             appVar.main.ShopID = "";
+            Menu menuNav=NewActivity.navigationView.getMenu();
+            menuNav.findItem(R.id.nav_password).setEnabled(false);
+            menuNav.findItem(R.id.nav_cart).setEnabled(false);
+            menuNav.findItem(R.id.nav_info).setEnabled(false);
+            menuNav.findItem(R.id.nav_quit).setEnabled(false);
+            menuNav.findItem(R.id.nav_shop).setEnabled(false);
+            NewActivity.name.setText(appVar.main.UserName);
         } else if (id == R.id.nav_cart) {
             Intent i = new Intent(MenuRight.this, Cart.class);
             startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.END);
+        drawer.closeDrawer(Gravity.RIGHT);
         return true;
     }
     public void startNewActivity(Context context, String packageName) {

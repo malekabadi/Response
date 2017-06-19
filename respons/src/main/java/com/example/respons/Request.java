@@ -46,7 +46,10 @@ import android.graphics.BitmapFactory;
 public class Request extends AppCompatActivity {
 	
 	ImageView iv;
+    String picturePath;
 	public List<String> objs=new ArrayList<String>();
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -96,7 +99,6 @@ public class Request extends AppCompatActivity {
 				//String res=cs.ResiveList("AddRequest"+url);
 				new SaveData().execute("AddRequest"+url);
 
-				finish();
 			}
 		});
 	}
@@ -129,19 +131,22 @@ public class Request extends AppCompatActivity {
 			res = res.replaceAll("\"", "");
 			res = res.replaceAll("\n", "");
 			res = "Request" + res + ".jpg";
-			try {
-				// Set your file path here
-				FileInputStream fstrm = new FileInputStream(
-						Environment.getExternalStorageDirectory().toString() + "/New Folder/i7.png");
+            if (picturePath != null)
+                try {
+                    Helper.verifyStoragePermissions(Request.this);
+                    // Set your file path here
+                    //FileInputStream fstrm = new FileInputStream(Environment.getExternalStorageDirectory().toString()+"/New Folder/i7.png");
+                    FileInputStream fstrm = new FileInputStream(picturePath);
 
-				// Set your server page url (and the file title/description)
-				FileUpload hfu = new FileUpload(R.string.WServer + "/fileup.aspx", res, "my file description");
+                    // Set your server page url (and the file title/description)
+                    FileUpload hfu = new FileUpload(getString(R.string.WServer)+"/fileup.aspx", res,"my file description");
 
-				hfu.Send_Now(fstrm);
+                    hfu.Send_Now(fstrm);
 
-			} catch (FileNotFoundException e) {
-				// Error: File not found
-			}
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                    Log.w("level1", e.getMessage());
+                }
 			return res;
 		}
 
@@ -224,7 +229,7 @@ public class Request extends AppCompatActivity {
                  Cursor c = getContentResolver().query(selectedImage,filePath, null, null, null);
                  c.moveToFirst();
                  int columnIndex = c.getColumnIndex(filePath[0]);
-                 String picturePath = c.getString(columnIndex);
+                 picturePath = c.getString(columnIndex);
                  c.close();
                  try {
                      final InputStream imageStream = getContentResolver().openInputStream(selectedImage);

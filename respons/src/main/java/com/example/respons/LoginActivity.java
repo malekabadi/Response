@@ -44,11 +44,13 @@ public class LoginActivity extends MenuRight {
 	SharedPreferences sp;
 	ProgressDialog progressDialog;
 	Handler handler = new Handler();
+	static  AppCompatActivity lgin;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		lgin=this;
 		/*************************************************** Set Custom ActionBar *****/
 		getSupportActionBar().setDisplayOptions(android.support.v7.app.ActionBar.DISPLAY_SHOW_CUSTOM);
 		getSupportActionBar().setCustomView(R.layout.actionbar2);
@@ -56,7 +58,7 @@ public class LoginActivity extends MenuRight {
 		TextView title = (TextView) mCustomView.findViewById(R.id.title);
 		title.setText("ورود به حساب کاربری");
 		//-----------------------------------------
-		
+
 		progressDialog = new ProgressDialog(LoginActivity.this);
 		phone = (EditText) findViewById(R.id.tel);
 		pass = (EditText) findViewById(R.id.pass);
@@ -65,7 +67,7 @@ public class LoginActivity extends MenuRight {
 		String user = sp.getString("share", "");
 		Button Register = (Button) findViewById(R.id.Register);
 		Register.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
@@ -189,7 +191,7 @@ public class LoginActivity extends MenuRight {
 		//
 		//			while ((lines = bf.readLine()) != null)
 		//				result += lines;// + "\n";
-		
+
 			        CallSoap cs=new CallSoap();
 			        result=cs.ResiveList("Login?name="+phone.getText().toString()+
 			        					"&pass="+pass.getText().toString());
@@ -201,7 +203,7 @@ public class LoginActivity extends MenuRight {
 						appVar.main.HasShop=true;
 						appVar.main.ShopID=res;
 					}
-					
+
 					DisplayResult(result);
 
 	}
@@ -232,7 +234,12 @@ public class LoginActivity extends MenuRight {
 					//editor.apply();
 					//startActivity(new Intent(LoginActivity.this,NewActivity.class));
 
-					NewActivity.navigationView.getMenu().findItem(R.id.nav_shop).setEnabled(true);
+					Menu menuNav=NewActivity.navigationView.getMenu();
+					menuNav.findItem(R.id.nav_password).setEnabled(true);
+					menuNav.findItem(R.id.nav_cart).setEnabled(true);
+					menuNav.findItem(R.id.nav_info).setEnabled(true);
+					menuNav.findItem(R.id.nav_quit).setEnabled(true);
+					menuNav.findItem(R.id.nav_shop).setEnabled(true);
 					NewActivity.name.setText(appVar.main.UserName);
 
 					logbtn.setEnabled(true);

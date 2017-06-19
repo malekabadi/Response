@@ -76,7 +76,7 @@ public class SubCateMng extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 	        Intent i = new Intent(SubCateMng.this, NewCate.class);
-			i.putExtra("PID", cid);
+			i.putExtra("CID", cid);
 	        startActivity(i);
             }
         });

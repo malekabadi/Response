@@ -56,13 +56,15 @@ public class NewActivity extends MenuRight {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        appVar.main.UserID = "1";
-        appVar.main.UserName = "09156620865";
-        appVar.main.HasShop = true;
-        appVar.main.ShopID = "2";
-        Intent intent = new Intent("com.example.respons");
-
+//        appVar.main.UserID = "1";
+//        appVar.main.UserName = "09156620865";
+//        appVar.main.HasShop = true;
+//        appVar.main.ShopID = "2";
         MainAvtivity=this;
+        if (! CallSoap.isConnectionAvailable(this)) {
+            Intent inte = new Intent(this, NoNet.class);
+            startActivity(inte);
+        }
         if (NoNet._NoNet != null) NoNet._NoNet.finish();
         //------------------------------- Version Control and Update
         try {
