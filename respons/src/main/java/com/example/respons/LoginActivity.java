@@ -63,8 +63,8 @@ public class LoginActivity extends MenuRight {
 		phone = (EditText) findViewById(R.id.tel);
 		pass = (EditText) findViewById(R.id.pass);
 		logbtn = (Button) findViewById(R.id.button1);
-		sp = getSharedPreferences("share", 0);
-		String user = sp.getString("share", "");
+		sp = getSharedPreferences("share", MODE_PRIVATE);
+		//String user = sp.getString("share", "");
 		Button Register = (Button) findViewById(R.id.Register);
 		Register.setOnClickListener(new OnClickListener() {
 
@@ -74,30 +74,13 @@ public class LoginActivity extends MenuRight {
 				startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
 			}
 		});
-//		final ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater()
-//				.inflate(R.layout.login_action_bar, null);
-//
-//		// Set up your ActionBar
-//		final ActionBar actionBar = getActionBar();
-//		actionBar.setDisplayShowHomeEnabled(false);
-//		actionBar.setDisplayShowTitleEnabled(false);
-//		actionBar.setDisplayShowCustomEnabled(true);
-//		actionBar.setCustomView(actionBarLayout);
-//
-//		// You customization
-//		final int actionBarColor = getResources().getColor(R.color.action_bar);
-//		actionBar.setBackgroundDrawable(new ColorDrawable(actionBarColor));
-//
-//		final TextView actionBarSent = (TextView) findViewById(R.id.Login_action_bar_text);
-//		actionBarSent.setText("Login");
-//		final ImageButton actionBarbotton = (ImageButton) findViewById(R.id.Login_action_bar_back);
 
-		if (!user.equals("")) // لاگین نگهداشتن کاربر
-		{
-			startActivity(new Intent(LoginActivity.this,
-					NewActivity.class));
-			finish();
-		}
+//		if (!user.equals("")) // لاگین نگهداشتن کاربر
+//		{
+//			startActivity(new Intent(LoginActivity.this,
+//					NewActivity.class));
+//			finish();
+//		}
 	}
 
 	// لاگین کردن کاربر و بررسی اعتبار سنجی ورود اطلاعات
@@ -219,10 +202,14 @@ public class LoginActivity extends MenuRight {
 				if (res[0].substring(0, 2).equals("ok")) {
 					Toast.makeText(getApplicationContext(), "خوش آمدید",
 							Toast.LENGTH_SHORT).show();
-					Editor editor = sp.edit();
-					editor.putString("phonekey", phone.getText().toString());
 					appVar.main.UserName=phone.getText().toString();
 					appVar.main.UserID=res[0].substring(2);
+					Editor editor = sp.edit();
+					editor.putString("UserName", phone.getText().toString());
+					editor.putString("UserID", appVar.main.UserID);
+					editor.putBoolean("HasShop",appVar.main.HasShop );
+					editor.putString("ShopID",appVar.main.ShopID );
+					editor.commit();
 					if (res.length > 1)
 						if (res[1].substring(0, 4).equals("shop")) {
 							appVar.main.HasShop = true;

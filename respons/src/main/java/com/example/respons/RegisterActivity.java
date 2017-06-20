@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
-		sp = getSharedPreferences("share", 0);
+		sp = getSharedPreferences("share", MODE_PRIVATE);
 		/*************************************************** Set Custom ActionBar *****/
 		getSupportActionBar().setDisplayOptions(android.support.v7.app.ActionBar.DISPLAY_SHOW_CUSTOM);
 		getSupportActionBar().setCustomView(R.layout.actionbar2);
@@ -136,8 +136,9 @@ public class RegisterActivity extends AppCompatActivity {
 					NewActivity.name.setText(appVar.main.UserName);
 
 					Editor editor = sp.edit();
-					editor.putString("phonekey", phone.getText().toString());
-					//editor.apply();
+					editor.putString("UserName", phone.getText().toString());
+					editor.putString("UserID", appVar.main.UserID);
+					editor.commit();
 					finish();
 					LoginActivity.lgin.finish();
 				} else {

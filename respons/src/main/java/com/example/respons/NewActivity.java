@@ -5,6 +5,7 @@ package com.example.respons;
         import android.app.DownloadManager;
         import android.content.Intent;
         import android.content.IntentFilter;
+        import android.content.SharedPreferences;
         import android.content.pm.PackageManager;
         import android.net.Uri;
         import android.os.Bundle;
@@ -50,6 +51,7 @@ public class NewActivity extends MenuRight {
     public static TextView name;
     public static NavigationView navigationView;
     static AppCompatActivity MainAvtivity;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +85,17 @@ public class NewActivity extends MenuRight {
                     Uri.parse("http://some-public-url/deploy/MyApplication.apk"));
             startActivity(updateIntent);
         }
-
+        //---------------------------------------------- Check Login
+        sp = getSharedPreferences("share", MODE_PRIVATE);
+        appVar.main.UserName = sp.getString("UserName", "0");
+        		if (!appVar.main.UserName.equals("0"))
+		{
+            SharedPreferences.Editor editor = sp.edit();
+            appVar.main.UserID = sp.getString("UserID", "");
+            appVar.main.HasShop = sp.getBoolean("HasShop", false);
+            appVar.main.ShopID = sp.getString("ShopID", "");
+        }
+        //----------------------------------------------------------
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("ایران شاپ");
         setSupportActionBar(toolbar);
@@ -119,7 +131,12 @@ public class NewActivity extends MenuRight {
         name = (TextView)header.findViewById(R.id.Name);
         if (! appVar.main.UserName.equals("0")) {
             name.setText(appVar.main.UserName);
-            navigationView.getMenu().findItem(R.id.nav_shop).setEnabled(true);
+            Menu menuNav=NewActivity.navigationView.getMenu();
+            menuNav.findItem(R.id.nav_shop).setEnabled(true);
+            menuNav.findItem(R.id.nav_password).setEnabled(true);
+            menuNav.findItem(R.id.nav_cart).setEnabled(true);
+            menuNav.findItem(R.id.nav_info).setEnabled(true);
+            menuNav.findItem(R.id.nav_quit).setEnabled(true);
         }
         else
         name.setOnClickListener(new View.OnClickListener() {

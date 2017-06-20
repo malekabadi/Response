@@ -111,7 +111,7 @@ public class Category extends Fragment {
             if (Topics.size() < 2) {
                 res = cs.ResiveList("TopicList");
                 Rows = res.split(":");
-                for (int i = 0; i < Rows.length - 1; i++) {
+                for (int i = 0; i < Rows.length ; i++) {
                     String[] Field = Rows[i].split(",");
                     TopicIDs.add(Field[0]);
                     Topics.add(Field[1]);
@@ -119,7 +119,7 @@ public class Category extends Fragment {
                 }
                 res = cs.ResiveList("SubTopic?id=" + "all");
                 Rows = res.split(":");
-                for (int i = 0; i < Rows.length - 1; i++) {
+                for (int i = 0; i < Rows.length ; i++) {
                     String[] Field = Rows[i].split(",");
                     SubTopicIDs.add(Field[0]);
                     SubTopics.add(Field[1]);

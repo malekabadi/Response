@@ -3,6 +3,7 @@ package com.example.respons;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -55,10 +56,17 @@ public class MenuRight extends AppCompatActivity
             startActivity(Intent.createChooser(intent, "Share"));
 
         } else if (id == R.id.nav_quit) {
+            SharedPreferences sp = getSharedPreferences("share", MODE_PRIVATE);
             appVar.main.UserID = "";
-            appVar.main.UserName = "";
+            appVar.main.UserName = "0";
             appVar.main.HasShop = false;
             appVar.main.ShopID = "";
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("UserName", appVar.main.UserName);
+            editor.putString("UserID", appVar.main.UserID);
+            editor.putBoolean("HasShop",appVar.main.HasShop );
+            editor.putString("ShopID",appVar.main.ShopID );
+            editor.commit();
             Menu menuNav=NewActivity.navigationView.getMenu();
             menuNav.findItem(R.id.nav_password).setEnabled(false);
             menuNav.findItem(R.id.nav_cart).setEnabled(false);

@@ -126,7 +126,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dip"
         android:textSize="12dip"
-        android:text="محصول دانلودی" />
+        android:text="بررسی موجودی" />
 
     <Button
         android:id="@+id/btnAx"
