@@ -145,6 +145,10 @@ public class ShowAllProducts extends Fragment {
         tabs.setOnTabChangedListener(new OnTabChangeListener() {
 
             public void onTabChanged(String arg0) {
+                if (! CallSoap.isConnectionAvailable(getActivity())) {
+                    Intent inte = new Intent(getActivity(), NoNet.class);
+                    startActivity(inte);
+                }
                 for (int i = 0; i < tabs.getTabWidget().getChildCount(); i++) {
                     tabs.getTabWidget().getChildAt(i)
                             .setBackgroundResource(R.color.white); // unselected
@@ -188,7 +192,7 @@ public class ShowAllProducts extends Fragment {
                 Sort(getActivity());
             }
         });
-        new LongOperation().execute("");
+//        new LongOperation().execute("");
 
 //---------------------- Start
         btnCat = (Button) rootView.findViewById(R.id.Subject);
@@ -207,6 +211,11 @@ public class ShowAllProducts extends Fragment {
                 Filter(getActivity());
             }
         });
+
+        if (! CallSoap.isConnectionAvailable(getActivity())) {
+            Intent inte = new Intent(getActivity(), NoNet.class);
+            startActivity(inte);
+        } else
         new LongOperation().execute("");
 
         return rootView;
@@ -445,9 +454,14 @@ public class ShowAllProducts extends Fragment {
                 }
                 if (cid.length() > 0)
                     Products();
-                else
+                else {
+                    if (! CallSoap.isConnectionAvailable(getActivity())) {
+                        Intent inte = new Intent(getActivity(), NoNet.class);
+                        startActivity(inte);
+                    } else
                     new LongOperation().execute(sort);
                     //StoreList(sort);
+                }
                 imageAdapter.notifyDataSetChanged();
                 popup.dismiss();
             }
@@ -572,6 +586,10 @@ public class ShowAllProducts extends Fragment {
                 Toast.makeText(getActivity(), item,
                         Toast.LENGTH_LONG).show();
                 if (position == 0) {
+                    if (! CallSoap.isConnectionAvailable(getActivity())) {
+                        Intent inte = new Intent(getActivity(), NoNet.class);
+                        startActivity(inte);
+                    } else
                     new LongOperation().execute("");
                     popup.dismiss();
                 } else {
