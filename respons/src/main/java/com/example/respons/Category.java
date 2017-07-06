@@ -100,6 +100,11 @@ public class Category extends Fragment {
         protected void onPreExecute() {
             ProgressBar pb3 = (ProgressBar) rootView.findViewById(R.id.progressBar1);
             pb3.setVisibility(View.VISIBLE);
+            if (! CallSoap.isConnectionAvailable(getActivity()))
+            {
+                Intent inte = new Intent(getActivity(), NoNet.class);
+                startActivity(inte);
+            }
             super.onPreExecute();
         }
 

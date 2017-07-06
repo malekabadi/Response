@@ -118,6 +118,11 @@ public class Request extends AppCompatActivity {
 
 		@Override
 		protected void onPreExecute() {
+            if (! CallSoap.isConnectionAvailable(Request.this))
+            {
+                Intent inte = new Intent(Request.this, NoNet.class);
+                startActivity(inte);
+            }
 			Asycdialog.setMessage("ذخیره اطلاعات ");
 			Asycdialog.show();
 			super.onPreExecute();

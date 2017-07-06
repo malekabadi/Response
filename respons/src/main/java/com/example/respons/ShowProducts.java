@@ -202,6 +202,11 @@ public class ShowProducts extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+            if (! CallSoap.isConnectionAvailable(ShowProducts.this))
+            {
+                Intent inte = new Intent(ShowProducts.this, NoNet.class);
+                startActivity(inte);
+            }
             ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
             pb.setVisibility(View.VISIBLE);
             super.onPreExecute();
@@ -229,6 +234,11 @@ public class ShowProducts extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+            if (! CallSoap.isConnectionAvailable(ShowProducts.this))
+            {
+                Intent inte = new Intent(ShowProducts.this, NoNet.class);
+                startActivity(inte);
+            }
             ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
             pb.setVisibility(View.VISIBLE);
             super.onPreExecute();

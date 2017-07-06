@@ -175,6 +175,11 @@ public class Cate_Product extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+            if (! CallSoap.isConnectionAvailable(Cate_Product.this))
+            {
+                Intent inte = new Intent(Cate_Product.this, NoNet.class);
+                startActivity(inte);
+            }
             ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
             pb.setVisibility(View.VISIBLE);
             super.onPreExecute();

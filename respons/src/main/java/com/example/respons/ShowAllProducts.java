@@ -237,6 +237,11 @@ public class ShowAllProducts extends Fragment {
         protected void onPreExecute() {
             pb1 = (ProgressBar) getActivity().findViewById(R.id.pBar);
             pb1.setVisibility(View.VISIBLE);
+            if (! CallSoap.isConnectionAvailable(getActivity()))
+            {
+                Intent inte = new Intent(getActivity(), NoNet.class);
+                startActivity(inte);
+            }
             super.onPreExecute();
         }
 

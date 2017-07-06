@@ -302,6 +302,11 @@ public class ProductReg extends AppCompatActivity {
 	        @Override
 	        protected void onPreExecute() {
 
+				if (! CallSoap.isConnectionAvailable(ProductReg.this))
+				{
+					Intent inte = new Intent(ProductReg.this, NoNet.class);
+					startActivity(inte);
+				}
 	            super.onPreExecute();
 	            Asycdialog.setMessage("بارگذاری مشخصه ها ");
 	            Asycdialog.show();
@@ -708,7 +713,11 @@ public class ProductReg extends AppCompatActivity {
         String[] Field;
         @Override
         protected void onPreExecute() {
-
+			if (! CallSoap.isConnectionAvailable(ProductReg.this))
+			{
+				Intent inte = new Intent(ProductReg.this, NoNet.class);
+				startActivity(inte);
+			}
             super.onPreExecute();
             Asycdialog.setMessage("بارگذاری مشخصه ها ");
             Asycdialog.show();
@@ -754,6 +763,11 @@ public class ProductReg extends AppCompatActivity {
 
 	    @Override
 	    protected void onPreExecute() {
+			if (! CallSoap.isConnectionAvailable(ProductReg.this))
+			{
+				Intent inte = new Intent(ProductReg.this, NoNet.class);
+				startActivity(inte);
+			}
 	    	Asycdialog.setMessage("ذخیره اطلاعات ");
             Asycdialog.show();	    	
 	    	super.onPreExecute();

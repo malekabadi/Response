@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.squareup.picasso.Picasso;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -73,62 +74,68 @@ public class StoreInfo extends AppCompatActivity {
 		
 	
 	}
-//-------------------------------------------------------------------------
-private class LongOperation extends AsyncTask<String, Integer, Boolean> {
-		String res="";
-		ProgressDialog Asycdialog = new ProgressDialog(StoreInfo.this);
-	@Override
-	protected void onPostExecute(Boolean result) {
-//		dataAdapter.notifyDataSetChanged();
-//		dataAdapter1.notifyDataSetChanged();
-		
-		btnObj=(Button) findViewById(R.id.btnObj);
-		TextView Shop=(TextView) findViewById(R.id.txtShop);
-		EditText name=(EditText) findViewById(R.id.txtName);
-		EditText desc=(EditText) findViewById(R.id.txtDesc);
-		EditText tel=(EditText) findViewById(R.id.txtTel);
-		EditText mobile=(EditText) findViewById(R.id.txtMobile);
-		EditText addr=(EditText) findViewById(R.id.txtAddr);
-		ImageView Image=(ImageView) findViewById(R.id.StoreImage);
-//		TextView city=(TextView) findViewById(R.id.txtCity);
-//		TextView zone=(TextView) findViewById(R.id.txtZone);
+	//-------------------------------------------------------------------------
+	private class LongOperation extends AsyncTask<String, Integer, Boolean> {
+			String res="";
+			ProgressDialog Asycdialog = new ProgressDialog(StoreInfo.this);
+		@Override
+		protected void onPostExecute(Boolean result) {
+	//		dataAdapter.notifyDataSetChanged();
+	//		dataAdapter1.notifyDataSetChanged();
 
-			String[] Field = res.split(",");
-			btnObj.setText(Field[0]);
-			Shop.setText(Field[1]);
-			name.setText(Field[2]);
-			desc.setText(Field[3]);
-			tel.setText(Field[4]);
-			mobile.setText(Field[5]);
-			addr.setText(Field[6]);
-			txtCity.setSelection(Cities.indexOf(Field[7]));
-			txtZone.setSelection(Zonez.indexOf(Field[8]));
-			Context Ct=getApplicationContext();
-            Picasso.with(Ct) //
-            .load(getString(R.string.WServer)+"/images/"+Field[9]) //
-            .error(R.drawable.i2) //
-            .fit() //
-            .tag(Ct) //
-            .into(Image);
-            
-		super.onPostExecute(result);
-		Asycdialog.dismiss();
-	}
+			btnObj=(Button) findViewById(R.id.btnObj);
+			TextView Shop=(TextView) findViewById(R.id.txtShop);
+			EditText name=(EditText) findViewById(R.id.txtName);
+			EditText desc=(EditText) findViewById(R.id.txtDesc);
+			EditText tel=(EditText) findViewById(R.id.txtTel);
+			EditText mobile=(EditText) findViewById(R.id.txtMobile);
+			EditText addr=(EditText) findViewById(R.id.txtAddr);
+			ImageView Image=(ImageView) findViewById(R.id.StoreImage);
+	//		TextView city=(TextView) findViewById(R.id.txtCity);
+	//		TextView zone=(TextView) findViewById(R.id.txtZone);
 
-	@Override
-	protected void onPreExecute() {
-    	Asycdialog.setMessage("در حال خواندن اطلاعات ");
-        Asycdialog.show();	    	
-		super.onPreExecute();
-	}
+				String[] Field = res.split(",");
+				btnObj.setText(Field[0]);
+				Shop.setText(Field[1]);
+				name.setText(Field[2]);
+				desc.setText(Field[3]);
+				tel.setText(Field[4]);
+				mobile.setText(Field[5]);
+				addr.setText(Field[6]);
+				txtCity.setSelection(Cities.indexOf(Field[7]));
+				txtZone.setSelection(Zonez.indexOf(Field[8]));
+				Context Ct=getApplicationContext();
+				Picasso.with(Ct) //
+				.load(getString(R.string.WServer)+"/images/"+Field[9]) //
+				.error(R.drawable.i2) //
+				.fit() //
+				.tag(Ct) //
+				.into(Image);
 
-	@Override
-	protected Boolean doInBackground(String... params) {
-			res=new CallSoap().ResiveList("GetShop?ID="+ShopID);
-		
-	    return null;
-	}
-	}
+			super.onPostExecute(result);
+			Asycdialog.dismiss();
+		}
+
+		@Override
+		protected void onPreExecute() {
+			if (! CallSoap.isConnectionAvailable(StoreInfo.this))
+			{
+				Intent inte = new Intent(StoreInfo.this, NoNet.class);
+				startActivity(inte);
+			}
+			Asycdialog.setMessage("در حال خواندن اطلاعات ");
+			Asycdialog.show();
+			super.onPreExecute();
+		}
+
+		@Override
+		protected Boolean doInBackground(String... params) {
+				res=new CallSoap().ResiveList("GetShop?ID="+ShopID);
+
+			return null;
+		}
+		}
+
 	//------------------------------------------------------ Action Bar Menu
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

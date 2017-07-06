@@ -21,11 +21,12 @@ public class NoNet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (CallSoap.isConnectionAvailable(NoNet.this)) {
-                    if (NewActivity.MainAvtivity != null) NewActivity.MainAvtivity.finish();
+                    //if (NewActivity.MainAvtivity != null) NewActivity.MainAvtivity.finish();
                     _NoNet= NoNet.this;
-                    Intent i = new Intent(NoNet.this, NewActivity.class);
+//                    Intent i = new Intent(NoNet.this, NewActivity.class);
+//                    startActivity(i);
                     finish();
-                    startActivity(i);
+
                 }
             }
         });

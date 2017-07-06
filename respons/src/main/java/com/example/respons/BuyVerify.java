@@ -6,6 +6,7 @@ import java.util.Date;
 
 import com.example.respons.StoreReg.SaveData;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -104,6 +105,12 @@ public class BuyVerify extends AppCompatActivity {
 
 		@Override
 		protected void onPreExecute() {
+			if (! CallSoap.isConnectionAvailable(BuyVerify.this))
+			{
+				Intent inte = new Intent(BuyVerify.this, NoNet.class);
+				startActivity(inte);
+			}
+			super.onPreExecute();
 			Asycdialog.setMessage("ذخیره اطلاعات ");
 			Asycdialog.show();
 			super.onPreExecute();

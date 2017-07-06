@@ -144,6 +144,11 @@ public class GetAdress extends AppCompatActivity {
 
 	    @Override
 	    protected void onPreExecute() {
+			if (! CallSoap.isConnectionAvailable(GetAdress.this))
+			{
+				Intent inte = new Intent(GetAdress.this, NoNet.class);
+				startActivity(inte);
+			}
 	    	Asycdialog.setMessage("در حال خواندن اطلاعات ");
 	        Asycdialog.show();	    	
 	    	super.onPreExecute();

@@ -128,7 +128,12 @@ protected void onPostExecute(Boolean result) {
 
 @Override
 protected void onPreExecute() {
-	ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);   
+	if (! CallSoap.isConnectionAvailable(CategoryMng.this))
+	{
+		Intent inte = new Intent(CategoryMng.this, NoNet.class);
+		startActivity(inte);
+	}
+	ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
 	pb.setVisibility(View.VISIBLE);
 	super.onPreExecute();
 }
@@ -218,6 +223,11 @@ public class DelData extends AsyncTask<String, Integer, String> {
 
     @Override
     protected void onPreExecute() {
+		if (! CallSoap.isConnectionAvailable(CategoryMng.this))
+		{
+			Intent inte = new Intent(CategoryMng.this, NoNet.class);
+			startActivity(inte);
+		}
     	Asycdialog.setMessage("حذف اطلاعات ");
         Asycdialog.show();	    	
     	super.onPreExecute();

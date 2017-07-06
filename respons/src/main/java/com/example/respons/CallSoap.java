@@ -10,11 +10,19 @@ import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 //import org.apache.commons.lang3.StringEscapeUtils;
 
 import android.content.Context;
@@ -31,93 +39,143 @@ public class CallSoap
 	String Resv="";
 	Context context;
 
-//---------------------------------------------
-public static boolean isConnectionAvailable(Context context) {
+	//---------------------------------------------
+	public static boolean isConnectionAvailable(Context context) {
 
-    ConnectivityManager connectivityManager = (ConnectivityManager) context
-            .getSystemService(Context.CONNECTIVITY_SERVICE);
-    if (connectivityManager != null) {
-        NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnected()
-                && netInfo.isConnectedOrConnecting()
-                && netInfo.isAvailable()) {
-            return true;
-        }
-    }
-    return false;
-}
-//-----------------------------------------------
-public  String convertStreamToString(InputStream is)
-{
-	BufferedReader reader = null;
-		reader = new BufferedReader(new InputStreamReader(is));
-	StringBuilder sb = new StringBuilder();
-
-	String line = null;
-	try {
-		while ((line = reader.readLine()) != null) {
-			sb.append(line + "\n");
+		ConnectivityManager connectivityManager = (ConnectivityManager) context
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
+		if (connectivityManager != null) {
+			NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
+			if (netInfo != null && netInfo.isConnected()
+					&& netInfo.isConnectedOrConnecting()
+					&& netInfo.isAvailable()) {
+				return true;
+			}
 		}
+		return false;
 	}
-	catch (IOException e) {
-		e.printStackTrace();
-	}
-	finally {
+
+	//-----------------------------------------------
+	public  String convertStreamToString(InputStream is)
+	{
+		BufferedReader reader = null;
+			reader = new BufferedReader(new InputStreamReader(is));
+		StringBuilder sb = new StringBuilder();
+
+		String line = null;
 		try {
-			is.close();
-		} catch (IOException e) {
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	return sb.toString();
-}
-//--------------------------------------------------------
-public String ResiveListSync(String addr) throws Exception{
-
-	String bnds=
-    new AsyncTask<String, Void, String>(){
-        @Override
-        protected void onPreExecute() {
-        };
-        @Override
-        protected String doInBackground(String... params) {
-            return  ResiveList (params[0]);
-        }
-        @Override
-        protected void onPostExecute(String result)
-        {
-        }
-    }.execute(addr).get();
-    return bnds;
-}
-//--------------------------------------------------------
-public  String ResiveList (String addr) {
-//	if (isConnectionAvailable(context))
-		try {
-			System.out.println("guru");
-			DefaultHttpClient httpClient = new DefaultHttpClient();
-			addr = addr.replaceAll(" ", "%20");
-//		HttpGet httpGet=new HttpGet("http://10.0.2.2/RestServiceImpl.svc/"+addr);
-			HttpGet httpGet = new HttpGet("http://wcf.kapma.ir/RestServiceImpl.svc/" + addr);
-			//Get the response
-			HttpResponse httpResponse = httpClient.execute(httpGet);
-			HttpEntity httpEntity = httpResponse.getEntity();
-			InputStream stream = httpEntity.getContent();
-			//Convert the stream to readable format
-			String result = convertStreamToString(stream);
-			result = result.replaceAll("\"", "");
-			result = result.replaceAll("\n", "");
-			return result;
-		} catch (Exception e) {
-			return "";
+		finally {
+			try {
+				is.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-//	else {
-//		Resv=addr;
-//		ShowAlertDialog();
-//		return "";
-//	}
-}
+		return sb.toString();
+	}
+	//--------------------------------------------------------
+	public String ResiveListSync(String addr) throws Exception{
 
+		String bnds=
+		new AsyncTask<String, Void, String>(){
+			@Override
+			protected void onPreExecute() {
+			};
+			@Override
+			protected String doInBackground(String... params) {
+				return  ResiveList (params[0]);
+			}
+			@Override
+			protected void onPostExecute(String result)
+			{
+			}
+		}.execute(addr).get();
+		return bnds;
+	}
+
+	//--------------------------------------------------------
+	public  String ResiveList (String addr) {
+	//	if (isConnectionAvailable(context))
+			try {
+				System.out.println("guru");
+				DefaultHttpClient httpClient = new DefaultHttpClient();
+				addr = addr.replaceAll(" ", "%20");
+	//		HttpGet httpGet=new HttpGet("http://10.0.2.2/RestServiceImpl.svc/"+addr);
+				HttpGet httpGet = new HttpGet("http://wcf.kapma.ir/RestServiceImpl.svc/" + addr);
+				//Get the response
+				HttpResponse httpResponse = httpClient.execute(httpGet);
+				HttpEntity httpEntity = httpResponse.getEntity();
+				InputStream stream = httpEntity.getContent();
+				//Convert the stream to readable format
+				String result = convertStreamToString(stream);
+				result = result.replaceAll("\"", "");
+				result = result.replaceAll("\n", "");
+				return result;
+			} catch (Exception e) {
+				return "";
+			}
+	//	else {
+	//		Resv=addr;
+	//		ShowAlertDialog();
+	//		return "";
+	//	}
+	}
+
+	//--------------------------------------------------------
+	//public String login(String username, String password) {
+
+		public String login(String username, String password)
+		{
+			DefaultHttpClient httpclient = new DefaultHttpClient();
+			HttpPost httpost = new HttpPost("http://wcf.kapma.ir/RestServiceImpl.svc/login2");
+
+			JSONStringer img = null;
+			try {
+				img = new JSONStringer()
+                        .object()
+                        .key("ur")
+                        .object()
+                        .key("name").value(username)
+                        .key("pass").value(password)
+                        .endObject()
+                        .endObject();
+			StringEntity se = new StringEntity(img.toString());
+
+			httpost.setEntity(se);
+
+			httpost.setHeader("Accept", "application/json");
+			httpost.setHeader("Content-type", "application/json");
+				HttpResponse httpResponse = httpclient.execute(httpost);
+				HttpEntity httpEntity = httpResponse.getEntity();
+				InputStream stream = httpEntity.getContent();
+				//Convert the stream to readable format
+				String result = convertStreamToString(stream);
+				result = result.replaceAll("\"", "");
+				result = result.replaceAll("\n", "");
+				return result;
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+				return "";
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+				return "";
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+				return "";
+			} catch (IOException e) {
+				e.printStackTrace();
+				return "";
+			}
+		}
+	//--------------------------------------------------------
 	public void ShowAlertDialog() {
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 		alertDialog.setTitle("خطا در اتصال به اینترنت");
@@ -143,7 +201,7 @@ public  String ResiveList (String addr) {
 		alertDialog.show();
 	}
 
-
+	//--------------------------------------------------------
 	public List<TopicList> GetTopics(String SID) throws Exception {
 		JSONObject jsonResponse;
 		List<TopicList> brands = new ArrayList<TopicList>();
@@ -188,6 +246,7 @@ public  String ResiveList (String addr) {
 		return brands;
 	}
 
+	//--------------------------------------------------------
 	public String convertStandardJSONString(String data_json){
 //		data_json = data_json.replace("\\", "");
 		data_json = data_json.replace("{", "{\"");

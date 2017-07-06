@@ -1,5 +1,6 @@
 package com.example.respons;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -150,6 +151,11 @@ public class Buy_Detail extends AppCompatActivity {
 	protected void onPreExecute() {
 		ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);   
 		pb.setVisibility(View.VISIBLE);
+		if (! CallSoap.isConnectionAvailable(Buy_Detail.this))
+		{
+			Intent inte = new Intent(Buy_Detail.this, NoNet.class);
+			startActivity(inte);
+		}
 		super.onPreExecute();
 	}
 
