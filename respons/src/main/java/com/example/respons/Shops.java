@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.CallSuper;
 import android.support.v4.app.Fragment;
 import android.view.Display;
 import android.view.Gravity;
@@ -33,6 +34,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 
 
 public class Shops extends Fragment{
@@ -129,6 +131,11 @@ public class Shops extends Fragment{
         protected void onPreExecute() {
             pb = (ProgressBar) getActivity().findViewById(R.id.pBar);
             pb.setVisibility(View.VISIBLE);
+            if (! CallSoap.isConnectionAvailable(getActivity()))
+            {
+                Intent inte = new Intent(getActivity(), NoNet.class);
+                startActivity(inte);
+            }
             super.onPreExecute();
         }
 

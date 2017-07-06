@@ -147,6 +147,11 @@ public class StoreManagment extends AppCompatActivity {
 
             super.onPreExecute();
             Asycdialog.setMessage("Loading...");
+			if (! CallSoap.isConnectionAvailable(StoreManagment.this));
+			{
+				Intent inte = new Intent(StoreManagment.this, NoNet.class);
+				startActivity(inte);
+			}
             Asycdialog.show();
         }
 

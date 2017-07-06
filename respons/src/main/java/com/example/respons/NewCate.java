@@ -1,5 +1,6 @@
 package com.example.respons;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -208,6 +209,11 @@ public class NewCate extends AppCompatActivity {
 
 	    @Override
 	    protected void onPreExecute() {
+			if (! CallSoap.isConnectionAvailable(NewCate.this))
+			{
+				Intent inte = new Intent(NewCate.this, NoNet.class);
+				startActivity(inte);
+			}
 	    	Asycdialog.setMessage("ذخیره اطلاعات ");
             Asycdialog.show();	    	
 	    	super.onPreExecute();

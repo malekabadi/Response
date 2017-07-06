@@ -90,6 +90,11 @@ public class Orders extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+            if (! CallSoap.isConnectionAvailable(Orders.this))
+            {
+                Intent inte = new Intent(Orders.this, NoNet.class);
+                startActivity(inte);
+            }
             ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
             pb.setVisibility(View.VISIBLE);
             super.onPreExecute();

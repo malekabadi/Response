@@ -95,6 +95,11 @@ public class ShowSearch extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+            if (! CallSoap.isConnectionAvailable(ShowSearch.this))
+            {
+                Intent inte = new Intent(ShowSearch.this, NoNet.class);
+                startActivity(inte);
+            }
             ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
             pb.setVisibility(View.VISIBLE);
             super.onPreExecute();

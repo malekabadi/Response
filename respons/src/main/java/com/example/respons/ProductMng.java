@@ -174,6 +174,11 @@ public class ProductMng extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+            if (! CallSoap.isConnectionAvailable(ProductMng.this))
+            {
+                Intent inte = new Intent(ProductMng.this, NoNet.class);
+                startActivity(inte);
+            }
             ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
             pb.setVisibility(View.VISIBLE);
             super.onPreExecute();
@@ -498,6 +503,11 @@ popup.dismiss();
 
         @Override
         protected void onPreExecute() {
+            if (! CallSoap.isConnectionAvailable(ProductMng.this))
+            {
+                Intent inte = new Intent(ProductMng.this, NoNet.class);
+                startActivity(inte);
+            }
             Asycdialog.setMessage("حذف اطلاعات ");
             Asycdialog.show();
             super.onPreExecute();

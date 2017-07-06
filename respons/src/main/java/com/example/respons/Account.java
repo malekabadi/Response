@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.respons.StoreReg.SaveData;
 import com.squareup.picasso.Picasso;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -177,6 +178,11 @@ public class Account extends AppCompatActivity {
 		protected void onPreExecute() {
 			Asycdialog.setMessage("در حال خواندن اطلاعات ");
 			Asycdialog.show();
+			if (! CallSoap.isConnectionAvailable(Account.this))
+			{
+				Intent inte = new Intent(Account.this, NoNet.class);
+				startActivity(inte);
+			}
 			super.onPreExecute();
 		}
 

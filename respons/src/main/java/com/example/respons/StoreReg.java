@@ -265,6 +265,11 @@ public class StoreReg extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+            if (! CallSoap.isConnectionAvailable(StoreReg.this))
+            {
+                Intent inte = new Intent(StoreReg.this, NoNet.class);
+                startActivity(inte);
+            }
             Asycdialog.setMessage("در حال خواندن اطلاعات ");
             Asycdialog.show();
             super.onPreExecute();
