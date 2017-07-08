@@ -232,7 +232,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_weight="0"
-        android:background="#f005"
+        android:background="#066289"
         android:text="تکمیل خرید و پرداخت"
         android:textColor="#fff" />
 

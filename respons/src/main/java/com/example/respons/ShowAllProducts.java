@@ -19,7 +19,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -50,7 +49,11 @@ public class ShowAllProducts extends Fragment {
     public List<String> pty = new ArrayList<String>();
     public List<String> val = new ArrayList<String>();
 
-    public ArrayList<Product> products = new ArrayList<Product>();
+    public ArrayList<String> ID = new ArrayList<String>();
+    public ArrayList<String> Name = new ArrayList<String>();
+    public ArrayList<String> Price = new ArrayList<String>();
+    public ArrayList<String> Discout = new ArrayList<String>();
+    public ArrayList<String> Image = new ArrayList<String>();
 
     public static ArrayList<String> Topics = new ArrayList<String>();
     public static ArrayList<String> TopicIDs = new ArrayList<String>();
@@ -67,7 +70,6 @@ public class ShowAllProducts extends Fragment {
     ImageAdapter imageAdapter;
     String sort = "",min="",max="";
     View rootView;
-    int lastItemPosition=0,page=0;
 
     public ShowAllProducts() {
         // Required empty public constructor
@@ -93,31 +95,17 @@ public class ShowAllProducts extends Fragment {
         GridView gridview1 = (GridView) rootView.findViewById(R.id.gridView1);
         imageAdapter = new ImageAdapter(getActivity());
         gridview1.setAdapter(imageAdapter);
-        gridview1.setOnScrollListener(new AbsListView.OnScrollListener() {
 
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                int lastItem = firstVisibleItem + visibleItemCount;
-                if (imageAdapter.getCount() >= 10 && lastItem  > imageAdapter.getCount() - 4) {
-                    boolean isLoading = false;
-                    if (!isLoading) {
-                        if(lastItem > lastItemPosition){
-                            lastItemPosition = imageAdapter.getCount();
-                            page++;
-                            new LongOperation().execute("True");
-                        }
-                        isLoading = true;
-                    }
-                }
-            }
-            public void onScrollStateChanged(AbsListView view, int scrollState) {}
+        GridView gridview2 = (GridView) rootView.findViewById(R.id.gridView2);
+        gridview2.setAdapter(imageAdapter);
 
-        });
+        GridView gridview3 = (GridView) rootView.findViewById(R.id.gridView3);
+        gridview3.setAdapter(imageAdapter);
 
         gridview1.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                String SelectID = products.get(position).ID;
+                String SelectID = ID.get(position);
                 Intent inte = new Intent(getActivity(), PageIndicator.class);
                 inte.putExtra("SID", SelectID);
                 //inte.putExtra("PID", SelectID);
@@ -126,63 +114,63 @@ public class ShowAllProducts extends Fragment {
         });
 
 /*****************************************************  Tabs Host *******/
-//        final TabHost tabs = (TabHost) rootView.findViewById(R.id.tabhost);
-//        tabs.setup();
-//
-//        TabHost.TabSpec tab1 = tabs.newTabSpec("tag 1");
-//        tab1.setIndicator("جدیدترین ها");
-//        tab1.setContent(R.id.tab1);
-//        tabs.addTab(tab1);
-//
-//        TabHost.TabSpec tab2 = tabs.newTabSpec("tag 2");
-//        tab2.setIndicator("حراجی ها");
-//        tab2.setContent(R.id.tab2);
-//        tabs.addTab(tab2);
-//
-//        TabHost.TabSpec tab3 = tabs.newTabSpec("tag 3");
-//        tab3.setIndicator("محبوب ترین");
-//        tab3.setContent(R.id.tab3);
-//        tabs.addTab(tab3);
-//
-//
-//        tabs.getTabWidget().getChildAt(tabs.getCurrentTab())
-//                .setBackgroundResource(R.color.grl); // selected
-//
-////for(int i=0;i<tabs.getTabWidget().getChildCount();i++)
-////{
-////    TextView tv = (TextView) tabs.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
-////    tv.setTextColor(color.white);
-////}
-//
-//        tabs.setOnTabChangedListener(new OnTabChangeListener() {
-//
-//            public void onTabChanged(String arg0) {
-//                if (! CallSoap.isConnectionAvailable(getActivity())) {
-//                    Intent inte = new Intent(getActivity(), NoNet.class);
-//                    startActivity(inte);
-//                }
-//                for (int i = 0; i < tabs.getTabWidget().getChildCount(); i++) {
-//                    tabs.getTabWidget().getChildAt(i)
-//                            .setBackgroundResource(R.color.white); // unselected
-//                }
-//                tabs.getTabWidget().getChildAt(tabs.getCurrentTab())
-//                        .setBackgroundResource(R.color.grl); // selected
-//
-//                switch (tabs.getCurrentTab()) {
-//                    case 0:
-//                        new LongOperation().execute("");
-//                        break;
-//                    case 1:
-//                        new LongOperation().execute("Discount");
-//                        break;
-//                    case 2:
-//                        new LongOperation().execute("MaxVisit");
-//                        break;
-//                }
-//                imageAdapter.notifyDataSetChanged();
-//
-//            }
-//        });
+        final TabHost tabs = (TabHost) rootView.findViewById(R.id.tabhost);
+        tabs.setup();
+
+        TabHost.TabSpec tab1 = tabs.newTabSpec("tag 1");
+        tab1.setIndicator("جدیدترین ها");
+        tab1.setContent(R.id.tab1);
+        tabs.addTab(tab1);
+
+        TabHost.TabSpec tab2 = tabs.newTabSpec("tag 2");
+        tab2.setIndicator("حراجی ها");
+        tab2.setContent(R.id.tab2);
+        tabs.addTab(tab2);
+
+        TabHost.TabSpec tab3 = tabs.newTabSpec("tag 3");
+        tab3.setIndicator("محبوب ترین");
+        tab3.setContent(R.id.tab3);
+        tabs.addTab(tab3);
+
+
+        tabs.getTabWidget().getChildAt(tabs.getCurrentTab())
+                .setBackgroundResource(R.color.grl); // selected
+
+//for(int i=0;i<tabs.getTabWidget().getChildCount();i++) 
+//{
+//    TextView tv = (TextView) tabs.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+//    tv.setTextColor(color.white);
+//} 
+
+        tabs.setOnTabChangedListener(new OnTabChangeListener() {
+
+            public void onTabChanged(String arg0) {
+                if (! CallSoap.isConnectionAvailable(getActivity())) {
+                    Intent inte = new Intent(getActivity(), NoNet.class);
+                    startActivity(inte);
+                }
+                for (int i = 0; i < tabs.getTabWidget().getChildCount(); i++) {
+                    tabs.getTabWidget().getChildAt(i)
+                            .setBackgroundResource(R.color.white); // unselected
+                }
+                tabs.getTabWidget().getChildAt(tabs.getCurrentTab())
+                        .setBackgroundResource(R.color.grl); // selected
+
+                switch (tabs.getCurrentTab()) {
+                    case 0:
+                        new LongOperation().execute("");
+                        break;
+                    case 1:
+                        new LongOperation().execute("Discount");
+                        break;
+                    case 2:
+                        new LongOperation().execute("MaxVisit");
+                        break;
+                }
+                imageAdapter.notifyDataSetChanged();
+
+            }
+        });
 
 //---------------------- Start
         btnCat = (Button) rootView.findViewById(R.id.Subject);
@@ -281,7 +269,7 @@ public class ShowAllProducts extends Fragment {
                 }
             }
 
-            Products(params[0]);
+            StoreList(params[0]);
             return null;
         }
     }
@@ -295,7 +283,7 @@ public class ShowAllProducts extends Fragment {
         }
 
         public int getCount() {
-            return products.size();
+            return Name.size();
         }
 
         public Object getItem(int position) {
@@ -321,17 +309,17 @@ public class ShowAllProducts extends Fragment {
             TextView price = (TextView) gridViewAndroid.findViewById(R.id.Price);
             TextView dis = (TextView) gridViewAndroid.findViewById(R.id.dis);
             //dis.setText(Discout.get(position) + "%" + " تخفیف");
-            if (Integer.parseInt(products.get(position).Discount) > 0) dis.setVisibility(View.VISIBLE);
+            if (Integer.parseInt(Discout.get(position)) > 0) dis.setVisibility(View.VISIBLE);
             else dis.setVisibility(View.GONE);
             //price.setBackgroundColor(Color.parseColor("#76c4a5"));
             ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.gridview_image);
-            name.setText(products.get(position).Name);
-            price.setText(Helper.GetMoney(products.get(position).Price));
+            name.setText(Name.get(position));
+            price.setText(Helper.GetMoney(Price.get(position)));
 
             final ProgressBar pb = (ProgressBar) gridViewAndroid.findViewById(R.id.progressBar1);
             pb.setVisibility(View.VISIBLE);
             Picasso.with(mContext) //
-                    .load(getString(R.string.WServer) + "/images/" + products.get(position).Image) //
+                    .load(getString(R.string.WServer) + "/images/" + Image.get(position)) //
                     .error(R.drawable.i2) //
                     .fit() //
                     .tag(mContext) //
@@ -353,30 +341,59 @@ public class ShowAllProducts extends Fragment {
     }
 
     //----------------------------------------------------------------------
-    public boolean Products(String Add) {
+    public boolean StoreList(String Sort) {
         try {
             CallSoap cs = new CallSoap();
-            String result = cs.ResiveList("AllProducts?topicID=" + cid + "&Sort=" + sort+ "&MinP=" + min + "&MaxP=" + max+ "&page=" + page);
+            String result = "";
+            if (Sort.length() > 0)
+                result = cs.ResiveList("Products?Sort=" + Sort);
+            else
+                result = cs.ResiveList("Products");
+            ID.clear();
+            Name.clear();
+            Price.clear();
+            Image.clear();
+            Discout.clear();
+            String[] Rows = result.split(":");
+            for (int i = 0; i < Rows.length; i++) {
+                String[] Field = Rows[i].split(",");
+                ID.add(Field[0]);
+                Name.add(Field[1]);
+                Price.add(Field[2]);
+                Image.add(Field[3]);
+                Discout.add(Field[5]);
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
 
-            if (! Add.equals("True"))
-                products.clear();
+    }
 
+    //----------------------------------------------------------------------
+    public boolean Products() {
+        try {
+            CallSoap cs = new CallSoap();
+            String result = cs.ResiveListSync("AllProducts?topicID=" + cid + "&Sort=" + sort+ "&MinP=" + min + "&MaxP=" + max);
+            ID.clear();
+            Name.clear();
+            Price.clear();
+            Image.clear();//Desc.clear();
             String[] Rows = result.split(":");
             if (Rows.length > 0) {
                 for (int i = 0; i < Rows.length; i++) {
                     String[] Field = Rows[i].split(",");
-                    Product p=new Product();
-                    p.ID=Field[0];
-                    p.Name=Field[1];
-                    p.Price=Field[2];
-                    p.Image=Field[3];
-                    p.Discount=Field[5];
-                    products.add(p);
+                    ID.add(Field[0]);
+                    Name.add(Field[1]);
+                    Price.add(Field[2]);
+                    Image.add(Field[3]);
+                    //Desc.add(Field[4]);
                 }
             } else
                 Toast.makeText(getActivity(), "هیچ کالایی در این گروه موجود نمی باشد",
                         Toast.LENGTH_LONG).show();
 
+            imageAdapter.notifyDataSetChanged();
             return true;
         } catch (Exception e) {
             return false;
@@ -414,7 +431,12 @@ public class ShowAllProducts extends Fragment {
 
                 View radioButton = radio.findViewById(checkedId);
                 int index = radio.indexOfChild(radioButton);
-                products.clear();
+                ID.clear();
+                Name.clear();
+                Price.clear();
+                Image.clear();
+                // Add logic here
+
                 switch (index) {
                     case 0: // New
                         sort = "";
@@ -426,17 +448,17 @@ public class ShowAllProducts extends Fragment {
                         sort = "MaxPrice";
                         break;
                     case 3: // Max Discount
-                        sort = "Discount";
+                        sort = "";
                         break;
                     case 4: // Max Buy
-                        sort = "MaxBuy";
+                        sort = "";
                         break;
                     case 5: // Max Show
-                        sort = "MaxShow";
+                        sort = "";
                         break;
                 }
                 if (cid.length() > 0)
-                    new LongOperation().execute(sort);
+                    Products();
                 else {
                     if (! CallSoap.isConnectionAvailable(getActivity())) {
                         Intent inte = new Intent(getActivity(), NoNet.class);
@@ -445,6 +467,7 @@ public class ShowAllProducts extends Fragment {
                     new LongOperation().execute(sort);
                     //StoreList(sort);
                 }
+                imageAdapter.notifyDataSetChanged();
                 popup.dismiss();
             }
         });
@@ -465,7 +488,7 @@ public class ShowAllProducts extends Fragment {
               public void onClick(View v) {
                   EditText Min = (EditText) dialog.findViewById(R.id.min);min=Min.getText().toString();
                   EditText Max = (EditText) dialog.findViewById(R.id.max);max=Max.getText().toString();
-                  new LongOperation().execute("");
+                  Products();
                   imageAdapter.notifyDataSetChanged();
                   dialog.dismiss();
               }
@@ -572,7 +595,6 @@ public class ShowAllProducts extends Fragment {
                         Intent inte = new Intent(getActivity(), NoNet.class);
                         startActivity(inte);
                     } else
-                    cid="";
                     new LongOperation().execute("");
                     popup.dismiss();
                 } else {
@@ -632,11 +654,15 @@ public class ShowAllProducts extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                btnCat.setText(_SubTopics.get(position));
-                cid=_SubTopicIDs.get(position);
+                btnCat.setText(SubTopics.get(position));
+                cid=SubTopicIDs.get(position);
                 if (cid.length() > 0) {
-                    products.clear();
-                    new LongOperation().execute("");
+                    ID.clear();
+                    Name.clear();
+                    Price.clear();
+                    Image.clear();
+                    Products();
+                    imageAdapter.notifyDataSetChanged();
                 }
                 popup.dismiss();
             }

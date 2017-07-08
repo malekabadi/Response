@@ -1,34 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.respons.NewActivity">
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="جستجو"
+        android:id="@+id/textView4"
+        android:background="@drawable/edit"
+        android:gravity="right|center_vertical"
+        android:layout_centerHorizontal="true" />
 
-    <android.support.v4.widget.DrawerLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/drawer_layout"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
+
+    <Button
+        android:id="@+id/Subject"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/edit"
+        android:text="همه گروه"
+        android:textSize="14dp"
+        android:drawableLeft="@drawable/ic_arrow_drop">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btnsort"
+        android:layout_width="0dp"
+        android:layout_weight=".7"
+        android:text="مرتب سازی"
+        android:layout_height="match_parent"
+        android:background="@drawable/edit"
+        android:drawableRight="@drawable/sort"/>
+
+    <Button
+        android:id="@+id/btnfilter"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".5"
+        android:text="قیمت"
+        android:background="@drawable/edit"
+        android:drawableRight="@drawable/filter"/>
+
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/gridView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:layoutDirection="rtl"
-        tools:openDrawer="start">
+        android:background="#eee"
+        android:numColumns="2"
+        android:layout_below="@+id/linearLayout">
+    </GridView>
 
-        <include
-            layout="@layout/app_bar_menu_right"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
-        <android.support.design.widget.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            android:layoutDirection="rtl"
-            app:headerLayout="@layout/nav_header_menu_right"
-            app:menu="@menu/activity_menu_right_drawer" />
+    <!--<ProgressBar-->
+        <!--android:id="@+id/progressBar1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:visibility="gone"-->
+        <!--android:layout_centerVertical="true" />-->
 
-    </android.support.v4.widget.DrawerLayout>
 
 </RelativeLayout>

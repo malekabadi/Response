@@ -3,8 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ddd"
-    android:orientation="vertical"
-    tools:context=".MainActivityOLD" >
+    android:orientation="vertical">
     
     <GridView
         android:id="@+id/gridView1"
@@ -17,7 +16,7 @@
      <Button
          android:id="@+id/btn"
          android:layout_width="match_parent"
-         android:layout_height="35dp"
+         android:layout_height="40dp"
          android:layout_weight="0"
          android:textColor="#fff"
          android:background="#267d5a"

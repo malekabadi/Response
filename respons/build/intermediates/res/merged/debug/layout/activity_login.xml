@@ -51,12 +51,13 @@
     <Button
         android:id="@+id/button1"
         android:layout_width="fill_parent"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_alignLeft="@+id/editText2"
         android:layout_below="@+id/editText2"
         android:layout_marginTop="21dp"
         android:text="@string/Login"
         android:background="#267d5a"
+        android:textSize="16sp"
         android:textColor="#ffffff"
         android:onClick="onclick" />
 
@@ -83,13 +84,12 @@
     <Button
         android:id="@+id/Register"
         android:layout_width="fill_parent"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/textView2"
-        android:background="#267d5a"
+        android:background="#066289"
         android:onClick="onclick"
         android:text="@string/Register"
         android:textColor="#ffffff" />
-<!--         android:background="#35b6f1" -->
     
 </RelativeLayout>
