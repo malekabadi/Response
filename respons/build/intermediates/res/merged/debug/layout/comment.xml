@@ -6,17 +6,6 @@
     tools:context=".MainActivityOLD" >
 
     <TextView
-        android:id="@+id/Header"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="1dp"
-        android:background="#f005"
-        android:gravity="center"
-        android:text="نظرات کاربران"
-        android:textColor="#fff"
-        android:textSize="15sp" />
-
-    <TextView
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -49,7 +38,6 @@
         android:layout_height="100dp"
         android:layout_above="@+id/textView1"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/Header"
         android:background="#ddd"
         android:numColumns="1" >
 
@@ -67,14 +55,14 @@
     <Button
         android:id="@+id/btnReg"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:background="#f005"
+        android:background="#066289"
         android:gravity="center"
         android:text=" ثبت نظر"
         android:textColor="#fff"
-        android:textSize="12sp" />
+        android:textSize="16sp" />
 
     <ProgressBar
         android:id="@+id/progressBar1"

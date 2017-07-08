@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:2:1-72:12
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:2:1-68:12
 	package
 		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:3:5-34
 		INJECTED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml
@@ -19,27 +19,27 @@ uses-sdk
 ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:multidex:1.0.1] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\multidex\1.0.1\AndroidManifest.xml:18:5-42
 MERGED from [Response:circleimageview:unspecified] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\Response\circleimageview\unspecified\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:5:5-44
-MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:design:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\design\23.4.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:recyclerview-v7:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:5:5-44
-MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-vector-drawable:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:animated-vector-drawable:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:design:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\design\23.3.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-vector-drawable:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:animated-vector-drawable:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
 	tools:overrideLibrary
-		ADDED from [com.android.support:appcompat-v7:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:23:9-75
+		ADDED from [com.android.support:appcompat-v7:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
 		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:9:9-38
 		INJECTED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml
@@ -68,29 +68,37 @@ uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:15:5-80
 	android:name
 		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:15:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:16:5-81
+	android:name
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:16:22-78
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:18:5-75
+	android:name
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:18:22-72
 application
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:20:5-70:19
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:20:5-66:19
 MERGED from [Response:circleimageview:unspecified] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\Response\circleimageview\unspecified\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:design:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\design\23.4.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.4.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-vector-drawable:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\design\23.3.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-vector-drawable:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.3.0] D:\Android_work\Project\Response\respons\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
 	android:label
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:23:9-35
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:23:9-33
 	android:supportsRtl
 		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:24:9-35
 	android:allowBackup
@@ -115,121 +123,101 @@ category#android.intent.category.LAUNCHER
 ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:32:17-77
 	android:name
 		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:32:27-74
-activity#com.example.respons.MainActivity
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:35:9-37:68
-	android:theme
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:37:13-56
-	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:36:13-41
 activity#com.example.respons.LoginActivity
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:38:9-51
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:35:9-51
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:38:19-48
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:35:19-48
 activity#com.example.respons.RegisterActivity
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:39:9-54
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:36:9-54
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:39:19-51
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:36:19-51
 activity#com.example.respons.PasswordActivity
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:40:9-54
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:37:9-54
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:40:19-51
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:37:19-51
 activity#com.example.respons.StoreManagment
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:41:9-43:55
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:38:9-40:46
 	android:layout_gravity
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:43:13-43
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:40:13-43
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:42:13-43
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:39:13-43
 activity#com.example.respons.ShowProducts
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:44:9-50
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:41:9-50
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:44:19-47
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:41:19-47
 activity#com.example.respons.ProductReg
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:45:9-48
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:42:9-48
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:45:19-45
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:42:19-45
 activity#com.example.respons.StoreReg
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:46:9-46
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:43:9-46
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:46:19-43
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:43:19-43
 activity#com.example.respons.ProductMng
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:47:9-48
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:44:9-48
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:47:19-45
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:44:19-45
 activity#com.example.respons.CategoryMng
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:48:9-49
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:45:9-49
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:48:19-46
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:45:19-46
 activity#com.example.respons.SubCateMng
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:49:9-48
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:46:9-48
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:49:19-45
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:46:19-45
 activity#com.example.respons.Cate_Product
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:50:9-50
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:47:9-50
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:50:19-47
-activity#com.example.respons.ShowCate
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:51:9-53:68
-	android:theme
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:53:13-56
-	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:52:13-37
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:47:19-47
 activity#com.example.respons.PageIndicator
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:54:9-51
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:48:9-51
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:54:19-48
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:48:19-48
 activity#com.example.respons.NewCate
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:55:9-45
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:49:9-45
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:55:19-42
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:49:19-42
 activity#com.example.respons.Cart
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:56:9-42
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:50:9-42
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:56:19-39
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:50:19-39
 activity#com.example.respons.GetAdress
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:57:9-47
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:51:9-47
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:57:19-44
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:51:19-44
 activity#com.example.respons.BuyVerify
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:58:9-47
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:52:9-47
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:58:19-44
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:52:19-44
 activity#com.example.respons.Orders
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:59:9-44
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:53:9-44
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:59:19-41
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:53:19-41
 activity#com.example.respons.Buy_Detail
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:60:9-48
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:54:9-48
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:60:19-45
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:54:19-45
 activity#com.example.respons.Comments
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:61:9-46
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:55:9-46
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:61:19-43
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:55:19-43
 activity#com.example.respons.ShowSearch
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:62:9-48
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:56:9-48
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:62:19-45
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:56:19-45
 activity#com.example.respons.Request
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:63:9-45
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:57:9-45
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:63:19-42
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:57:19-42
 activity#com.example.respons.Requests
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:64:9-46
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:58:9-46
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:64:19-43
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:58:19-43
 activity#com.example.respons.Account
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:65:9-45
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:59:9-45
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:65:19-42
-activity#com.example.respons.Main2Activity
-ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:66:9-69:68
-	android:label
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:68:13-57
-	android:theme
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:69:13-56
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:59:19-42
+activity#com.example.respons.NoNet
+ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:60:9-43
 	android:name
-		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:67:13-42
-android:uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-IMPLIED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:2:1-72:12 reason: com.wrapp.floatlabelededittext has a targetSdkVersion < 4
-android:uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:2:1-72:12 reason: com.wrapp.floatlabelededittext has a targetSdkVersion < 4
+		ADDED from D:\Android_work\Project\Response\respons\src\main\AndroidManifest.xml:60:19-40
