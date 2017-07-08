@@ -1,23 +1,19 @@
 [
     {
-        "merged": "D:\\Android_work\\Project\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_more.xml",
-        "source": "D:\\Android_work\\Project\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_more.xml"
-    },
-    {
         "merged": "D:\\Android_work\\Project\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_arrow_back.xml",
         "source": "D:\\Android_work\\Project\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_arrow_back.xml"
-    },
-    {
-        "merged": "D:\\Android_work\\Project\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_helpp.xml",
-        "source": "D:\\Android_work\\Project\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_helpp.xml"
     },
     {
         "merged": "D:\\Android_work\\Project\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_power.xml",
         "source": "D:\\Android_work\\Project\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_power.xml"
     },
     {
-        "merged": "D:\\Android_work\\Project\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_shop.xml",
-        "source": "D:\\Android_work\\Project\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_shop.xml"
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_person.xml",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_person.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_help.xml",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_help.xml"
     },
     {
         "merged": "D:\\Android_work\\Project\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_shopping.xml",
@@ -40,6 +36,50 @@
         "source": "D:\\Android_work\\Project\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_person.xml"
     },
     {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_arrow_back.xml",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_arrow_back.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_history.xml",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_history.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Project\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_about.xml",
+        "source": "D:\\Android_work\\Project\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_about.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_shop.xml",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_shop.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Project\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_helpp.xml",
+        "source": "D:\\Android_work\\Project\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_helpp.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_about.xml",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_about.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_done.xml",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_done.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Project\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_shop.xml",
+        "source": "D:\\Android_work\\Project\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_shop.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_lock.xml",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_lock.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_view.xml",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_view.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_helpp.xml",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_helpp.xml"
+    },
+    {
         "merged": "D:\\Android_work\\Project\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_view.xml",
         "source": "D:\\Android_work\\Project\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_view.xml"
     },
@@ -48,7 +88,11 @@
         "source": "D:\\Android_work\\Project\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_help.xml"
     },
     {
-        "merged": "D:\\Android_work\\Project\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_about.xml",
-        "source": "D:\\Android_work\\Project\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_about.xml"
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_power.xml",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_power.xml"
+    },
+    {
+        "merged": "D:\\Android_work\\Response\\respons\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_shopping.xml",
+        "source": "D:\\Android_work\\Response\\respons\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_shopping.xml"
     }
 ]

@@ -5,9 +5,9 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="right"
     android:fitsSystemWindows="true"
-    tools:openDrawer="end">
+    android:layoutDirection="rtl"
+    tools:openDrawer="start">
 
     <include
         layout="@layout/app_bar_main_menu"
@@ -18,11 +18,10 @@
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="right"
-        android:layoutDirection="rtl"
+        android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:layoutDirection="rtl"
         app:headerLayout="@layout/nav_header_menu_right"
         app:menu="@menu/activity_menu_right_drawer" />
-
 
 </android.support.v4.widget.DrawerLayout>

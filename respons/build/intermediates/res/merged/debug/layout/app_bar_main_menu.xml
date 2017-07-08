@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:layoutDirection="rtl"
-    tools:context="com.example.respons.MenuRight">
+    tools:context="com.example.respons.NewActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
@@ -25,7 +25,8 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorColor="@android:color/white"
+            app:tabIndicatorColor="#98fdd4"
+            android:layoutDirection="ltr"
             app:tabMode="fixed"
             app:tabGravity="fill"/>
 

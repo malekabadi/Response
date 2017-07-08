@@ -20,7 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="35dip"
         android:background="@drawable/button"
-        android:drawableLeft="@drawable/ic_arrow_drop"
         android:text="گروه" />
 
     <com.wrapp.floatlabelededittext.FloatLabeledEditText
@@ -126,7 +125,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dip"
         android:textSize="12dip"
-        android:text="بررسی موجودی" />
+        android:text="محصول دانلودی" />
 
     <Button
         android:id="@+id/btnAx"
@@ -187,8 +186,7 @@
         android:gravity="right|center_vertical"
         android:hint="حداقل سفارش" />
     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
-
-    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="4dip"
