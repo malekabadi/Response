@@ -31,4 +31,5 @@ dependencies {
     compile files('libs/picasso-2.5.2.jar')
     compile files('libs/rangeseekbar.jar')
     compile files('libs/sidemenu.jar')
+    compile 'org.apache.commons:commons-lang3:3.0'
 }

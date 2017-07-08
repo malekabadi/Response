@@ -63,11 +63,11 @@ public class NewActivity extends MenuRight {
 //        appVar.main.HasShop = true;
 //        appVar.main.ShopID = "2";
         MainAvtivity=this;
-        if (! CallSoap.isConnectionAvailable(this)) {
-            Intent inte = new Intent(this, NoNet.class);
-            startActivity(inte);
-        }
-        if (NoNet._NoNet != null) NoNet._NoNet.finish();
+//        if (! CallSoap.isConnectionAvailable(this)) {
+//            Intent inte = new Intent(this, NoNet.class);
+//            startActivity(inte);
+//        }
+//        if (NoNet._NoNet != null) NoNet._NoNet.finish();
         //------------------------------- Version Control and Update
         try {
             AppVersion=getPackageManager().getPackageInfo(getPackageName(),0).versionCode;
