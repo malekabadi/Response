@@ -81,10 +81,16 @@ public class NewActivity extends MenuRight {
 
         if (AppVersion < CurrnetVersion )
         {
-            Intent updateIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("http://some-public-url/deploy/MyApplication.apk"));
-            startActivity(updateIntent);
-        }
+//            Intent updateIntent = new Intent(Intent.ACTION_VIEW,
+//                    Uri.parse("http://some-public-url/deploy/MyApplication.apk"));
+//            startActivity(updateIntent);
+//            Intent promptInstall = new Intent(Intent.ACTION_VIEW)
+//                    .setDataAndType(Uri.parse("file:///path/to/your.apk"),
+//                            "application/vnd.android.package-archive");
+//            startActivity(promptInstall);
+            Intent goToMarket = new Intent(Intent.ACTION_VIEW)
+                    .setData(Uri.parse("market://details?id=com.package.name"));
+            startActivity(goToMarket);        }
         //---------------------------------------------- Check Login
         sp = getSharedPreferences("share", MODE_PRIVATE);
         appVar.main.UserName = sp.getString("UserName", "0");

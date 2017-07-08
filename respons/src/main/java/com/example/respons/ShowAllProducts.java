@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -42,6 +44,8 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ShowAllProducts extends Fragment {
@@ -49,11 +53,10 @@ public class ShowAllProducts extends Fragment {
     public List<String> pty = new ArrayList<String>();
     public List<String> val = new ArrayList<String>();
 
-    public ArrayList<String> ID = new ArrayList<String>();
-    public ArrayList<String> Name = new ArrayList<String>();
-    public ArrayList<String> Price = new ArrayList<String>();
-    public ArrayList<String> Discout = new ArrayList<String>();
-    public ArrayList<String> Image = new ArrayList<String>();
+    public ArrayList<Product> mList = new ArrayList<Product>();
+    public ArrayList<Product> List1 = new ArrayList<Product>();
+    public ArrayList<Product> List2 = new ArrayList<Product>();
+    public ArrayList<Product> List3 = new ArrayList<Product>();
 
     public static ArrayList<String> Topics = new ArrayList<String>();
     public static ArrayList<String> TopicIDs = new ArrayList<String>();
@@ -67,9 +70,13 @@ public class ShowAllProducts extends Fragment {
     static String ShpName;
     Button btnCat;
     GridView gridview;
-    ImageAdapter imageAdapter;
-    String sort = "",min="",max="";
+    ImageAdapter imageAdapter,imageAdapter2,imageAdapter3;
+    String sort = "",sort2 = "",min="",max="";
     View rootView;
+    int lastItemPosition1=0,page1=0,page=0;
+    int lastItemPosition2=0,page2=0;
+    int lastItemPosition3=0,page3=0;
+    TabHost tabs;
 
     public ShowAllProducts() {
         // Required empty public constructor
@@ -95,17 +102,80 @@ public class ShowAllProducts extends Fragment {
         GridView gridview1 = (GridView) rootView.findViewById(R.id.gridView1);
         imageAdapter = new ImageAdapter(getActivity());
         gridview1.setAdapter(imageAdapter);
+        gridview1.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int lastItem = firstVisibleItem + visibleItemCount;
+                if (imageAdapter.getCount() >= 10 && lastItem  > imageAdapter.getCount() - 4) {
+                    boolean isLoading = false;
+                    if (!isLoading) {
+                            if(lastItem > lastItemPosition1){
+                                lastItemPosition1 = imageAdapter.getCount();
+                                page1++;
+                                page=page1;
+                                new LongOperation().execute("","True");
+                            }
+                        isLoading = true;
+                    }
+                }
+            }
+            public void onScrollStateChanged(AbsListView view, int scrollState) {}
+
+        });
 
         GridView gridview2 = (GridView) rootView.findViewById(R.id.gridView2);
         gridview2.setAdapter(imageAdapter);
+        gridview2.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int lastItem = firstVisibleItem + visibleItemCount;
+                if (imageAdapter.getCount() >= 10 && lastItem  > imageAdapter.getCount() - 4) {
+                    boolean isLoading = false;
+                    if (!isLoading) {
+                        if(lastItem > lastItemPosition2){
+                            lastItemPosition2 = imageAdapter.getCount();
+                            page2++;
+                            page=page2;
+                            new LongOperation().execute("Discount","True");
+                        }
+                        isLoading = true;
+                    }
+                }
+            }
+            public void onScrollStateChanged(AbsListView view, int scrollState) {}
+
+        });
 
         GridView gridview3 = (GridView) rootView.findViewById(R.id.gridView3);
         gridview3.setAdapter(imageAdapter);
+        gridview3.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int lastItem = firstVisibleItem + visibleItemCount;
+                if (imageAdapter.getCount() >= 10 && lastItem  > imageAdapter.getCount() - 4) {
+                    boolean isLoading = false;
+                    if (!isLoading) {
+                        if(lastItem > lastItemPosition3){
+                            lastItemPosition3 = imageAdapter.getCount();
+                            page3++;
+                            page=page3;
+                            new LongOperation().execute("MaxVisit","True");
+                        }
+                        isLoading = true;
+                    }
+                }
+            }
+            public void onScrollStateChanged(AbsListView view, int scrollState) {}
+
+        });
 
         gridview1.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                String SelectID = ID.get(position);
+                String SelectID = mList.get(position).ID;
                 Intent inte = new Intent(getActivity(), PageIndicator.class);
                 inte.putExtra("SID", SelectID);
                 //inte.putExtra("PID", SelectID);
@@ -114,7 +184,7 @@ public class ShowAllProducts extends Fragment {
         });
 
 /*****************************************************  Tabs Host *******/
-        final TabHost tabs = (TabHost) rootView.findViewById(R.id.tabhost);
+        tabs = (TabHost) rootView.findViewById(R.id.tabhost);
         tabs.setup();
 
         TabHost.TabSpec tab1 = tabs.newTabSpec("tag 1");
@@ -154,16 +224,28 @@ public class ShowAllProducts extends Fragment {
 
                 switch (tabs.getCurrentTab()) {
                     case 0:
-                        new LongOperation().execute("");
+                        page=page1;
+                        if (List1.size()<1)
+                            new LongOperation().execute("","");
+                        mList.clear();
+                        mList.addAll(List1);
                         break;
                     case 1:
-                        new LongOperation().execute("Discount");
+                        page=page2;
+                        if (List2.size()<1)
+                            new LongOperation().execute("Discount","");
+                        mList.clear();
+                        mList.addAll(List2);
                         break;
                     case 2:
-                        new LongOperation().execute("MaxVisit");
+                        page=page3;
+                        if (List3.size()<1)
+                            new LongOperation().execute("MaxVisit","");
+                        mList.clear();
+                        mList.addAll(List3);
                         break;
                 }
-                imageAdapter.notifyDataSetChanged();
+                //imageAdapter.notifyDataSetChanged();
 
             }
         });
@@ -188,7 +270,7 @@ public class ShowAllProducts extends Fragment {
                 Sort(getActivity());
             }
         });
-        new LongOperation().execute("");
+        //new LongOperation().execute("");
 
 //---------------------- Start
         btnCat = (Button) rootView.findViewById(R.id.Subject);
@@ -207,11 +289,9 @@ public class ShowAllProducts extends Fragment {
                 Filter(getActivity());
             }
         });
-        new LongOperation().execute("");
-
-        return rootView;
+        new LongOperation().execute("","");
+         return rootView;
     }
-
     //--------------------------------------------------------------------------------
     private class LongOperation extends AsyncTask<String, Integer, Boolean> {
         String res;
@@ -242,6 +322,22 @@ public class ShowAllProducts extends Fragment {
             CallSoap cs = new CallSoap();
             String res = "";
             String[] Rows;
+            if (params[0].equals("Discount")) {
+                sort = "Discount";
+                StoreList(List2, params[1]);
+                mList.clear();
+                mList.addAll(List2);
+            } else if (params[0].equals("MaxVisit")) {
+                sort = "MaxVisit";
+                StoreList(List3, params[1]);
+                mList.clear();
+                mList.addAll(List3);
+            } else {
+                sort = sort2;
+                StoreList(List1, params[1]);
+                mList.clear();
+                mList.addAll(List1);
+            }
             if (Topics.size() < 2) {
                 res = cs.ResiveList("TopicList");
                 Rows = res.split(":");
@@ -259,8 +355,6 @@ public class ShowAllProducts extends Fragment {
                     SubParentID.add(Field[2]);
                 }
             }
-
-            StoreList(params[0]);
             return null;
         }
     }
@@ -274,7 +368,7 @@ public class ShowAllProducts extends Fragment {
         }
 
         public int getCount() {
-            return Name.size();
+            return mList.size();
         }
 
         public Object getItem(int position) {
@@ -300,17 +394,17 @@ public class ShowAllProducts extends Fragment {
             TextView price = (TextView) gridViewAndroid.findViewById(R.id.Price);
             TextView dis = (TextView) gridViewAndroid.findViewById(R.id.dis);
             //dis.setText(Discout.get(position) + "%" + " تخفیف");
-            if (Integer.parseInt(Discout.get(position)) > 0) dis.setVisibility(View.VISIBLE);
+            if (Integer.parseInt(mList.get(position).Discount) > 0) dis.setVisibility(View.VISIBLE);
             else dis.setVisibility(View.GONE);
             //price.setBackgroundColor(Color.parseColor("#76c4a5"));
             ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.gridview_image);
-            name.setText(Name.get(position));
-            price.setText(Helper.GetMoney(Price.get(position)));
+            name.setText(mList.get(position).Name);
+            price.setText(Helper.GetMoney(mList.get(position).Price));
 
             final ProgressBar pb = (ProgressBar) gridViewAndroid.findViewById(R.id.progressBar1);
             pb.setVisibility(View.VISIBLE);
             Picasso.with(mContext) //
-                    .load(getString(R.string.WServer) + "/images/" + Image.get(position)) //
+                    .load(getString(R.string.WServer) + "/images/" + mList.get(position).Image) //
                     .error(R.drawable.i2) //
                     .fit() //
                     .tag(mContext) //
@@ -332,30 +426,32 @@ public class ShowAllProducts extends Fragment {
     }
 
     //----------------------------------------------------------------------
-    public boolean StoreList(String Sort) {
+    public boolean StoreList(List<Product> list,String Add) {
         try {
             CallSoap cs = new CallSoap();
             String result = "";
-            if (Sort.length() > 0)
-                result = cs.ResiveList("Products?Sort=" + Sort);
-            else
-                result = cs.ResiveList("Products");
-            ID.clear();
-            Name.clear();
-            Price.clear();
-            Image.clear();
-            Discout.clear();
+//            if (Sort.length() > 0)
+//                result = cs.ResiveList("Products?Sort=" + Sort);
+//            else
+//                result = cs.ResiveList("Products");
+            result = cs.ResiveList("AllProducts?topicID=" + cid + "&Sort=" + sort+ "&MinP=" + min + "&MaxP=" + max+ "&page=" + page);
+
+            if (! Add.equals("True"))
+                list.clear();
             String[] Rows = result.split(":");
             for (int i = 0; i < Rows.length; i++) {
                 String[] Field = Rows[i].split(",");
-                ID.add(Field[0]);
-                Name.add(Field[1]);
-                Price.add(Field[2]);
-                Image.add(Field[3]);
-                Discout.add(Field[5]);
+                Product p=new Product();
+                p.ID=Field[0];
+                p.Name=Field[1];
+                p.Price=Field[2];
+                p.Image=Field[3];
+                p.Discount=Field[5];
+                list.add(p);
             }
             return true;
         } catch (Exception e) {
+            Log.w("Exception",e);
             return false;
         }
 
@@ -366,19 +462,18 @@ public class ShowAllProducts extends Fragment {
         try {
             CallSoap cs = new CallSoap();
             String result = cs.ResiveListSync("AllProducts?topicID=" + cid + "&Sort=" + sort+ "&MinP=" + min + "&MaxP=" + max);
-            ID.clear();
-            Name.clear();
-            Price.clear();
-            Image.clear();//Desc.clear();
+            mList.clear();
             String[] Rows = result.split(":");
             if (Rows.length > 0) {
                 for (int i = 0; i < Rows.length; i++) {
                     String[] Field = Rows[i].split(",");
-                    ID.add(Field[0]);
-                    Name.add(Field[1]);
-                    Price.add(Field[2]);
-                    Image.add(Field[3]);
-                    //Desc.add(Field[4]);
+                    Product p=null;
+                    p.ID=Field[0];
+                    p.Name=Field[1];
+                    p.Price=Field[2];
+                    p.Image=Field[3];
+                    //p.Discount=Field[5];
+                    mList.add(p);
                 }
             } else
                 Toast.makeText(getActivity(), "هیچ کالایی در این گروه موجود نمی باشد",
@@ -422,38 +517,27 @@ public class ShowAllProducts extends Fragment {
 
                 View radioButton = radio.findViewById(checkedId);
                 int index = radio.indexOfChild(radioButton);
-                ID.clear();
-                Name.clear();
-                Price.clear();
-                Image.clear();
-                // Add logic here
-
                 switch (index) {
                     case 0: // New
-                        sort = "";
+                        sort2 = "";
                         break;
                     case 1: // Min Price
-                        sort = "MinPrice";
+                        sort2 = "MinPrice";
                         break;
                     case 2: // Max Price
-                        sort = "MaxPrice";
+                        sort2 = "MaxPrice";
                         break;
                     case 3: // Max Discount
-                        sort = "";
+                        sort2 = "Discount";
                         break;
                     case 4: // Max Buy
-                        sort = "";
+                        sort2 = "";
                         break;
                     case 5: // Max Show
-                        sort = "";
+                        sort2 = "MaxVisit";
                         break;
                 }
-                if (cid.length() > 0)
-                    Products();
-                else
-                    new LongOperation().execute(sort);
-                    //StoreList(sort);
-                imageAdapter.notifyDataSetChanged();
+                new LongOperation().execute("","");
                 popup.dismiss();
             }
         });
@@ -577,7 +661,9 @@ public class ShowAllProducts extends Fragment {
                 Toast.makeText(getActivity(), item,
                         Toast.LENGTH_LONG).show();
                 if (position == 0) {
-                    new LongOperation().execute("");
+                    new LongOperation().execute("","");
+                    btnCat.setText("همه");
+                    cid="";
                     popup.dismiss();
                 } else {
                     _SubTopicIDs.clear();
@@ -636,15 +722,31 @@ public class ShowAllProducts extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                btnCat.setText(SubTopics.get(position));
-                cid=SubTopicIDs.get(position);
+                btnCat.setText(_SubTopics.get(position));
+                cid=_SubTopicIDs.get(position);
                 if (cid.length() > 0) {
-                    ID.clear();
-                    Name.clear();
-                    Price.clear();
-                    Image.clear();
-                    Products();
-                    imageAdapter.notifyDataSetChanged();
+                    //mList.clear();
+                    page1=0;page2=0;page3=0;
+                    switch (tabs.getCurrentTab()) {
+                        case 0:
+                            page=page1;
+                            new LongOperation().execute("","");
+                            mList.clear();
+                            mList.addAll(List1);
+                            break;
+                        case 1:
+                            page=page2;
+                            new LongOperation().execute("Discount","");
+                            mList.clear();
+                            mList.addAll(List2);
+                            break;
+                        case 2:
+                            page=page3;
+                            new LongOperation().execute("MaxVisit","");
+                            mList.clear();
+                            mList.addAll(List3);
+                            break;
+                    }
                 }
                 popup.dismiss();
             }
