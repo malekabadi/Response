@@ -4,16 +4,17 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.ThemedSpinnerAdapter;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,8 +36,6 @@ import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
-import android.widget.TabHost;
-import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -196,15 +195,34 @@ public class ShowAllProducts extends Fragment {
 
         final CallSoap cs = new CallSoap();
 
-        Button Sort = (Button) rootView.findViewById(R.id.btnsort);
+        final Button filter = (Button) rootView.findViewById(R.id.btnfilter);
+        final Button Sort = (Button) rootView.findViewById(R.id.btnsort);
         Sort.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+//                List<String> list = new ArrayList<String>();
+//                list.add("کمترین قیمت");
+//                list.add("بیشترین قیمت");
+//                list.add("بیشترین تخفیف");
+//                list.add("محبوب ترین");
+//                list.add("جدیدترین");
+//                final ListView lv = (ListView) rootView.findViewById(R.id.listView2);
+//                int w=Sort.getWidth()+filter.getWidth();
+//                ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) lv.getLayoutParams();
+//                lp.width = Sort.getWidth()+filter.getWidth();;
+//                lv.setLayoutParams(lp);
+//                if (lv.getVisibility() == View.VISIBLE)
+//                    lv.setVisibility(View.GONE);
+//                else lv.setVisibility(View.VISIBLE);
+//
+//                final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+//                        R.layout.listview_item_row, list);
+//                lv.setAdapter(adapter);
                 Sort(getActivity());
             }
         });
-//        new LongOperation().execute("");
+
 
 //---------------------- Start
         btnCat = (Button) rootView.findViewById(R.id.Subject);
@@ -215,7 +233,7 @@ public class ShowAllProducts extends Fragment {
             }
         });
 
-        Button filter = (Button) rootView.findViewById(R.id.btnfilter);
+
         filter.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -383,16 +401,24 @@ public class ShowAllProducts extends Fragment {
         }
     }
 
-    //----------------------------------------------------------------------
+    private int getRelativeTop(View myView) {
+        if (myView.getParent() == myView.getRootView())
+            return myView.getTop();
+        else
+            return myView.getTop() + getRelativeTop((View) myView.getParent());
+    }
+   //----------------------------------------------------------------------
     private void Sort(final Activity context) {
-        Display display = getActivity().getWindowManager().getDefaultDisplay();
-        int popupWidth = display.getWidth();//-100;
-        int popupHeight = display.getHeight();//-200;
 
-        RelativeLayout viewGroup = (RelativeLayout) context.findViewById(R.id.sort);
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        int popupWidth = display.getWidth();//-btnCat.getWidth();
+        int popupHeight = display.getHeight();//-200;
+        LinearLayout lay = (LinearLayout) context.findViewById(R.id.linearLayout);
+        int y=getRelativeTop(lay);
+        LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.sort1);
         LayoutInflater layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = layoutInflater.inflate(R.layout.sort, viewGroup);
+        View layout = layoutInflater.inflate(R.layout.sort1, viewGroup);
         float density = this.getResources().getDisplayMetrics().density;
         //popupHeight=(int) (265 * density);
 
@@ -404,7 +430,8 @@ public class ShowAllProducts extends Fragment {
 
         popup.setBackgroundDrawable(new ColorDrawable(0xa0000000));
         popup.getContentView().setBackgroundResource(android.R.color.transparent);
-        popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+        popup.showAsDropDown(layout, 0, y+lay.getHeight());
+//        popup.showAtLocation(layout, Gravity.LEFT | Gravity.TOP, 100, 100);
 
         final RadioGroup radio = (RadioGroup) layout.findViewById(R.id.radioGroup1);
         radio.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -534,7 +561,10 @@ public class ShowAllProducts extends Fragment {
         int popupWidth = display.getWidth();//-(int)(display.getWidth()*0.2);
         int popupHeight = display.getHeight();//-(int)(display.getWidth()*0.6);
 
-        LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup);
+        LinearLayout lay = (LinearLayout) context.findViewById(R.id.linearLayout);
+        int y=getRelativeTop(lay);
+        popupHeight=popupHeight-(y+lay.getHeight());
+        LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popuplay);
         LayoutInflater layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = layoutInflater.inflate(R.layout.popup, viewGroup);
@@ -543,6 +573,7 @@ public class ShowAllProducts extends Fragment {
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 R.layout.listview_item_row, Topics);
         lv.setAdapter(adapter);
+        Helper.setListViewHeightBasedOnChildren(lv);
 
         final PopupWindow popup = new PopupWindow(context);
         popup.setContentView(layout);
@@ -557,7 +588,8 @@ public class ShowAllProducts extends Fragment {
         popup.getContentView().setBackgroundResource(android.R.color.transparent);
 
         //popup.showAtLocation(layout, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y +  OFFSET_Y);
-        popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+        popup.showAtLocation(layout, Gravity.TOP, 0, y+lay.getHeight()*2);
+        //popup.showAsDropDown(layout, 0, 100);
 
         lv.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -600,7 +632,9 @@ public class ShowAllProducts extends Fragment {
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         int popupWidth = display.getWidth();//-100;
         int popupHeight = display.getHeight();//-200;
-
+        LinearLayout lay = (LinearLayout) context.findViewById(R.id.linearLayout);
+        int y=getRelativeTop(lay);
+        popupHeight=popupHeight-(y+lay.getHeight());
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup);
         LayoutInflater layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -625,7 +659,8 @@ public class ShowAllProducts extends Fragment {
         popup.setBackgroundDrawable(new ColorDrawable(0xa0000000));
         popup.getContentView().setBackgroundResource(android.R.color.transparent);
 
-        popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+        //popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+        popup.showAtLocation(layout, Gravity.TOP, 0, y+lay.getHeight()*2);
 
         lv.setOnItemClickListener(new OnItemClickListener() {
 

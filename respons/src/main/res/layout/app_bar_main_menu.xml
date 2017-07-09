@@ -16,7 +16,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:background="?attr/colorPrimary"
             android:titleTextColor="@color/white"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
@@ -24,7 +24,7 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             app:tabIndicatorColor="#98fdd4"
             android:layoutDirection="ltr"
             app:tabMode="fixed"

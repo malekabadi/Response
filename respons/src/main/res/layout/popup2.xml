@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:background="#aaf"
+    android:id="@+id/popuplay"
+    android:orientation="vertical"
+    android:padding="1dp" >
+
+    <ListView
+        android:id="@+id/list_topic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="300dp"
+        android:choiceMode="singleChoice"
+        android:background="@drawable/edit"
+        android:textSize="12pt" >
+
+    </ListView>
+
+</LinearLayout>
