@@ -144,31 +144,31 @@ public class Shops extends Fragment{
             CallSoap cs = new CallSoap();
             String res = "";
             String[] Rows;
-            if (Topics.size() < 2) {
-                res = cs.ResiveList("TopicList");
-                Rows = res.split(":");
-                for (int i = 0; i < Rows.length - 1; i++) {
-                    String[] Field = Rows[i].split(",");
-                    TopicIDs.add(Field[0]);
-                    Topics.add(Field[1]);
-                }
-                res = cs.ResiveList("SubTopic?id=" + "all");
-                Rows = res.split(":");
-                for (int i = 0; i < Rows.length - 1; i++) {
-                    String[] Field = Rows[i].split(",");
-                    SubTopicIDs.add(Field[0]);
-                    SubTopics.add(Field[1]);
-                    SubParentID.add(Field[2]);
-                }
-            }
-
-            res = cs.ResiveList("ZoneList?CityID=122");
-            Rows = res.split(":");
-            for (int i = 0; i < Rows.length - 1; i++) {
-                String[] Field = Rows[i].split(",");
-                ZoneIDs.add(Field[0]);
-                Zones.add(Field[1]);
-            }
+//            if (Topics.size() < 2) {
+//                res = cs.ResiveList("TopicList");
+//                Rows = res.split(":");
+//                for (int i = 0; i < Rows.length - 1; i++) {
+//                    String[] Field = Rows[i].split(",");
+//                    TopicIDs.add(Field[0]);
+//                    Topics.add(Field[1]);
+//                }
+//                res = cs.ResiveList("SubTopic?id=" + "all");
+//                Rows = res.split(":");
+//                for (int i = 0; i < Rows.length - 1; i++) {
+//                    String[] Field = Rows[i].split(",");
+//                    SubTopicIDs.add(Field[0]);
+//                    SubTopics.add(Field[1]);
+//                    SubParentID.add(Field[2]);
+//                }
+//            }
+//
+//            res = cs.ResiveList("ZoneList?CityID=122");
+//            Rows = res.split(":");
+//            for (int i = 0; i < Rows.length - 1; i++) {
+//                String[] Field = Rows[i].split(",");
+//                ZoneIDs.add(Field[0]);
+//                Zones.add(Field[1]);
+//            }
             StoreList(TopicID, ZoneID, FindStr);
 
             return null;
