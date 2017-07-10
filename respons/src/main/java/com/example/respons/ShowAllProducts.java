@@ -567,13 +567,13 @@ public class ShowAllProducts extends Fragment {
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popuplay);
         LayoutInflater layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = layoutInflater.inflate(R.layout.popup, viewGroup);
+        View layout = layoutInflater.inflate(R.layout.popup2, viewGroup);
 
         final ListView lv = (ListView) layout.findViewById(R.id.list_topic);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 R.layout.listview_item_row, Topics);
         lv.setAdapter(adapter);
-        Helper.setListViewHeightBasedOnChildren(lv);
+        //Helper.setListViewHeightBasedOnChildren(lv);
 
         final PopupWindow popup = new PopupWindow(context);
         popup.setContentView(layout);
@@ -638,7 +638,7 @@ public class ShowAllProducts extends Fragment {
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup);
         LayoutInflater layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = layoutInflater.inflate(R.layout.popup, viewGroup);
+        View layout = layoutInflater.inflate(R.layout.popup2, viewGroup);
 
         final ListView lv = (ListView) layout.findViewById(R.id.list_topic);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
