@@ -40,7 +40,7 @@
     <Button
         android:id="@+id/btnsort"
         android:layout_width="0dp"
-        android:layout_weight=".7"
+        android:layout_weight=".6"
         android:text="مرتب سازی"
         android:layout_height="match_parent"
         android:background="@drawable/edit"
@@ -50,7 +50,7 @@
         android:id="@+id/btnfilter"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight=".5"
+        android:layout_weight=".4"
         android:text="قیمت"
         android:background="@drawable/edit"
         android:drawableRight="@drawable/filter"/>

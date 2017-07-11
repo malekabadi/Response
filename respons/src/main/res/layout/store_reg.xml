@@ -171,15 +171,16 @@
             android:padding="2dip"
             android:src="@drawable/noimages" />
 
-        <ImageView
+        <EditText
             android:id="@+id/Namad"
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
+            android:layout_height="40dp"
             android:layout_marginTop="4dip"
             android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:hint="شناسه(انگلیسی)"
             android:background="@drawable/edit"
-            android:padding="2dip"
-            android:src="@drawable/noimages" />
+            android:padding="2dip"/>
     </LinearLayout>
 
     <Button

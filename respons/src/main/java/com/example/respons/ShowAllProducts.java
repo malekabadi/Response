@@ -481,20 +481,42 @@ public class ShowAllProducts extends Fragment {
     ////------------------------------------------------------------
     private void Filter(final Activity context) {
 
-        final Dialog dialog = new Dialog(context);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.pfilter);
-        dialog.show();
+//        final Dialog dialog = new Dialog(context);
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialog.setContentView(R.layout.pfilter);
+//        dialog.show();
 
-        Button Filter = (Button) dialog.findViewById(R.id.Filter);
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        int popupWidth = display.getWidth();//-btnCat.getWidth();
+        int popupHeight = display.getHeight();//-200;
+        LinearLayout lay = (LinearLayout) context.findViewById(R.id.linearLayout);
+        int y=getRelativeTop(lay);
+        LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.filter);
+        LayoutInflater layoutInflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View layout = layoutInflater.inflate(R.layout.pfilter1, viewGroup);
+        float density = this.getResources().getDisplayMetrics().density;
+        //popupHeight=(int) (265 * density);
+
+        final PopupWindow popup = new PopupWindow(context);
+        popup.setContentView(layout);
+        popup.setWidth(popupWidth);
+        popup.setHeight(popupHeight);
+        popup.setFocusable(true);
+
+        popup.setBackgroundDrawable(new ColorDrawable(0xa0000000));
+        popup.getContentView().setBackgroundResource(android.R.color.transparent);
+        popup.showAsDropDown(layout, 0, y+lay.getHeight());
+
+
+        Button Filter = (Button) layout.findViewById(R.id.Filter);
         Filter.setOnClickListener(new OnClickListener() {
               @Override
               public void onClick(View v) {
-                  EditText Min = (EditText) dialog.findViewById(R.id.min);min=Min.getText().toString();
-                  EditText Max = (EditText) dialog.findViewById(R.id.max);max=Max.getText().toString();
+                  EditText Min = (EditText) layout.findViewById(R.id.min);min=Min.getText().toString();
+                  EditText Max = (EditText) layout.findViewById(R.id.max);max=Max.getText().toString();
                   new LongOperation().execute("");
-                  imageAdapter.notifyDataSetChanged();
-                  dialog.dismiss();
+                  popup.dismiss();
               }
         });
 
