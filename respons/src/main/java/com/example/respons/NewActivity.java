@@ -3,6 +3,7 @@ package com.example.respons;
         import android.app.Activity;
         import android.app.Dialog;
         import android.app.DownloadManager;
+        import android.content.DialogInterface;
         import android.content.Intent;
         import android.content.IntentFilter;
         import android.content.SharedPreferences;
@@ -17,6 +18,7 @@ package com.example.respons;
         import android.support.v4.view.ViewPager;
         import android.support.v4.widget.DrawerLayout;
         import android.support.v7.app.ActionBarDrawerToggle;
+        import android.support.v7.app.AlertDialog;
         import android.support.v7.app.AppCompatActivity;
         import android.support.v7.widget.Toolbar;
         import android.view.Gravity;
@@ -81,9 +83,19 @@ public class NewActivity extends MenuRight {
 
         if (AppVersion < CurrnetVersion )
         {
-            Intent updateIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("http://wcf.kapma.ir/respons.apk"));
-            startActivity(updateIntent);
+
+            AlertDialog alt = new AlertDialog.Builder(NewActivity.this).create();
+            alt.setTitle("ایران شاپ");
+            alt.setIcon(R.drawable.ic_launcher);
+            alt.setMessage("بروزرسانی برنامه");
+
+            alt.setButton(DialogInterface.BUTTON_POSITIVE,"تایید", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick( DialogInterface arg0,  int arg1) {
+                    Intent updateIntent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://wcf.kapma.ir/respons.apk"));
+                    startActivity(updateIntent);
 //            Intent promptInstall = new Intent(Intent.ACTION_VIEW)
 //                    .setDataAndType(Uri.parse("file:///path/to/your.apk"),
 //                            "application/vnd.android.package-archive");
@@ -91,6 +103,21 @@ public class NewActivity extends MenuRight {
 //            Intent goToMarket = new Intent(Intent.ACTION_VIEW)
 //                    .setData(Uri.parse("market://details?id=com.package.name"));
 //            startActivity(goToMarket);
+
+                }
+            });
+
+            alt.setButton(DialogInterface.BUTTON_NEGATIVE,"انصراف", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick( DialogInterface arg0,  int arg1) {
+                    finish();
+                }
+            });
+
+            //نمایش
+            alt.show();
+
         }
         //---------------------------------------------- Check Login
         sp = getSharedPreferences("share", MODE_PRIVATE);

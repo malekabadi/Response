@@ -32,7 +32,7 @@
         android:background="@drawable/edit"
         float:fletTextAppearance="@style/floatlabelededittext"
         float:fletPadding="2dp">
-        
+
     <EditText
         android:id="@+id/txtName"
         android:layout_width="fill_parent"
@@ -44,7 +44,7 @@
         android:ems="10"
         android:hint="نام محصول" />
 	</com.wrapp.floatlabelededittext.FloatLabeledEditText>
-	
+
     <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -64,7 +64,7 @@
         android:ems="10"
         android:textSize="12sp"
         android:background="#fff"
-        android:inputType="textMultiLine" 
+        android:inputType="textMultiLine"
         android:gravity="right|center_vertical"
         android:hint="توضیحات" />
     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
@@ -85,7 +85,7 @@
         android:layout_alignLeft="@+id/txtDesc"
         android:layout_below="@+id/btnObj"
         android:ems="10"
-        android:inputType="number" 
+        android:inputType="number"
         android:background="#fff"
         android:gravity="right|center_vertical"
         android:hint="قیمت" />
@@ -107,28 +107,53 @@
         android:layout_alignLeft="@+id/txtDesc"
         android:layout_below="@+id/btnObj"
         android:ems="10"
-        android:inputType="number" 
+        android:inputType="number"
         android:background="#fff"
         android:gravity="right|center_vertical"
         android:hint="تعداد" />
     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
-    <CheckBox
-        android:id="@+id/chkCall"
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
-        android:layout_height="30dip"
-        android:textSize="12dip"
+        android:layout_height="40dp"
         android:layout_marginTop="4dip"
-        android:text="تماس برای قیمت" />
+        android:padding="2dp"
+        android:layout_weight="1"
+        android:background="@drawable/edit"
+        float:fletTextAppearance="@style/floatlabelededittext"
+        float:fletPadding="2dp">
+        <EditText
+            android:id="@+id/txtDiscount"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:inputType="number"
+            android:background="#fff"
+            android:gravity="right|center_vertical"
+            android:hint="تخفیف" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
-    <CheckBox
-        android:id="@+id/chkDownload"
+
+    <Switch
         android:layout_width="match_parent"
-        android:layout_height="30dip"
-        android:textSize="12dip"
-        android:text="بررسی موجودی" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dip"
+        android:text="استعلام قیمتی"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/edit"
+        android:id="@+id/chkCall" />
 
-    <Button
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="استعلام موجودی"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/edit"
+        android:id="@+id/chkExist" />
+
+     <Button
         android:id="@+id/btnAx"
         android:layout_width="fill_parent"
         android:layout_height="35dip"
@@ -148,26 +173,7 @@
         android:layout_height="100dp"
         android:layout_weight="1.04"
     />
-    <com.wrapp.floatlabelededittext.FloatLabeledEditText
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="4dip"
-        android:padding="2dp"
-    	android:layout_weight="1"
-        android:background="@drawable/edit"
-        float:fletTextAppearance="@style/floatlabelededittext"
-        float:fletPadding="2dp">
-	<EditText
-        android:id="@+id/txtDiscount"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:ems="10"
-        android:inputType="number" 
-        android:background="#fff"
-        android:gravity="right|center_vertical"
-        android:hint="تخفیف" />
-	</com.wrapp.floatlabelededittext.FloatLabeledEditText>
-    
+
     <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -182,7 +188,7 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:ems="10"
-        android:inputType="number" 
+        android:inputType="number"
         android:background="#fff"
         android:gravity="right|center_vertical"
         android:hint="حداقل سفارش" />
@@ -202,7 +208,7 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:ems="10"
-        android:inputType="number" 
+        android:inputType="number"
         android:background="#fff"
         android:gravity="right|center_vertical"
         android:hint="هزینه ارسال" />
@@ -222,7 +228,7 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:ems="10"
-        android:inputType="number" 
+        android:inputType="number"
         android:background="#fff"
         android:gravity="right|center_vertical"
         android:hint="وزن" />
@@ -238,7 +244,7 @@
         android:textSize="12pt" >
 
     </ListView>
-    
+
     <Button
         android:id="@+id/btnReg"
         android:layout_width="fill_parent"

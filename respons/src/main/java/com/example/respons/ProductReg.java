@@ -32,6 +32,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
@@ -217,8 +218,8 @@ public class ProductReg extends AppCompatActivity {
 				{	btnCat.setError("لطفا گروه کالایی را تعیین نمایید");Ok=false; }
 				EditText desc=(EditText) findViewById(R.id.txtDesc);
 				EditText count=(EditText) findViewById(R.id.txtCount);
-				CheckBox call=(CheckBox) findViewById(R.id.chkCall);
-				CheckBox download=(CheckBox) findViewById(R.id.chkDownload);
+				Switch call=(Switch) findViewById(R.id.chkCall);
+				Switch download=(Switch) findViewById(R.id.chkExist);
 				EditText discount=(EditText) findViewById(R.id.txtDiscount);
 				EditText min=(EditText) findViewById(R.id.txtMin);
 				EditText forward=(EditText) findViewById(R.id.txtForward);
@@ -232,8 +233,8 @@ public class ProductReg extends AppCompatActivity {
 				url+="&min="+min.getText();
 				url+="&weight="+weight.getText();
 				url+="&forward="+forward.getText();
-				url+="&download=";//+download.getText();
-				url+="&call=";//+call.getText();
+				url+="&download="+download.isChecked();
+				url+="&call="+call.isChecked();
 				url+="&ImgCnt="+(Files.size()-1);
 				String py="";
 				for(int i=0;i<pty.size();i++)
@@ -370,8 +371,8 @@ public class ProductReg extends AppCompatActivity {
 					EditText price=(EditText) findViewById(R.id.txtPrice);price.setText(Field[1]);
 					EditText desc=(EditText) findViewById(R.id.txtDesc);desc.setText(Field[2]);
 					EditText count=(EditText) findViewById(R.id.txtCount);count.setText(Field[3]);
-					CheckBox call=(CheckBox) findViewById(R.id.chkCall);call.setChecked(Boolean.valueOf(Field[4]));
-					CheckBox download=(CheckBox) findViewById(R.id.chkDownload);download.setChecked(Boolean.valueOf(Field[5]));
+					Switch call=(Switch) findViewById(R.id.chkCall);call.setChecked(Boolean.valueOf(Field[4]));
+					Switch download=(Switch) findViewById(R.id.chkExist);download.setChecked(Boolean.valueOf(Field[5]));
 					EditText discount=(EditText) findViewById(R.id.txtDiscount);discount.setText(Field[6]);
 					EditText min=(EditText) findViewById(R.id.txtMin);min.setText(Field[7]);
 					EditText forward=(EditText) findViewById(R.id.txtForward);forward.setText(Field[8]);

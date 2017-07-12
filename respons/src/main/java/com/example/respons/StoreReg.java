@@ -165,10 +165,12 @@ public class StoreReg extends AppCompatActivity {
                     mobile.setError("لطفا شماره موبایل را وارد نمایید");
                     reg = false;
                 }
+                EditText Namad = (EditText) findViewById(R.id.Namad);
                 if (reg) {
                     CallSoap cs = new CallSoap();
                     String url = "title=" + shop.getText();
                     url += "&name=" + "";//name.getText();
+                    url += "&Uniqe=" + Namad.getText();;
                     url += "&topicID=" + TopicID;
                     url += "&onwer=" + appVar.main.UserID;
                     url += "&desc=" + desc.getText();
