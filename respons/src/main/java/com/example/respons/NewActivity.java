@@ -42,7 +42,7 @@ public class NewActivity extends MenuRight {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    int AppVersion=0,CurrnetVersion=0;
+    int AppVersion=0,CurrnetVersion=3;
     private int[] tabIcons = {
             R.drawable.cate,
             R.drawable.prod,
@@ -81,16 +81,17 @@ public class NewActivity extends MenuRight {
 
         if (AppVersion < CurrnetVersion )
         {
-//            Intent updateIntent = new Intent(Intent.ACTION_VIEW,
-//                    Uri.parse("http://some-public-url/deploy/MyApplication.apk"));
-//            startActivity(updateIntent);
+            Intent updateIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://wcf.kapma.ir/respons.apk"));
+            startActivity(updateIntent);
 //            Intent promptInstall = new Intent(Intent.ACTION_VIEW)
 //                    .setDataAndType(Uri.parse("file:///path/to/your.apk"),
 //                            "application/vnd.android.package-archive");
 //            startActivity(promptInstall);
-            Intent goToMarket = new Intent(Intent.ACTION_VIEW)
-                    .setData(Uri.parse("market://details?id=com.package.name"));
-            startActivity(goToMarket);        }
+//            Intent goToMarket = new Intent(Intent.ACTION_VIEW)
+//                    .setData(Uri.parse("market://details?id=com.package.name"));
+//            startActivity(goToMarket);
+        }
         //---------------------------------------------- Check Login
         sp = getSharedPreferences("share", MODE_PRIVATE);
         appVar.main.UserName = sp.getString("UserName", "0");
