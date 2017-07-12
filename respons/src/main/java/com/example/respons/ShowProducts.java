@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -58,7 +59,8 @@ public class ShowProducts extends AppCompatActivity {
 
     public String[] Category;
     public String[] SubCategory;
-    public String ShopID, cid = "", Res = "";
+    public String ShopID, cid = "", sort = "";
+    int lastItemPosition=0,page=0;
     static String ShpName;
     Button btnCat;
     GridView gridview;
@@ -159,11 +161,31 @@ public class ShowProducts extends AppCompatActivity {
                 Sort(ShowProducts.this);
             }
         });
-        new LongOperation().execute("");
+        new LongOperation().execute();
         GridView gridview = (GridView) findViewById(R.id.gridView1);
         imageAdapter = new ImageAdapter(this);
         gridview.setAdapter(imageAdapter);
-//StoreList(ShopID,"");
+        gridview.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int lastItem = firstVisibleItem + visibleItemCount;
+                if (imageAdapter.getCount() >= 30 && lastItem  > imageAdapter.getCount() - 4) {
+                    boolean isLoading = false;
+                    if (!isLoading) {
+                        if(lastItem > lastItemPosition){
+                            lastItemPosition = imageAdapter.getCount();
+                            page++;
+                            new LongOperation().execute("True");
+                        }
+                        isLoading = true;
+                    }
+                }
+            }
+            public void onScrollStateChanged(AbsListView view, int scrollState) {}
+
+        });
+
         gridview.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
@@ -214,19 +236,19 @@ public class ShowProducts extends AppCompatActivity {
 
         @Override
         protected Boolean doInBackground(String... params) {
-            StoreList(ShopID, "");
+            Products("", "", "","");
             res = new CallSoap().ResiveList("CategoryList?shopID=" + ShopID);
             return null;
         }
     }
 
     //--------------------------------------------------------------------------------
-    private class ProductList extends AsyncTask<String, Integer, Boolean> {
+    private class ProductsList extends AsyncTask<String, Integer, Boolean> {
         String res;
+        ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
 
         @Override
         protected void onPostExecute(Boolean result) {
-            ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
             pb.setVisibility(View.INVISIBLE);
             imageAdapter.notifyDataSetChanged();
             super.onPostExecute(result);
@@ -246,12 +268,7 @@ public class ShowProducts extends AppCompatActivity {
 
         @Override
         protected Boolean doInBackground(String... params) {
-            if (params[0].equals("shop"))
-                StoreList(ShopID, params[2]);
-            if (params[0].equals("category"))
-                Products(cid,params[2]);
-            if (params[0].equals("filter"))
-                ProductsFilter(cid, params[2], params[3], params[4],params[5]);
+                Products( params[0], params[1], params[2],params[3]);
             return null;
         }
     }
@@ -321,73 +338,17 @@ public class ShowProducts extends AppCompatActivity {
 
     }
 
-    //----------------------------------------------------------------------
-    public boolean StoreList(String shopID, String Sort) {
-        try {
-            CallSoap cs = new CallSoap();
-            String result = cs.ResiveList("ProductsShop?shopID=" + shopID + "&Sort=" + Sort);
-            ID.clear();
-            Name.clear();
-            Price.clear();
-            Image.clear();
-            Discout.clear();
-            String[] Rows = result.split(":");
-            for (int i = 0; i < Rows.length; i++) {
-                String[] Field = Rows[i].split(",");
-                ID.add(Field[0]);
-                Name.add(Field[1]);
-                Price.add(Field[2]);
-                Image.add(Field[3]);
-                Discout.add(Field[5]);
-            }
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-
-    }
-
-    //----------------------------------------------------------------------
-    public boolean Products(String CategoryID, String Sort) {
-        try {
-            CallSoap cs = new CallSoap();
-            String result = cs.ResiveList("ProductsList?cid=" + CategoryID + "&Sort=" + Sort);
-            ID.clear();
-            Name.clear();
-            Price.clear();
-            Image.clear();//Desc.clear();
-            String[] Rows = result.split(":");
-            if (Rows.length > 0) {
-                for (int i = 0; i < Rows.length; i++) {
-                    String[] Field = Rows[i].split(",");
-                    ID.add(Field[0]);
-                    Name.add(Field[1]);
-                    Price.add(Field[2]);
-                    Image.add(Field[3]);
-                    //Desc.add(Field[4]);
-                }
-            } else
-                Toast.makeText(ShowProducts.this, "هیچ کالایی در این گروه موجود نمی باشد",
-                        Toast.LENGTH_LONG).show();
-
-            //imageAdapter.notifyDataSetChanged();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    //----------------------------------------------------------------------
-    public boolean ProductsFilter(String CategoryID, String Fields, String str, String min, String max) {
+     //----------------------------------------------------------------------
+    public boolean Products(String Fields, String str, String min, String max) {
         try {
             CallSoap cs = new CallSoap();
             String result="";
             if (cid.equals(""))
-                result = cs.ResiveList("ProductFilter?cid=all" + "&shopID=" + ShopID + "&field=" + Fields + "&str=" + str
-                        + "&min=" + min+ "&max=" + max);
+                result = cs.ResiveList("ProductsShop?cid=all" + "&shopID=" + ShopID + "&Sort=" + sort + "&field=" + Fields + "&str=" + str
+                        + "&min=" + min+ "&max=" + max + "&page=" + page);
             else
-                result = cs.ResiveList("ProductFilter?cid=" + CategoryID + "&topicID" + ShopID + "&field=" + Fields + "&str=" + str
-                        + "&min=" + min+ "&max=" + max);
+                result = cs.ResiveList("ProductFilter?cid=" + cid + "&topicID" + ShopID + "&Sort=" + sort + "&field=" + Fields + "&str=" + str
+                        + "&min=" + min+ "&max=" + max + "&page=" + page);
 
             ID.clear();
             Name.clear();
@@ -402,6 +363,7 @@ public class ShowProducts extends AppCompatActivity {
                     Price.add(Field[2]);
                     Image.add(Field[3]);
                     //Desc.add(Field[4]);
+                    Discout.add(Field[5]);
                 }
             } else
                 Toast.makeText(ShowProducts.this, "هیچ کالایی در این گروه موجود نمی باشد",
@@ -474,7 +436,7 @@ public class ShowProducts extends AppCompatActivity {
                     lv.setVisibility(View.GONE);
                     subList(ShowProducts.this);
                 } else
-                    Products(item, "");
+                    new ProductsList().execute("","","","");
                 popup.dismiss();
             }
         });
@@ -515,8 +477,7 @@ public class ShowProducts extends AppCompatActivity {
                 btnCat.setText(SubCategory[position]);
                 String CategorySelect = SubCategoryID.get(position);
                 cid = CategorySelect;
-                //Products(CategorySelect, "");
-                new ProductList().execute("category",CategorySelect,"");
+                new ProductsList().execute("","","","");
                 popup.dismiss();
             }
         });
@@ -558,7 +519,7 @@ public class ShowProducts extends AppCompatActivity {
                 Price.clear();
                 Image.clear();
 
-                String sort = "";
+
                 // Add logic here
 
                 switch (index) {
@@ -582,11 +543,11 @@ public class ShowProducts extends AppCompatActivity {
                         break;
                 }
                 if (cid.length() > 0)
-                    new ProductList().execute("category",cid,sort);
+                    new ProductsList().execute("","","","");
                     //Products(cid, sort);
                 else
                     //StoreList(ShopID, sort);
-                    new ProductList().execute("shop",ShopID,sort);
+                    new ProductsList().execute("","","","");
                 popup.dismiss();
             }
         });
@@ -685,8 +646,7 @@ public class ShowProducts extends AppCompatActivity {
                         str += val.get(i) + ";";
                     }
                 }
-                //ProductsFilter(cid, fields, str, min.getText().toString(),max.getText().toString());
-                new ProductList().execute("filter",cid, fields, str, min.getText().toString(),max.getText().toString());
+                new ProductsList().execute(fields, str, min.getText().toString(),max.getText().toString());
                 dialog.dismiss();
             }
         });

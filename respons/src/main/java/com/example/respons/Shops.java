@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -56,6 +57,7 @@ public class Shops extends Fragment{
 
     Point p;
     String TopicID = "", ZoneID = "", FindStr = "";
+    int lastItemPosition=0,page=0;
     Button b1, b2;
     ImageAdapter imAdapter;
     GridView gridview;
@@ -99,6 +101,26 @@ public class Shops extends Fragment{
         gridview = (GridView) rootView.findViewById(R.id.gridView1);
         imAdapter = new ImageAdapter(getActivity());
         gridview.setAdapter(imAdapter);
+        gridview.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int lastItem = firstVisibleItem + visibleItemCount;
+                if (imAdapter.getCount() >= 30 && lastItem  > imAdapter.getCount() - 4) {
+                    boolean isLoading = false;
+                    if (!isLoading) {
+                        if(lastItem > lastItemPosition){
+                            lastItemPosition = imAdapter.getCount();
+                            page++;
+                            new LongOperation().execute("True");
+                        }
+                        isLoading = true;
+                    }
+                }
+            }
+            public void onScrollStateChanged(AbsListView view, int scrollState) {}
+
+        });
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -247,7 +269,7 @@ public class Shops extends Fragment{
         try {
 
             CallSoap cs = new CallSoap();
-            String res = cs.ResiveList("ShopList?TopicID=" + topicID + "&ZoneID=" + zoneID + "&Search=" + findStr);
+            String res = cs.ResiveList("ShopList?TopicID=" + topicID + "&ZoneID=" + zoneID + "&Search=" + findStr+ "&page=" + page);
             String[] Rows = res.split(":");
             for (int i = 1; i < Rows.length - 1; i++) {
                 String[] Field = Rows[i].split(",");

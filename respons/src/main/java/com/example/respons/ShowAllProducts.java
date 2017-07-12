@@ -97,7 +97,7 @@ public class ShowAllProducts extends Fragment {
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 int lastItem = firstVisibleItem + visibleItemCount;
-                if (imageAdapter.getCount() >= 10 && lastItem  > imageAdapter.getCount() - 4) {
+                if (imageAdapter.getCount() >= 30 && lastItem  > imageAdapter.getCount() - 4) {
                     boolean isLoading = false;
                     if (!isLoading) {
                         if(lastItem > lastItemPosition){
@@ -401,6 +401,7 @@ public class ShowAllProducts extends Fragment {
         }
     }
 
+    //----------------------------------------------------------------------
     private int getRelativeTop(View myView) {
         if (myView.getParent() == myView.getRootView())
             return myView.getTop();

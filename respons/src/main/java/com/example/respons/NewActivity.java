@@ -111,7 +111,7 @@ public class NewActivity extends MenuRight {
 
                 @Override
                 public void onClick( DialogInterface arg0,  int arg1) {
-                    finish();
+                    //finish();
                 }
             });
 

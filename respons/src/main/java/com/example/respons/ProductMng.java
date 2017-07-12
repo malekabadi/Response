@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -64,6 +65,7 @@ public class ProductMng extends AppCompatActivity {
     GridView gridview;
     ImageAdapter imageAdapter;
     Boolean SelectOn = false;
+    int lastItemPosition=0,page=0;
 
     @Override
     public void onDestroy()
@@ -139,6 +141,26 @@ public class ProductMng extends AppCompatActivity {
         gridview = (GridView) findViewById(R.id.gridView1);
         imageAdapter = new ImageAdapter(this);
         gridview.setAdapter(imageAdapter);
+        gridview.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int lastItem = firstVisibleItem + visibleItemCount;
+                if (imageAdapter.getCount() >= 30 && lastItem  > imageAdapter.getCount() - 4) {
+                    boolean isLoading = false;
+                    if (!isLoading) {
+                        if(lastItem > lastItemPosition){
+                            lastItemPosition = imageAdapter.getCount();
+                            page++;
+                            new LongOperation().execute("True");
+                        }
+                        isLoading = true;
+                    }
+                }
+            }
+            public void onScrollStateChanged(AbsListView view, int scrollState) {}
+
+        });
 
 
         gridview.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -293,7 +315,7 @@ public class ProductMng extends AppCompatActivity {
     public boolean StoreList(String shopID) {
         try {
             CallSoap cs = new CallSoap();
-            String result = cs.ResiveList("ProductsShop?shopID=" + shopID);
+            String result = cs.ResiveList("ProductsShop?shopID=" + shopID + "&page=" + page);
             String[] Rows = result.split(":");
             for (int i = 0; i < Rows.length; i++) {
                 String[] Field = Rows[i].split(",");
@@ -318,7 +340,7 @@ public class ProductMng extends AppCompatActivity {
         CallSoap cs = new CallSoap();
         String result = "";
         try {
-            result = cs.ResiveListSync("ProductsList?cid=" + CategoryID);
+            result = cs.ResiveListSync("ProductsShop?cid=" + CategoryID + "&page=" + page);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
