@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Requests extends AppCompatActivity {
+public class Inbox extends AppCompatActivity {
 
     public ArrayList<String> ID = new ArrayList<String>();
     public ArrayList<String> Title = new ArrayList<String>();
@@ -48,16 +48,8 @@ public class Requests extends AppCompatActivity {
         TextView title = (TextView) mCustomView.findViewById(R.id.title);
         title.setText("لیست درخواست ها");
         //-----------------------------------------
-
         FloatingActionButton btnNew = (FloatingActionButton) findViewById(R.id.fab);
-        btnNew.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Requests.this, Request.class);
-                startActivity(i);
-            }
-        });
-
+        btnNew.setVisibility(View.GONE);
         new LongOperation().execute("");
         view = (ListView) findViewById(R.id.View1);
         tAdapter = new TextAdapter(this);
@@ -76,9 +68,9 @@ public class Requests extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            if (! CallSoap.isConnectionAvailable(Requests.this))
+            if (! CallSoap.isConnectionAvailable(Inbox.this))
             {
-                Intent inte = new Intent(Requests.this, NoNet.class);
+                Intent inte = new Intent(Inbox.this, NoNet.class);
                 startActivity(inte);
             }
             ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
@@ -151,7 +143,7 @@ public class Requests extends AppCompatActivity {
     public boolean StoreList() {
         try {
             CallSoap cs = new CallSoap();
-            String result = cs.ResiveList("Requsets?");
+            String result = cs.ResiveList("inbox?");
             String[] Rows = result.split(":");
             for (int i = 0; i < Rows.length; i++) {
                 String[] Field = Rows[i].split(",");

@@ -108,7 +108,9 @@ public class CallSoap
 				DefaultHttpClient httpClient = new DefaultHttpClient();
 				addr = addr.replaceAll(" ", "%20");
 	//		HttpGet httpGet=new HttpGet("http://10.0.2.2/RestServiceImpl.svc/"+addr);
-				HttpGet httpGet = new HttpGet("http://wcf.kapma.ir/RestServiceImpl.svc/" + addr);
+				if (addr.indexOf('?')>0)
+				addr = addr + "&UserID="+appVar.main.UserID + "&pass=" + appVar.main.Pass;
+				HttpGet	httpGet = new HttpGet("http://wcf.kapma.ir/RestServiceImpl.svc/" + addr);
 				//Get the response
 				HttpResponse httpResponse = httpClient.execute(httpGet);
 				HttpEntity httpEntity = httpResponse.getEntity();

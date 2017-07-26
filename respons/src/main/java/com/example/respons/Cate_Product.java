@@ -1,5 +1,6 @@
 package com.example.respons;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
@@ -80,8 +81,28 @@ public class Cate_Product extends AppCompatActivity {
         }
         if (_SubTopics.size() < 1) return;
 
-        Products(TopicID);
-        //new LongOperation().execute("");
+        //Products(TopicID);
+        new AsyncTask<String, String, Boolean>() {
+            ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
+
+            @Override
+            protected void onPreExecute() {
+                pb.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            protected Boolean doInBackground(String... params) {
+                Products(params[0]);
+                return true;
+            }
+
+            @Override
+            protected void onPostExecute(Boolean result) {
+                pb.setVisibility(View.INVISIBLE);
+                imAdapter.notifyDataSetChanged();
+                Helper.setGridViewHeightBasedOnChildren(gridview,2);            }
+        }.execute(TopicID);
+
 
         listview = (ListView) findViewById(R.id.listView1);
 //        adapter = new ArrayAdapter<String>(this,
@@ -103,12 +124,6 @@ public class Cate_Product extends AppCompatActivity {
         imAdapter = new ImageAdapter(this);
         gridview.setAdapter(imAdapter);
 
-        ViewGroup.LayoutParams params = gridview.getLayoutParams();
-        density = this.getResources().getDisplayMetrics().density;
-        int h=imAdapter.getCount();
-        if (h % 2 != 0) h++;
-        params.height = (int) (97 * density * h);
-        gridview.setLayoutParams(params);
         ScrollView mainScrollView=(ScrollView) findViewById(R.id.scrollView);
 //        mainScrollView.fullScroll(View.FOCUS_UP);
 //        mainScrollView.pageScroll(View.FOCUS_UP);
@@ -131,7 +146,7 @@ public class Cate_Product extends AppCompatActivity {
     public boolean Products(String topicID) {
         try {
             CallSoap cs = new CallSoap();
-            String result = cs.ResiveListSync("TopicProducts?topicID=" + topicID );
+            String result = cs.ResiveList("TopicProducts?topicID=" + topicID );
             ID.clear();
             Name.clear();
             Price.clear();
@@ -164,12 +179,7 @@ public class Cate_Product extends AppCompatActivity {
             ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
             pb.setVisibility(View.INVISIBLE);
             imAdapter.notifyDataSetChanged();
-            int h=imAdapter.getCount();
-            ViewGroup.LayoutParams params = gridview.getLayoutParams();
-            if (h % 2 != 0) h++;
-            params.height = (int) (97 * density * h);
-            gridview.setLayoutParams(params);
-            ScrollView mainScrollView=(ScrollView) findViewById(R.id.scrollView);
+            Helper.setGridViewHeightBasedOnChildren(gridview,2);
             super.onPostExecute(result);
         }
 

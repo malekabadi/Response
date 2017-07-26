@@ -3,6 +3,7 @@ package com.example.respons;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.AsyncTask;
@@ -31,6 +32,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -54,7 +56,7 @@ public class PageIndicator extends AppCompatActivity {
         String Desc;
         String Count;
         String Discount;
-        Bitmap image;
+        String image;
     }
 
     ArrayList<String> curImageList = new ArrayList<String>();
@@ -72,7 +74,7 @@ public class PageIndicator extends AppCompatActivity {
     Orther order = new Orther();
     public static ClsFactor HFactor;
     public static List<Orther> Factor = new ArrayList<Orther>();
-
+    public static List<Bitmap> image = new ArrayList<Bitmap>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,10 +169,19 @@ public class PageIndicator extends AppCompatActivity {
                 order.Price = Field[1];
                 order.Desc = desc.getText().toString();
                 order.Count = "1";
-                order.image = getBitmapFromView(gallery_pager.getChildAt(0));
+                image.add(getBitmapFromView(gallery_pager.getChildAt(0)));
+                order.image=curImageList.get(0);
                 order.Discount = Field[6];
                 Factor.add(order);
                 HFactor = new ClsFactor();
+                SharedPreferences sp;
+                sp = getSharedPreferences("share", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                Gson gson = new Gson();
+                String json = gson.toJson(PageIndicator.Factor);
+                editor.putString("Factor", json);
+                editor.commit();
+
                 Intent inte = new Intent(PageIndicator.this, Cart.class);
                 startActivity(inte);
             }

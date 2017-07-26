@@ -4,85 +4,129 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.respons.NewActivity">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:hint="جستجو"
-        android:id="@+id/textView4"
-        android:inputType="textPersonName"
-        android:background="@drawable/edit"
-        android:gravity="right|center_vertical"
-        android:layout_centerHorizontal="true" />
-
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/linearLayout0"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@+id/textView4"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/linearLayout">
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/Subject"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/edit"
-        android:text="همه گروه"
-        android:textSize="14dp"
-        android:drawableLeft="@drawable/ic_arrow_drop">
+        <EditText
+            android:id="@+id/FindText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:background="@drawable/button"
+            android:gravity="right|center_vertical"
+            android:hint="نام کالای مورد نظرتان را تایپ نمایید"
+            android:inputType="textPersonName" />
 
-    </Button>
-
-    <Button
-        android:id="@+id/btnsort"
-        android:layout_width="0dp"
-        android:layout_weight=".6"
-        android:text="مرتب سازی"
-        android:layout_height="match_parent"
-        android:background="@drawable/edit"
-        android:drawableRight="@drawable/sort"/>
-
-    <Button
-        android:id="@+id/btnfilter"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight=".4"
-        android:text="قیمت"
-        android:background="@drawable/edit"
-        android:drawableRight="@drawable/filter"/>
+        <ImageButton
+            android:id="@+id/Find"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/button"
+            android:src="@drawable/ic_search" />
 
     </LinearLayout>
 
-    <GridView
-        android:id="@+id/gridView1"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/linearLayout0"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Subject"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button"
+            android:drawableLeft="@drawable/ic_arrow_drop"
+            android:text="همه گروه"
+            android:textSize="14dp">
+
+        </Button>
+
+        <Button
+            android:id="@+id/btnsort"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".6"
+            android:background="@drawable/button"
+            android:drawableRight="@drawable/sort"
+            android:text="مرتب سازی" />
+
+        <Button
+            android:id="@+id/btnfilter"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".4"
+            android:background="@drawable/button"
+            android:drawableRight="@drawable/filter"
+            android:text="قیمت" />
+
+    </LinearLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#eee"
-        android:numColumns="2"
         android:layout_below="@+id/linearLayout">
-    </GridView>
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nsv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/linearLayout"
+            android:fillViewport="true"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="800dp"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+
+                <GridView
+                    android:id="@+id/gridView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#eee"
+                    android:numColumns="2" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
     <ListView
+        android:id="@+id/listView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView2"
-        android:layout_alignTop="@+id/gridView1"
-        android:visibility="gone"
-        android:layout_alignLeft="@+id/gridView1"
-        android:background="@drawable/edit" />
+        android:layout_alignLeft="@+id/swipe_container"
+        android:layout_alignTop="@+id/swipe_container"
+        android:background="@drawable/edit"
+        android:visibility="gone" />
 
 
     <!--<ProgressBar-->
-        <!--android:id="@+id/progressBar1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:visibility="gone"-->
-        <!--android:layout_centerVertical="true" />-->
+    <!--android:id="@+id/progressBar1"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:visibility="gone"-->
+    <!--android:layout_centerVertical="true" />-->
 
 
 </RelativeLayout>

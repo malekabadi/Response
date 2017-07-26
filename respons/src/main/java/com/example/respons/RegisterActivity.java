@@ -123,6 +123,7 @@ public class RegisterActivity extends AppCompatActivity {
 					Toast.makeText(getApplicationContext(), "خوش آمدید",
 							Toast.LENGTH_SHORT).show();
 					appVar.main.UserName=phone.getText().toString();
+					appVar.main.Pass=password.getText().toString();
 					appVar.main.UserID=result.substring(2);
 
 					NewActivity.navigationView.getMenu().findItem(R.id.nav_shop).setTitle("ایجاد فروشگاه");
@@ -138,6 +139,7 @@ public class RegisterActivity extends AppCompatActivity {
 					Editor editor = sp.edit();
 					editor.putString("UserName", phone.getText().toString());
 					editor.putString("UserID", appVar.main.UserID);
+					editor.putString("Pass", appVar.main.Pass);
 					editor.commit();
 					finish();
 					LoginActivity.lgin.finish();

@@ -17,6 +17,41 @@
 
     </Button>
 
+    <LinearLayout
+        android:id="@+id/linearLayout0"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/btnCat"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/Find"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_search"
+            android:background="@drawable/edit" />
+
+        <EditText
+            android:id="@+id/FindText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:background="@drawable/edit"
+            android:gravity="right|center_vertical"
+            android:hint="نام کالای مورد نظرتان را تایپ نمایید"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearLayout0">
+
     <GridView
         android:id="@+id/gridView1"
         android:layout_width="fill_parent"
@@ -24,14 +59,15 @@
         android:layout_centerHorizontal="true"
         android:background="#ddd"
         android:numColumns="1"
-        android:layout_below="@+id/btnCat">
+        android:layout_below="@+id/btnCat"/>
 
-    </GridView>
+    </android.support.v4.widget.SwipeRefreshLayout>>
 
     <ProgressBar
         android:id="@+id/progressBar1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" />
 
@@ -42,7 +78,7 @@
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="#267d5a"
         android:src="@android:drawable/ic_input_add"
-        android:layout_alignBottom="@+id/gridView1"
-        android:layout_alignLeft="@+id/gridView1" />
+        android:layout_alignBottom="@+id/swipe_container"
+        android:layout_alignLeft="@+id/swipe_container" />
 
 </RelativeLayout>

@@ -2,6 +2,7 @@ package com.example.respons;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -18,7 +19,11 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 
 //import android.widget.AdapterView.OnItemClickListener;
 
@@ -41,6 +46,7 @@ public class Cart extends AppCompatActivity {
     Point p;
     GridView gridview;
     ImageAdapter imageAdapter;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +58,7 @@ public class Cart extends AppCompatActivity {
         View mCustomView = getSupportActionBar().getCustomView();
         TextView title = (TextView) mCustomView.findViewById(R.id.title);
         title.setText("سبد خرید");
-
+        sp = getSharedPreferences("share", MODE_PRIVATE);
         //Bundle extra = getIntent().getExtras();
         //if (extra != null)
         //    sid= extra.getString("SID");
@@ -128,13 +134,15 @@ public class Cart extends AppCompatActivity {
                 int tot = Integer.parseInt(PageIndicator.Factor.get(position).Count) *
                         Integer.parseInt(PageIndicator.Factor.get(position).Price);
                 total.setText(" قیمت کل :   " + Helper.GetMoney(String.valueOf(tot)));
-                imageViewAndroid.setImageBitmap(PageIndicator.Factor.get(position).image);
-//	            Picasso.with(mContext) //
-//	            .load("http://192.168.1.102/images/"+Image.get(position)) //
-//	            .error(R.drawable.i2) //
-//	            .fit() //
-//	            .tag(mContext) //
-//	            .into(imageViewAndroid);
+                if (PageIndicator.image.size() > position)
+                    imageViewAndroid.setImageBitmap(PageIndicator.image.get(position));
+                else
+                    Picasso.with(mContext) //
+                    .load(getString(R.string.WServer) + "/images/"+PageIndicator.Factor.get(position).image) //
+                    .error(R.drawable.i2) //
+                    .fit() //
+                    .tag(mContext) //
+                    .into(imageViewAndroid);
 
                 Button Del = (Button) gridViewAndroid.findViewById(R.id.btnDel);
                 Del.setOnClickListener(new OnClickListener() {
@@ -193,6 +201,11 @@ public class Cart extends AppCompatActivity {
 
         public void remove(int position) {
             PageIndicator.Factor.remove(position);
+            SharedPreferences.Editor editor = sp.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(PageIndicator.Factor);
+            editor.putString("Factor", json);
+            editor.commit();
             notifyDataSetChanged();
 
         }

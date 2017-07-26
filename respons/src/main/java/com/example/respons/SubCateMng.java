@@ -109,6 +109,7 @@ public class SubCateMng extends AppCompatActivity {
                     inte.putExtra("CID", id);
                     inte.putExtra("PID", cid);
                     inte.putExtra("mode", "edit");
+                    inte.putExtra("pos", pos);
                     startActivity(inte);
                 } else if (options[item].equals("حـذف")) {
 

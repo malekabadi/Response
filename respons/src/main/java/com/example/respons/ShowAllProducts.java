@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.ThemedSpinnerAdapter;
+import android.support.v4.widget.NestedScrollView;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Display;
@@ -28,6 +28,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -44,6 +45,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.color.holo_blue_bright;
+
 public class ShowAllProducts extends Fragment {
 
     public List<String> pty = new ArrayList<String>();
@@ -51,6 +54,7 @@ public class ShowAllProducts extends Fragment {
 
     public ArrayList<Product> products = new ArrayList<Product>();
 
+    public static ArrayList<String> Image = new ArrayList<String>();
     public static ArrayList<String> Topics = new ArrayList<String>();
     public static ArrayList<String> TopicIDs = new ArrayList<String>();
     public static ArrayList<String> SubTopics = new ArrayList<String>();
@@ -62,11 +66,12 @@ public class ShowAllProducts extends Fragment {
     public String ShopID, cid = "", Res = "";
     static String ShpName;
     Button btnCat;
-    GridView gridview;
+    GridView gridview, gridview1;
     ImageAdapter imageAdapter;
-    String sort = "",min="",max="";
+    String sort = "", min = "", max = "",find="";
     View rootView;
-    int lastItemPosition=0,page=0;
+    int lastItemPosition = 0, page = 0;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     public ShowAllProducts() {
         // Required empty public constructor
@@ -87,9 +92,10 @@ public class ShowAllProducts extends Fragment {
         if (Topics.size() < 1) {
             TopicIDs.add("0");
             Topics.add("همه");
+            Image.add("");
         }
 
-        GridView gridview1 = (GridView) rootView.findViewById(R.id.gridView1);
+        gridview1 = (GridView) rootView.findViewById(R.id.gridView1);
         imageAdapter = new ImageAdapter(getActivity());
         gridview1.setAdapter(imageAdapter);
         gridview1.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -97,10 +103,10 @@ public class ShowAllProducts extends Fragment {
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 int lastItem = firstVisibleItem + visibleItemCount;
-                if (imageAdapter.getCount() >= 30 && lastItem  > imageAdapter.getCount() - 4) {
+                if (imageAdapter.getCount() >= 30 && lastItem > imageAdapter.getCount() - 4) {
                     boolean isLoading = false;
                     if (!isLoading) {
-                        if(lastItem > lastItemPosition){
+                        if (lastItem > lastItemPosition) {
                             lastItemPosition = imageAdapter.getCount();
                             page++;
                             new LongOperation().execute("True");
@@ -109,7 +115,9 @@ public class ShowAllProducts extends Fragment {
                     }
                 }
             }
-            public void onScrollStateChanged(AbsListView view, int scrollState) {}
+
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
 
         });
 
@@ -121,6 +129,15 @@ public class ShowAllProducts extends Fragment {
                 inte.putExtra("SID", SelectID);
                 //inte.putExtra("PID", SelectID);
                 startActivity(inte);
+            }
+        });
+        swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+        //swipeRefreshLayout.setColorSchemeColors(R.color.blue, R.color.purple, R.color.green, R.color.red);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new LongOperation().execute("");
             }
         });
 
@@ -200,40 +217,10 @@ public class ShowAllProducts extends Fragment {
         Sort.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-//                List<String> list = new ArrayList<String>();
-//                list.add("کمترین قیمت");
-//                list.add("بیشترین قیمت");
-//                list.add("بیشترین تخفیف");
-//                list.add("محبوب ترین");
-//                list.add("جدیدترین");
-//                final ListView lv = (ListView) rootView.findViewById(R.id.listView2);
-//                int w=Sort.getWidth()+filter.getWidth();
-//                ViewGroup.LayoutParams lp = (ViewGroup.LayoutParams) lv.getLayoutParams();
-//                lp.width = Sort.getWidth()+filter.getWidth();;
-//                lv.setLayoutParams(lp);
-//                if (lv.getVisibility() == View.VISIBLE)
-//                    lv.setVisibility(View.GONE);
-//                else lv.setVisibility(View.VISIBLE);
-//
-//                final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-//                        R.layout.listview_item_row, list);
-//                lv.setAdapter(adapter);
                 Sort(getActivity());
             }
         });
-
-
-//---------------------- Start
-        btnCat = (Button) rootView.findViewById(R.id.Subject);
-        btnCat.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopup(getActivity());
-            }
-        });
-
-
+        //---------------------- Filter
         filter.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -241,12 +228,33 @@ public class ShowAllProducts extends Fragment {
                 Filter(getActivity());
             }
         });
+        ImageButton Find = (ImageButton) rootView.findViewById(R.id.Find);
+        final EditText FindText = (EditText) rootView.findViewById(R.id.FindText);
+        FindText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        if (! CallSoap.isConnectionAvailable(getActivity())) {
-            Intent inte = new Intent(getActivity(), NoNet.class);
-            startActivity(inte);
-        } else
-        new LongOperation().execute("");
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                find=s.toString();
+            }
+        });
+        Find.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                find=FindText.getText().toString();
+                new LongOperation().execute(find);
+            }
+        });
+        if (products.size()<1)
+            new LongOperation().execute("");
 
         return rootView;
     }
@@ -259,16 +267,32 @@ public class ShowAllProducts extends Fragment {
         @Override
         protected void onPostExecute(Boolean result) {
             pb1.setVisibility(View.INVISIBLE);
+
             imageAdapter.notifyDataSetChanged();
+            int h=Helper.setGridViewHeightBasedOnChildren1(getActivity(), gridview1,2);
+            ViewGroup.LayoutParams params;
+
+            params = (ViewGroup.LayoutParams) swipeRefreshLayout.getLayoutParams();
+            params.height = h; // gridview1.getHeight();
+            swipeRefreshLayout.setLayoutParams(params);
+            swipeRefreshLayout.setRefreshing(false);
+
             super.onPostExecute(result);
+            NestedScrollView nsv= (NestedScrollView) rootView.findViewById(R.id.nsv);
+            params =  (ViewGroup.LayoutParams) nsv.getLayoutParams();
+            params.height = h; // gridview1.getHeight();
+            nsv.setLayoutParams(params);
         }
 
         @Override
         protected void onPreExecute() {
             pb1 = (ProgressBar) getActivity().findViewById(R.id.pBar);
-            pb1.setVisibility(View.VISIBLE);
-            if (! CallSoap.isConnectionAvailable(getActivity()))
-            {
+            //pb1.setVisibility(View.VISIBLE);
+            swipeRefreshLayout.post(new Runnable() {
+                @Override public void run() {
+                    swipeRefreshLayout.setRefreshing(true);
+                }});
+            if (!CallSoap.isConnectionAvailable(getActivity())) {
                 Intent inte = new Intent(getActivity(), NoNet.class);
                 startActivity(inte);
             }
@@ -284,14 +308,15 @@ public class ShowAllProducts extends Fragment {
             if (Topics.size() < 2) {
                 res = cs.ResiveList("TopicList");
                 Rows = res.split(":");
-                for (int i = 0; i < Rows.length ; i++) {
+                for (int i = 0; i < Rows.length; i++) {
                     String[] Field = Rows[i].split(",");
                     TopicIDs.add(Field[0]);
                     Topics.add(Field[1]);
+                    Image.add(Field[2]);
                 }
                 res = cs.ResiveList("SubTopic?id=" + "all");
                 Rows = res.split(":");
-                for (int i = 0; i < Rows.length ; i++) {
+                for (int i = 0; i < Rows.length; i++) {
                     String[] Field = Rows[i].split(",");
                     SubTopicIDs.add(Field[0]);
                     SubTopics.add(Field[1]);
@@ -304,7 +329,7 @@ public class ShowAllProducts extends Fragment {
         }
     }
 
-   //--------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------
     public class ImageAdapter extends BaseAdapter {
         private Context mContext;
 
@@ -339,7 +364,8 @@ public class ShowAllProducts extends Fragment {
             TextView price = (TextView) gridViewAndroid.findViewById(R.id.Price);
             TextView dis = (TextView) gridViewAndroid.findViewById(R.id.dis);
             //dis.setText(Discout.get(position) + "%" + " تخفیف");
-            if (Integer.parseInt(products.get(position).Discount) > 0) dis.setVisibility(View.VISIBLE);
+            if (Integer.parseInt(products.get(position).Discount) > 0)
+                dis.setVisibility(View.VISIBLE);
             else dis.setVisibility(View.GONE);
             //price.setBackgroundColor(Color.parseColor("#76c4a5"));
             ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.gridview_image);
@@ -353,7 +379,7 @@ public class ShowAllProducts extends Fragment {
                     .error(R.drawable.i2) //
                     .fit() //
                     .tag(mContext) //
-                    .into(imageViewAndroid,new com.squareup.picasso.Callback() {
+                    .into(imageViewAndroid, new com.squareup.picasso.Callback() {
                         @Override
                         public void onSuccess() {
                             pb.setVisibility(View.GONE);
@@ -374,21 +400,22 @@ public class ShowAllProducts extends Fragment {
     public boolean Products(String Add) {
         try {
             CallSoap cs = new CallSoap();
-            String result = cs.ResiveList("AllProducts?topicID=" + cid + "&Sort=" + sort+ "&MinP=" + min + "&MaxP=" + max+ "&page=" + page);
+            String result = cs.ResiveList("AllProducts?topicID=" + cid + "&Sort=" + sort + "&name=" + find +
+                    "&MinP=" + min + "&MaxP=" + max + "&page=" + page);
 
-            if (! Add.equals("True"))
+            if (!Add.equals("True"))
                 products.clear();
 
             String[] Rows = result.split(":");
             if (Rows.length > 0) {
                 for (int i = 0; i < Rows.length; i++) {
                     String[] Field = Rows[i].split(",");
-                    Product p=new Product();
-                    p.ID=Field[0];
-                    p.Name=Field[1];
-                    p.Price=Field[2];
-                    p.Image=Field[3];
-                    p.Discount=Field[5];
+                    Product p = new Product();
+                    p.ID = Field[0];
+                    p.Name = Field[1];
+                    p.Price = Field[2];
+                    p.Image = Field[3];
+                    p.Discount = Field[5];
                     products.add(p);
                 }
             } else
@@ -408,14 +435,15 @@ public class ShowAllProducts extends Fragment {
         else
             return myView.getTop() + getRelativeTop((View) myView.getParent());
     }
-   //----------------------------------------------------------------------
+
+    //----------------------------------------------------------------------
     private void Sort(final Activity context) {
 
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         int popupWidth = display.getWidth();//-btnCat.getWidth();
         int popupHeight = display.getHeight();//-200;
         LinearLayout lay = (LinearLayout) context.findViewById(R.id.linearLayout);
-        int y=getRelativeTop(lay);
+        int y = getRelativeTop(lay);
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.sort1);
         LayoutInflater layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -431,7 +459,7 @@ public class ShowAllProducts extends Fragment {
 
         popup.setBackgroundDrawable(new ColorDrawable(0xa0000000));
         popup.getContentView().setBackgroundResource(android.R.color.transparent);
-        popup.showAsDropDown(layout, 0, y+lay.getHeight());
+        popup.showAsDropDown(layout, 0, y + lay.getHeight());
 //        popup.showAtLocation(layout, Gravity.LEFT | Gravity.TOP, 100, 100);
 
         final RadioGroup radio = (RadioGroup) layout.findViewById(R.id.radioGroup1);
@@ -466,11 +494,11 @@ public class ShowAllProducts extends Fragment {
                 if (cid.length() > 0)
                     new LongOperation().execute(sort);
                 else {
-                    if (! CallSoap.isConnectionAvailable(getActivity())) {
+                    if (!CallSoap.isConnectionAvailable(getActivity())) {
                         Intent inte = new Intent(getActivity(), NoNet.class);
                         startActivity(inte);
                     } else
-                    new LongOperation().execute(sort);
+                        new LongOperation().execute(sort);
                     //StoreList(sort);
                 }
                 popup.dismiss();
@@ -491,7 +519,7 @@ public class ShowAllProducts extends Fragment {
         int popupWidth = display.getWidth();//-btnCat.getWidth();
         int popupHeight = display.getHeight();//-200;
         LinearLayout lay = (LinearLayout) context.findViewById(R.id.linearLayout);
-        int y=getRelativeTop(lay);
+        int y = getRelativeTop(lay);
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.filter);
         LayoutInflater layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -507,18 +535,20 @@ public class ShowAllProducts extends Fragment {
 
         popup.setBackgroundDrawable(new ColorDrawable(0xa0000000));
         popup.getContentView().setBackgroundResource(android.R.color.transparent);
-        popup.showAsDropDown(layout, 0, y+lay.getHeight());
+        popup.showAsDropDown(layout, 0, y + lay.getHeight());
 
 
         Button Filter = (Button) layout.findViewById(R.id.Filter);
         Filter.setOnClickListener(new OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  EditText Min = (EditText) layout.findViewById(R.id.min);min=Min.getText().toString();
-                  EditText Max = (EditText) layout.findViewById(R.id.max);max=Max.getText().toString();
-                  new LongOperation().execute("");
-                  popup.dismiss();
-              }
+            @Override
+            public void onClick(View v) {
+                EditText Min = (EditText) layout.findViewById(R.id.min);
+                min = Min.getText().toString();
+                EditText Max = (EditText) layout.findViewById(R.id.max);
+                max = Max.getText().toString();
+                new LongOperation().execute("");
+                popup.dismiss();
+            }
         });
 
     }
@@ -585,8 +615,8 @@ public class ShowAllProducts extends Fragment {
         int popupHeight = display.getHeight();//-(int)(display.getWidth()*0.6);
 
         LinearLayout lay = (LinearLayout) context.findViewById(R.id.linearLayout);
-        int y=getRelativeTop(lay);
-        popupHeight=popupHeight-(y+lay.getHeight());
+        int y = getRelativeTop(lay);
+        popupHeight = popupHeight - (y + lay.getHeight());
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popuplay);
         LayoutInflater layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -611,7 +641,7 @@ public class ShowAllProducts extends Fragment {
         popup.getContentView().setBackgroundResource(android.R.color.transparent);
 
         //popup.showAtLocation(layout, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y +  OFFSET_Y);
-        popup.showAtLocation(layout, Gravity.TOP, 0, y+lay.getHeight()*2);
+        popup.showAtLocation(layout, Gravity.TOP, 0, y + lay.getHeight() * 2);
         //popup.showAsDropDown(layout, 0, 100);
 
         lv.setOnItemClickListener(new OnItemClickListener() {
@@ -623,11 +653,11 @@ public class ShowAllProducts extends Fragment {
                 Toast.makeText(getActivity(), item,
                         Toast.LENGTH_LONG).show();
                 if (position == 0) {
-                    if (! CallSoap.isConnectionAvailable(getActivity())) {
+                    if (!CallSoap.isConnectionAvailable(getActivity())) {
                         Intent inte = new Intent(getActivity(), NoNet.class);
                         startActivity(inte);
                     } else
-                    cid="";
+                        cid = "";
                     new LongOperation().execute("");
                     popup.dismiss();
                 } else {
@@ -656,8 +686,8 @@ public class ShowAllProducts extends Fragment {
         int popupWidth = display.getWidth();//-100;
         int popupHeight = display.getHeight();//-200;
         LinearLayout lay = (LinearLayout) context.findViewById(R.id.linearLayout);
-        int y=getRelativeTop(lay);
-        popupHeight=popupHeight-(y+lay.getHeight());
+        int y = getRelativeTop(lay);
+        popupHeight = popupHeight - (y + lay.getHeight());
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup);
         LayoutInflater layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -683,7 +713,7 @@ public class ShowAllProducts extends Fragment {
         popup.getContentView().setBackgroundResource(android.R.color.transparent);
 
         //popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
-        popup.showAtLocation(layout, Gravity.TOP, 0, y+lay.getHeight()*2);
+        popup.showAtLocation(layout, Gravity.TOP, 0, y + lay.getHeight() * 2);
 
         lv.setOnItemClickListener(new OnItemClickListener() {
 
@@ -691,7 +721,7 @@ public class ShowAllProducts extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 btnCat.setText(_SubTopics.get(position));
-                cid=_SubTopicIDs.get(position);
+                cid = _SubTopicIDs.get(position);
                 if (cid.length() > 0) {
                     products.clear();
                     new LongOperation().execute("");

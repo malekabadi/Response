@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -47,6 +48,7 @@ public class Category extends Fragment {
     ImageAdapter imAdapter;
     GridView gridview;
     View rootView;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     public Category() {
         // Required empty public constructor
@@ -63,8 +65,22 @@ public class Category extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.category, container, false);
 
+        swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new LongOperation().execute("");
+            }
+        });
         //StoreList(TopicID,ZoneID,FindStr);
-        new LongOperation().execute("");
+        //new LongOperation().execute("");
+        Topics.clear();
+        TopicIDs.clear();
+        for (int i = 1; i < ShowAllProducts.Topics.size(); i++) {
+            Topics.add(ShowAllProducts.Topics.get(i));
+            TopicIDs.add(ShowAllProducts.TopicIDs.get(i));
+            Image.add(ShowAllProducts.Image.get(i));
+        }
         gridview = (GridView) rootView.findViewById(R.id.gridView1);
         imAdapter = new ImageAdapter(getActivity());
         gridview.setAdapter(imAdapter);
@@ -81,6 +97,7 @@ public class Category extends Fragment {
             }
         });
 
+
         return rootView;
     }
 
@@ -93,13 +110,18 @@ public class Category extends Fragment {
             ProgressBar pb3 = (ProgressBar) rootView.findViewById(R.id.progressBar1);
             pb3.setVisibility(View.INVISIBLE);
             imAdapter.notifyDataSetChanged();
+            swipeRefreshLayout.setRefreshing(false);
             super.onPostExecute(result);
         }
 
         @Override
         protected void onPreExecute() {
             ProgressBar pb3 = (ProgressBar) rootView.findViewById(R.id.progressBar1);
-            pb3.setVisibility(View.VISIBLE);
+            //pb3.setVisibility(View.VISIBLE);
+            swipeRefreshLayout.post(new Runnable() {
+                @Override public void run() {
+                    swipeRefreshLayout.setRefreshing(true);
+                }});
             if (! CallSoap.isConnectionAvailable(getActivity()))
             {
                 Intent inte = new Intent(getActivity(), NoNet.class);

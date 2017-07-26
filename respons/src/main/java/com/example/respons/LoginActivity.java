@@ -164,7 +164,7 @@ public class LoginActivity extends MenuRight {
 //			        result=cs.ResiveList("Login?name="+phone.getText().toString()+
 //			        					"&pass="+pass.getText().toString());
         result = cs.login(phone.getText().toString(), pass.getText().toString());
-        String res = new CallSoap().ResiveList("HasShop?UserID=" + phone.getText().toString());
+        String res = new CallSoap().ResiveList("HasShop?UserName=" + phone.getText().toString());
         if (res.equals("no"))
             appVar.main.HasShop = false;
         else {
@@ -188,12 +188,14 @@ public class LoginActivity extends MenuRight {
                     Toast.makeText(getApplicationContext(), "خوش آمدید",
                             Toast.LENGTH_SHORT).show();
                     appVar.main.UserName = phone.getText().toString();
+                    appVar.main.Pass=pass.getText().toString();
                     appVar.main.UserID = res[0].substring(2);
                     Editor editor = sp.edit();
                     editor.putString("UserName", phone.getText().toString());
                     editor.putString("UserID", appVar.main.UserID);
                     editor.putBoolean("HasShop", appVar.main.HasShop);
                     editor.putString("ShopID", appVar.main.ShopID);
+                    editor.putString("Pass", appVar.main.Pass);
                     editor.commit();
                     if (res.length > 1)
                         if (res[1].substring(0, 4).equals("shop")) {

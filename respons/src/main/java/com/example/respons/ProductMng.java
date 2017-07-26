@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
@@ -28,7 +29,9 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -66,6 +69,7 @@ public class ProductMng extends AppCompatActivity {
     ImageAdapter imageAdapter;
     Boolean SelectOn = false;
     int lastItemPosition=0,page=0;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public void onDestroy()
@@ -125,7 +129,7 @@ public class ProductMng extends AppCompatActivity {
 //		if (Rows.length > 1)
 //		{
 //			Category=new String[Rows.length];
-//			for (int i = 0; i < Rows.length; i++) 
+//			for (int i = 0; i < Rows.length; i++)
 //			{
 //				String[] Field = Rows[i].split(",");
 //				if (Field.length > 1)
@@ -137,6 +141,23 @@ public class ProductMng extends AppCompatActivity {
                 showPopup(ProductMng.this);
             }
         });
+        final EditText findtext = (EditText) findViewById(R.id.FindText);
+        ImageButton find = (ImageButton) findViewById(R.id.Find);
+        find.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String s=findtext.getText().toString();
+                new LongOperation().execute(findtext.getText().toString());
+            }
+        });
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new LongOperation().execute("");
+            }
+        });
+
         new LongOperation().execute("");
         gridview = (GridView) findViewById(R.id.gridView1);
         imageAdapter = new ImageAdapter(this);
@@ -190,6 +211,7 @@ public class ProductMng extends AppCompatActivity {
         protected void onPostExecute(Boolean result) {
             ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
             pb.setVisibility(View.INVISIBLE);
+            swipeRefreshLayout.setRefreshing(false);
             imageAdapter.notifyDataSetChanged();
             super.onPostExecute(result);
         }
@@ -202,13 +224,17 @@ public class ProductMng extends AppCompatActivity {
                 startActivity(inte);
             }
             ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar1);
-            pb.setVisibility(View.VISIBLE);
+            swipeRefreshLayout.post(new Runnable() {
+                @Override public void run() {
+                    swipeRefreshLayout.setRefreshing(true);
+                }});
+            //pb.setVisibility(View.VISIBLE);
             super.onPreExecute();
         }
 
         @Override
         protected Boolean doInBackground(String... params) {
-            StoreList(appVar.main.ShopID);
+            StoreList(appVar.main.ShopID,params[0]);
 
             return null;
         }
@@ -312,10 +338,21 @@ public class ProductMng extends AppCompatActivity {
         builder.show();
     }
 
-    public boolean StoreList(String shopID) {
+    public boolean StoreList(String shopID,String str) {
         try {
             CallSoap cs = new CallSoap();
-            String result = cs.ResiveList("ProductsShop?shopID=" + shopID + "&page=" + page);
+            String result="";
+            if (! str.equals(""))
+                result = cs.ResiveList("Search2Shop?cid=all&shopID=" + shopID + "&name=" + str + "&page=" + page);
+            else
+            result = cs.ResiveList("ProductsShop?cid=all&shopID=" + shopID + "&page=" + page);
+
+            ID.clear();
+            Name.clear();
+            Price.clear();
+            Image.clear();
+            Desc.clear();
+
             String[] Rows = result.split(":");
             for (int i = 0; i < Rows.length; i++) {
                 String[] Field = Rows[i].split(",");

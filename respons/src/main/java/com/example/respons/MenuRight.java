@@ -1,21 +1,12 @@
 package com.example.respons;
 
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -64,16 +55,22 @@ public class MenuRight extends AppCompatActivity
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("UserName", appVar.main.UserName);
             editor.putString("UserID", appVar.main.UserID);
-            editor.putBoolean("HasShop",appVar.main.HasShop );
-            editor.putString("ShopID",appVar.main.ShopID );
+            editor.putBoolean("HasShop", appVar.main.HasShop);
+            editor.putString("ShopID", appVar.main.ShopID);
             editor.commit();
-            Menu menuNav=NewActivity.navigationView.getMenu();
+            Menu menuNav = NewActivity.navigationView.getMenu();
             menuNav.findItem(R.id.nav_password).setEnabled(false);
             menuNav.findItem(R.id.nav_cart).setEnabled(false);
             menuNav.findItem(R.id.nav_info).setEnabled(false);
             menuNav.findItem(R.id.nav_quit).setEnabled(false);
             menuNav.findItem(R.id.nav_shop).setEnabled(false);
             NewActivity.name.setText("ورود");
+            NewActivity.name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MenuRight.this, LoginActivity.class));
+                }
+            });
         } else if (id == R.id.nav_cart) {
             Intent i = new Intent(MenuRight.this, Cart.class);
             startActivity(i);
@@ -83,6 +80,7 @@ public class MenuRight extends AppCompatActivity
         drawer.closeDrawer(Gravity.RIGHT);
         return true;
     }
+
     public void startNewActivity(Context context, String packageName) {
         Intent intent = context.getPackageManager().getLaunchIntentForPackage(packageName);
         if (intent == null) {

@@ -58,6 +58,7 @@
         <activity android:name=".Requests" />
         <activity android:name=".Account" />
         <activity android:name=".NoNet" />
+        <activity android:name=".Inbox" />
         <!--<receiver android:name=".NetCheck" >-->
             <!--<intent-filter>-->
                 <!--<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />-->

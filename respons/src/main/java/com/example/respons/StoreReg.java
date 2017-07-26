@@ -429,9 +429,9 @@ public class StoreReg extends AppCompatActivity {
         View layout = layoutInflater.inflate(R.layout.popup, viewGroup);
         Topics.clear();
         TopicIDs.clear();
-        for (int i = 1; i < Shops.Topics.size(); i++) {
-            Topics.add(Shops.Topics.get(i));
-            TopicIDs.add(Shops.TopicIDs.get(i));
+        for (int i = 1; i < ShowAllProducts.Topics.size(); i++) {
+            Topics.add(ShowAllProducts.Topics.get(i));
+            TopicIDs.add(ShowAllProducts.TopicIDs.get(i));
         }
         final ListView lv = (ListView) layout.findViewById(R.id.list_topic);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -457,36 +457,24 @@ public class StoreReg extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-
-//    		String item = TopicIDs.get(position);
-//    		Toast.makeText(StoreReg.this, item,
-//    				   Toast.LENGTH_LONG).show();
-//    		btnObj.setText(Shops.SubTopics.get(position));
-//    		TopicID= Shops.SubTopicIDs.get(position);
-//			lv.setVisibility(View.GONE);
-//			subList(StoreReg.this);
                 popup.dismiss();
                 String item = TopicIDs.get(position);
                 Toast.makeText(StoreReg.this, item,
                         Toast.LENGTH_LONG).show();
-                if (position == 0) {
-                    new LongOperation().execute("");
-                    popup.dismiss();
-                } else {
                     _SubTopicIDs.clear();
                     _SubTopics.clear();
-                    for (int i = 0; i < ShowAllProducts.SubTopics.size(); i++) {
+                    for (int i = 0; i < ShowAllProducts.SubTopics.size(); i++)
                         if (ShowAllProducts.SubParentID.get(i).equals(item)) {
                             _SubTopics.add(ShowAllProducts.SubTopics.get(i));
                             _SubTopicIDs.add(ShowAllProducts.SubTopicIDs.get(i));
                         }
-                    }
+
                     if (_SubTopics.size() > 0) {
 //					lv.setVisibility(0);
                         subList(StoreReg.this);
                     }
                     popup.dismiss();
-                }
+
             }
         });
 

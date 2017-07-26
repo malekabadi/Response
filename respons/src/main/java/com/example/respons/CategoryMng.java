@@ -160,6 +160,7 @@ private void SelectCommand(final int pos) {
     			inte.putExtra("TITLE", StoreManagment.Category.get(pos));
 				inte.putExtra("CID", cid);
 				inte.putExtra("mode", "edit");
+				inte.putExtra("pos", pos);
     			startActivity(inte);
             }
             else if (options[item].equals("حـذف"))

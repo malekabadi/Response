@@ -10,6 +10,8 @@ package com.example.respons;
         import android.content.pm.PackageManager;
         import android.net.Uri;
         import android.os.Bundle;
+        import android.support.design.widget.AppBarLayout;
+        import android.support.design.widget.CollapsingToolbarLayout;
         import android.support.design.widget.NavigationView;
         import android.support.design.widget.TabLayout;
         import android.support.v4.app.Fragment;
@@ -31,7 +33,10 @@ package com.example.respons;
         import android.widget.EditText;
         import android.widget.TextView;
 
+        import com.google.gson.Gson;
+
         import java.util.ArrayList;
+        import java.util.Arrays;
         import java.util.List;
 
 //import info.androidhive.materialtabs.R;
@@ -60,16 +65,11 @@ public class NewActivity extends MenuRight {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-//        appVar.main.UserID = "1";
-//        appVar.main.UserName = "09156620865";
-//        appVar.main.HasShop = true;
-//        appVar.main.ShopID = "2";
         MainAvtivity=this;
-//        if (! CallSoap.isConnectionAvailable(this)) {
-//            Intent inte = new Intent(this, NoNet.class);
-//            startActivity(inte);
-//        }
-//        if (NoNet._NoNet != null) NoNet._NoNet.finish();
+
+        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appBarLayout);
+        collapsingToolbarLayout.setTitleEnabled(false);
         //------------------------------- Version Control and Update
         try {
             AppVersion=getPackageManager().getPackageInfo(getPackageName(),0).versionCode;
@@ -128,7 +128,17 @@ public class NewActivity extends MenuRight {
             appVar.main.UserID = sp.getString("UserID", "");
             appVar.main.HasShop = sp.getBoolean("HasShop", false);
             appVar.main.ShopID = sp.getString("ShopID", "");
+            appVar.main.Pass = sp.getString("Pass", "");
         }
+        if (sp.contains("Factor")) {
+            String jsonFavorites = sp.getString("Factor", null);
+            Gson gson = new Gson();
+            PageIndicator.Orther[] favoriteItems = gson.fromJson(jsonFavorites,
+                    PageIndicator.Orther[].class);
+            //PageIndicator.Factor = Arrays.asList(favoriteItems);
+            PageIndicator.Factor.addAll(Arrays.asList(favoriteItems));
+        } else
+            ;
         //----------------------------------------------------------
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("ایران شاپ");

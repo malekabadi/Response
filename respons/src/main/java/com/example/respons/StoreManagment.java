@@ -123,7 +123,7 @@ public class StoreManagment extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-		        Intent i = new Intent(StoreManagment.this, Request.class);
+		        Intent i = new Intent(StoreManagment.this, Inbox.class);
 		        startActivity(i);
 			}
 		});
@@ -147,11 +147,11 @@ public class StoreManagment extends AppCompatActivity {
 
             super.onPreExecute();
             Asycdialog.setMessage("Loading...");
-			if (! CallSoap.isConnectionAvailable(StoreManagment.this));
-			{
-				Intent inte = new Intent(StoreManagment.this, NoNet.class);
-				startActivity(inte);
-			}
+//			if (! CallSoap.isConnectionAvailable(StoreManagment.this));
+//			{
+//				Intent inte = new Intent(StoreManagment.this, NoNet.class);
+//				startActivity(inte);
+//			}
             Asycdialog.show();
         }
 

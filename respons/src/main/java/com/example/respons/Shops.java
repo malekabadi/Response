@@ -10,6 +10,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -62,6 +64,7 @@ public class Shops extends Fragment{
     ImageAdapter imAdapter;
     GridView gridview;
     View rootView;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     public Shops() {
         // Required empty public constructor
@@ -97,7 +100,16 @@ public class Shops extends Fragment{
         });
 
 //StoreList(TopicID,ZoneID,FindStr);
-        new LongOperation().execute("");
+        swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new LongOperation().execute("");
+            }
+        });
+
+        if (Shops.size()<1)
+            new LongOperation().execute("");
         gridview = (GridView) rootView.findViewById(R.id.gridView1);
         imAdapter = new ImageAdapter(getActivity());
         gridview.setAdapter(imAdapter);
@@ -146,13 +158,29 @@ public class Shops extends Fragment{
         protected void onPostExecute(Boolean result) {
             pb.setVisibility(View.INVISIBLE);
             imAdapter.notifyDataSetChanged();
+            int h=Helper.setGridViewHeightBasedOnChildren( gridview,2);
+            ViewGroup.LayoutParams params;
+            NestedScrollView nsv= (NestedScrollView) rootView.findViewById(R.id.nsv);
+            params =  (ViewGroup.LayoutParams) nsv.getLayoutParams();
+            params.height = h; // gridview1.getHeight();
+            nsv.setLayoutParams(params);
+
+            params = (ViewGroup.LayoutParams) swipeRefreshLayout.getLayoutParams();
+            params.height = h; // gridview1.getHeight();
+            swipeRefreshLayout.setLayoutParams(params);
+            swipeRefreshLayout.setRefreshing(false);
+
             super.onPostExecute(result);
         }
 
         @Override
         protected void onPreExecute() {
-            pb = (ProgressBar) getActivity().findViewById(R.id.pBar);
-            pb.setVisibility(View.VISIBLE);
+            pb = (ProgressBar) rootView.findViewById(R.id.progressBar1);
+            //pb.setVisibility(View.VISIBLE);
+            swipeRefreshLayout.post(new Runnable() {
+                @Override public void run() {
+                    swipeRefreshLayout.setRefreshing(true);
+                }});
             if (! CallSoap.isConnectionAvailable(getActivity()))
             {
                 Intent inte = new Intent(getActivity(), NoNet.class);
@@ -271,6 +299,7 @@ public class Shops extends Fragment{
             CallSoap cs = new CallSoap();
             String res = cs.ResiveList("ShopList?TopicID=" + topicID + "&ZoneID=" + zoneID + "&Search=" + findStr+ "&page=" + page);
             String[] Rows = res.split(":");
+            ShopsID.clear();Shops.clear();Image.clear();Desc.clear();
             for (int i = 1; i < Rows.length - 1; i++) {
                 String[] Field = Rows[i].split(",");
                 ShopsID.add(Field[0]);
@@ -299,7 +328,7 @@ public class Shops extends Fragment{
 
         final ListView lv = (ListView) layout.findViewById(R.id.list_topic);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                R.layout.listview_item_row, Topics);
+                R.layout.listview_item_row, ShowAllProducts.Topics);
         lv.setAdapter(adapter);
 
         final PopupWindow popup = new PopupWindow(context);
@@ -322,7 +351,7 @@ public class Shops extends Fragment{
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
 
-                String item = TopicIDs.get(position);
+                String item = ShowAllProducts.TopicIDs.get(position);
                 Toast.makeText(getActivity(), item,
                         Toast.LENGTH_LONG).show();
                 if (position == 0) {
@@ -336,10 +365,10 @@ public class Shops extends Fragment{
                 } else {
                     _SubTopicIDs.clear();
                     _SubTopics.clear();
-                    for (int i = 0; i < SubTopics.size(); i++) {
-                        if (SubParentID.get(i).equals(item)) {
-                            _SubTopics.add(SubTopics.get(i));
-                            _SubTopicIDs.add(SubTopicIDs.get(i));
+                    for (int i = 0; i < ShowAllProducts.SubTopics.size(); i++) {
+                        if (ShowAllProducts.SubParentID.get(i).equals(item)) {
+                            _SubTopics.add(ShowAllProducts.SubTopics.get(i));
+                            _SubTopicIDs.add(ShowAllProducts.SubTopicIDs.get(i));
                         }
                     }
                     if (_SubTopics.size() > 0) {
@@ -390,10 +419,10 @@ public class Shops extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                b1.setText(SubTopics.get(position));
+                b1.setText(ShowAllProducts.SubTopics.get(position));
                 Shops.clear();
                 ShopsID.clear();
-                TopicID = SubTopicIDs.get(position);
+                TopicID = ShowAllProducts.SubTopicIDs.get(position);
                 //StoreList(TopicID,ZoneID,FindStr);
                 new LongOperation().execute("");
                 imAdapter.notifyDataSetChanged();

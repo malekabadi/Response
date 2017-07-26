@@ -32,7 +32,7 @@ public class NewCate extends AppCompatActivity {
     public List<String> pty=new ArrayList<String>();
     TAdapter adapter;
     String id,cid,pid,mode="add",text;
-    
+    int  pos;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -60,6 +60,7 @@ public class NewCate extends AppCompatActivity {
 			mode=extra.getString("mode");
 			if (mode.equals("edit")) {
 				editNew.setText(extra.getString("TITLE"));
+				pos=extra.getInt("pos");
 				String py = null;
 				try {
 					py = cs.ResiveListSync("CateProperty?ID=" + cid);
@@ -203,6 +204,19 @@ public class NewCate extends AppCompatActivity {
 				StoreManagment.SubCategory.add(text);
 				StoreManagment.SubCategoryID.add(id);
 				StoreManagment.SubCategoryPID.add(pid);
+			}
+			else
+			{
+				if (pid.equals("0"))
+				{
+					StoreManagment.Category.set(pos,text);
+					StoreManagment.CategoryID.set(pos,id);
+				} else {
+					StoreManagment.SubCategory.set(pos,text);
+					StoreManagment.SubCategoryID.set(pos,id);
+					StoreManagment.SubCategoryPID.set(pos,pid);
+				}
+
 			}
 	    	finish();
  	    }

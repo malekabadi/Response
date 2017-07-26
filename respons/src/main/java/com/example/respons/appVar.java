@@ -18,6 +18,7 @@ public class appVar {
 		public static String UserName="0";
 		public static Boolean HasShop=false;
 		public static String ShopID="";
+		public static String Pass="";
 		public static int Index=-1;
 	}
 	

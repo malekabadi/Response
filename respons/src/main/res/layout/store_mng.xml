@@ -212,7 +212,7 @@
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:text="درخواست جدید" />
+            android:text="پیام های دریافتی" />
 
     </LinearLayout>
     
@@ -237,7 +237,7 @@
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:text="لیست درخواست ها" />
+            android:text=" پیام های ارسالی" />
 
     </LinearLayout>
     

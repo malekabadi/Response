@@ -196,7 +196,7 @@ public class BuyVerify extends AppCompatActivity {
 	            int tot=Integer.parseInt(PageIndicator.Factor.get(position).Count)*
 	            		Integer.parseInt(PageIndicator.Factor.get(position).Price);
 	            total.setText(" قیمت کل :   "+Helper.GetMoney(String.valueOf(tot)));
-	            imageViewAndroid.setImageBitmap(PageIndicator.Factor.get(position).image);
+	            imageViewAndroid.setImageBitmap(PageIndicator.image.get(position));
 //	            Picasso.with(mContext) //
 //	            .load("http://192.168.1.102/images/"+Image.get(position)) //
 //	            .error(R.drawable.i2) //
